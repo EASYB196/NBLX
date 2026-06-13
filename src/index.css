@@ -1,0 +1,24 @@
+font{font-family: "Crimson Pro",serif;font-optical-sizing: auto;font-weight: 200;font-style: 'normal';}
+body{font-family: Besley,sans-serif;line-height: 1.5;font-weight: 400;background: #fff;}
+a{text-decoration: none;color: inherit;}
+@keyframes slideIn{
+from{transform: translateX(100%);}
+to{transform: translateX(0);}
+}
+
+.animate-slide-in{animation: .3s ease-out slideIn;}
+.hide-scrollbar::-webkit-scrollbar{display: none;}
+.hide-scrollbar{-ms-overflow-style: none;scrollbar-width: none;}
+.scrollbar-hide::-webkit-scrollbar{display: none;}
+.scrollbar-hide{-ms-overflow-style: none;scrollbar-width: none;}
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: inline-block;
+  animation: marquee 15s linear infinite;
+}
+::-moz-selection{background: #8c8282;color: #000;}
+::selection{background: #8c8282;color: #000;}
