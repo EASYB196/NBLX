@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaHeart } from 'react-icons/fa';
 import { useWishlist } from '../Context/WishlistContext';
-import Breadcrumb from '../components/Breadcrumb';
+import BreadCrumb from '../components/BreadCrumb';
 function Wishlist() {
   const { wishlistItems, toggleWishlist } = useWishlist();
 
   return (
     <div className='max-w-7xl mx-auto px-4 md:px-8 py-10 mt-2 min-h-screen'>
-      <Breadcrumb category='Wishlist' />
+      <BreadCrumb category='Wishlist' />
 
       {/* HEADER */}
       <div className='mb-10'>
