@@ -6,7 +6,6 @@ import { JalabiyaDatas } from '../../data/JalabiyaData';
 import { useCart } from '../../Context/cartContext';
 import BreadCrumb from '../../components/BreadCrumb';
 
-
 function JalabiyaDetails() {
   const { id } = useParams();
   const product = JalabiyaDatas.find((item) => item.id === id);
@@ -96,7 +95,7 @@ function JalabiyaDetails() {
               ))}
             </div>
 
-            <div className='relative w-[400px] h-[500px] md:h-[700px]'>
+            <div className='relative w-100 h-12 md:h-175'>
               <img
                 src={images[currentImageIndex]}
                 alt='Main Product'
@@ -128,11 +127,11 @@ function JalabiyaDetails() {
             className='md:hidden w-full overflow-x-auto snap-x snap-mandatory flex gap-4 scroll-smooth no-scrollbar'
           >
             {images.map((img, index) => (
-              <div key={index} className='flex-shrink-0 w-full snap-center'>
+              <div key={index} className='shrink-0 w-full snap-center'>
                 <img
                   src={img}
                   alt={`Mobile Product ${index}`}
-                  className='w-full h-[500px] object-cover rounded-xl'
+                  className='w-full h-125 object-cover rounded-xl'
                 />
               </div>
             ))}
