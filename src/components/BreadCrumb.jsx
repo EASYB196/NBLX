@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Breadcrumb = ({
+const BreadCrumb = ({
   category,
   productName,
   categoryLink,
@@ -48,4 +48,4 @@ const Breadcrumb = ({
   );
 };
 
-export default Breadcrumb;
+export default BreadCrumb;
