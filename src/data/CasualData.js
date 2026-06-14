@@ -1,4 +1,4 @@
-import image1 from "/src/assets/images/MEN/Jalabiya/Jalabiya-3.webp";
+import image1 from "../assets/images/MEN/Jalabiya/Jalabiya-3.webp";
 import image2 from "/src/assets/images/MEN/Jalabiya/Jalabiya-4.webp";
 import image3 from "/src/assets/images/MEN/Jalabiya/DSC05551-Edit.webp";
 import image4 from "/src/assets/images/MEN/Jalabiya/Jalabiya-2.webp";

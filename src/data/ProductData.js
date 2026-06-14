@@ -1,10 +1,10 @@
-// import casual1 from '/src/assets/images/MEN/Casual/casual-1.webp'
-import casual2 from '/src/assets/images/MEN/Hoodie/Hoodie.png';
-import casual3 from '/src/assets/images/MEN/Casual/Casual-3.webp';
-import casual4 from '/src/assets/images/MEN/Hoodie/Hoodie.png';
-import casual5 from '/src/assets/images/MEN/Casual/Casual-3.webp';
-import casual6 from '/src/assets/images/MEN/Hoodie/Baggypant.png';
-import casual7 from '/src/assets/images/MEN/Casual/casual-2.webp';
+// import casual1 from '../assets/images/MEN/Casual/casual-1.webp'
+import casual2 from '../assets/images/MEN/Hoodie/Hoodie.png';
+import casual3 from '../assets/images/MEN/Casual/Casual-3.webp';
+import casual4 from '../assets/images/MEN/Hoodie/Hoodie.png';
+import casual5 from '../assets/images/MEN/Casual/Casual-3.webp';
+import casual6 from '../assets/images/MEN/Hoodie/Baggypant.png';
+import casual7 from '../assets/images/MEN/Casual/casual-2.webp';
 
 export const ProductData = [
   // {
