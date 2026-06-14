@@ -1,5 +1,5 @@
-import img1 from "../assets/images/MEN/Pants/pant-1.webp";
-import img2 from "../assets/images/MEN/Pants/pant-11.webp";
+import img1 from "../assets/images/MEN/Pants/Pant-1.webp";
+import img2 from "../assets/images/MEN/Pants/Pant-11.webp";
 export const CollectionData = [
   {
     image: img1,

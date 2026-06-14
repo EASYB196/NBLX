@@ -1,13 +1,13 @@
-import image1 from "/src/assets/images/MEN/Agbada/agbada-1.webp";
-import image2 from "/src/assets/images/MEN/Agbada/agbada-2.webp";
-import image3 from "/src/assets/images/MEN/Agbada/agbada-3.webp";
-import image4 from "/src/assets/images/MEN/Agbada/agbada-4.webp";
-import image5 from "/src/assets/images/MEN/Agbada/agbada-5.webp";
-import image6 from "/src/assets/images/MEN/Agbada/agbada-6.webp";
-import image7 from "/src/assets/images/MEN/Agbada/agbada-7.webp";
-import image8 from "/src/assets/images/MEN/Agbada/agbada-8.webp";
-import image9 from "/src/assets/images/MEN/Agbada/agbada-9.webp";
-import image10 from "/src/assets/images/MEN/Agbada/agbada-10.webp";
+import image1 from "/src/assets/images/MEN/T-Shirt/Tshirt-1.webp";
+import image2 from "/src/assets/images/MEN/T-Shirt/Tshirt-2.webp";
+import image3 from "/src/assets/images/MEN/T-Shirt/Tshirt-3.webp";
+import image4 from "/src/assets/images/MEN/T-Shirt/Tshirt-4.webp";
+import image5 from "/src/assets/images/MEN/T-Shirt/Tshirt-5.webp";
+import image6 from "/src/assets/images/MEN/T-Shirt/Tshirt-6.webp";
+import image7 from "/src/assets/images/MEN/T-Shirt/Tshirt-7.webp";
+import image8 from "/src/assets/images/MEN/T-Shirt/Tshirt-8.webp";
+import image9 from "/src/assets/images/MEN/T-Shirt/Tshirt-9.webp";
+import image10 from "/src/assets/images/MEN/T-Shirt/Tshirt-10.webp";
 
 export const TshirtDatas = [
   {

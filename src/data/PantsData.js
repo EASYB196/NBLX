@@ -1,13 +1,13 @@
-import image1 from "/src/assets/images/MEN/Agbada/agbada-1.webp";
-import image2 from "/src/assets/images/MEN/Agbada/agbada-2.webp";
-import image3 from "/src/assets/images/MEN/Agbada/agbada-3.webp";
-import image4 from "/src/assets/images/MEN/Agbada/agbada-4.webp";
-import image5 from "/src/assets/images/MEN/Agbada/agbada-5.webp";
-import image6 from "/src/assets/images/MEN/Agbada/agbada-6.webp";
-import image7 from "/src/assets/images/MEN/Agbada/agbada-7.webp";
-import image8 from "/src/assets/images/MEN/Agbada/agbada-8.webp";
-import image9 from "/src/assets/images/MEN/Agbada/agbada-9.webp";
-import image10 from "/src/assets/images/MEN/Agbada/agbada-10.webp";
+import image1 from "/src/assets/images/MEN/Pants/Pant-1.webp";
+import image2 from "/src/assets/images/MEN/Pants/Pant-10.webp";
+import image3 from "/src/assets/images/MEN/Pants/Pant-11.webp";
+import image4 from "/src/assets/images/MEN/Pants/Pant-12.webp";
+import image5 from "/src/assets/images/MEN/Pants/Pant-13.webp";
+import image6 from "/src/assets/images/MEN/Pants/Pant-14.webp";
+import image7 from "/src/assets/images/MEN/Pants/Pant-15.webp";
+import image8 from "/src/assets/images/MEN/Pants/Pant-16.webp";
+import image9 from "/src/assets/images/MEN/Pants/Joggers.png";
+import image10 from "/src/assets/images/MEN/Pants/Pant-4.webp";
 
 export const PantsDatas = [
   {
