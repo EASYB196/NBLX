@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "framer-motion";
 
 const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {

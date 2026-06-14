@@ -4,7 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6';
 import { JalabiyaDatas } from '../../data/JalabiyaData';
 import { useCart } from '../../Context/cartContext';
-import Breadcrumb from '../../components/Breadcrumb';
+import BreadCrumb from '../../components/BreadCrumb';
 
 
 function JalabiyaDetails() {

@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import ProductDetails from '../pages/ProductDetails';
 import { BestSellerData } from '../data/BestSellerData';
-import Breadcrumb from '../components/BreadCrumb';
+import BreadCrumb from '../components/BreadCrumb';
 
 function BestsellerDetail() {
   const { id } = useParams();
@@ -11,7 +11,7 @@ function BestsellerDetail() {
 
   return (
     <div>
-      <Breadcrumb category='BestSeller' productName={product?.name} />
+      <BreadCrumb category='BestSeller' productName={product?.name} />
 
       <ProductDetails data={BestSellerData} />
     </div>
