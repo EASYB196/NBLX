@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { features } from '../data/features';
+import { features } from '../data/Features';
 import { FiTruck, FiShield, FiRefreshCw, FiHeadphones } from 'react-icons/fi';
 
 const iconMap = {
