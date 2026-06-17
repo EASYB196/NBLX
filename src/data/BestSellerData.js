@@ -1,5 +1,5 @@
-import pinkcap from '../assets/images/CAPS/Pinkcap.png';
-import pinkcap2 from '../assets/images/CAPS/Pinkcap2.png';
+import pinkcap from '../assets/images/CAPS/pinkcap.png';
+import pinkcap2 from '../assets/images/CAPS/pinkcap2.png';
 import blackcap from '../assets/images/CAPS/Blackcap.png';
 import blackcap2 from '../assets/images/CAPS/Blackcap2.png';
 import Armlesshoodie from '../assets/images/MEN/Hoodie/Armlesshoodie.png';
