@@ -1,19 +1,19 @@
 import image1 from "../assets/images/MEN/Jalabiya/Jalabiya-3.webp";
-import image2 from "/src/assets/images/MEN/Jalabiya/Jalabiya-4.webp";
-import image3 from "/src/assets/images/MEN/Jalabiya/DSC05551-Edit.webp";
-import image4 from "/src/assets/images/MEN/Jalabiya/Jalabiya-2.webp";
-import image5 from "/src/assets/images/MEN/Jalabiya/Jalabiya-5.webp";
-import image6 from "/src/assets/images/MEN/Jalabiya/Jalabiya-6.webp";
-import image7 from "/src/assets/images/MEN/Jalabiya/Jalabiya-7.webp";
-import image8 from "/src/assets/images/MEN/Jalabiya/Jalabiya-8.webp";
-import image9 from "/src/assets/images/MEN/Jalabiya/Jalabiya-9.webp";
-import image10 from "/src/assets/images/MEN/Jalabiya/Jalabiya-9.webp";
-import image11 from "/src/assets/images/MEN/Jalabiya/Jalabiya-10.webp";
-import image12 from "/src/assets/images/MEN/Jalabiya/Jalabiya-11.webp";
-import image13 from "/src/assets/images/MEN/Jalabiya/Jalabiya-12.webp";
-import image14 from "/src/assets/images/MEN/Jalabiya/Jalabiya-12.webp";
-import image15 from "/src/assets/images/MEN/Jalabiya/Jalabiya-13.webp";
-import image16 from "/src/assets/images/MEN/Jalabiya/Jalabiya-14.webp";
+import image2 from "../assets/images/MEN/Jalabiya/Jalabiya-4.webp";
+import image3 from "../assets/images/MEN/Jalabiya/DSC05551-Edit.webp";
+import image4 from "../assets/images/MEN/Jalabiya/Jalabiya-2.webp";
+import image5 from "../assets/images/MEN/Jalabiya/Jalabiya-5.webp";
+import image6 from "../assets/images/MEN/Jalabiya/Jalabiya-6.webp";
+import image7 from "../assets/images/MEN/Jalabiya/Jalabiya-7.webp";
+import image8 from "../assets/images/MEN/Jalabiya/Jalabiya-8.webp";
+import image9 from "../assets/images/MEN/Jalabiya/Jalabiya-9.webp";
+import image10 from "../assets/images/MEN/Jalabiya/Jalabiya-9.webp";
+import image11 from "../assets/images/MEN/Jalabiya/Jalabiya-10.webp";
+import image12 from "../assets/images/MEN/Jalabiya/Jalabiya-11.webp";
+import image13 from "../assets/images/MEN/Jalabiya/Jalabiya-12.webp";
+import image14 from "../assets/images/MEN/Jalabiya/Jalabiya-12.webp";
+import image15 from "../assets/images/MEN/Jalabiya/Jalabiya-13.webp";
+import image16 from "../assets/images/MEN/Jalabiya/Jalabiya-14.webp";
 
 
 export const JalabiyaDatas = [
