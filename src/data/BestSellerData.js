@@ -7,12 +7,12 @@ import Armlesshoodiebackview from '../assets/images/MEN/Hoodie/Armlesshoodieback
 
 import rhinestone from '../assets/images/CAPS/rhinestone.png';
 import rhinestone2 from '../assets/images/CAPS/rhinestone.png';
-import joggers from '../assets/images/MEN/Pants/Joggers.png';
-import joggers2 from '../assets/images/MEN/Pants/Joggers.png';
-import agbada3 from '../assets/images/MEN/Agbada/Agbada-3.webp';
-import agbada4 from '../assets/images/MEN/Agbada/Agbada-4.webp';
-import agbada5 from '../assets/images/MEN/Agbada/Agbada-5.webp';
-import agbada6 from '../assets/images/MEN/Agbada/Agbada-6.webp';
+import joggers from '../assets/images/MEN/Pants/joggers.png';
+import joggers2 from '../assets/images/MEN/Pants/joggers.png';
+import agbada3 from '../assets/images/MEN/Agbada/agbada-3.webp';
+import agbada4 from '../assets/images/MEN/Agbada/agbada-4.webp';
+import agbada5 from '../assets/images/MEN/Agbada/agbada-5.webp';
+import agbada6 from '../assets/images/MEN/Agbada/agbada-6.webp';
 import kaftan1 from '../assets/images/MEN/Kaftan&Shirts/SHIRTKAFTAN_5.webp';
 import kaftan2 from '../assets/images/MEN/Kaftan&Shirts/SHIRTKAFTAN_6.webp';
 import kaftan3 from '../assets/images/MEN/Kaftan&Shirts/SHIRTKAFTAN_7.webp';

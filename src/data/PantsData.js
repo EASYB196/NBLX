@@ -6,7 +6,7 @@ import image5 from "../assets/images/MEN/Pants/pant-13.webp";
 import image6 from "../assets/images/MEN/Pants/pant-14.webp";
 import image7 from "../assets/images/MEN/Pants/pant-15.webp";
 import image8 from "../assets/images/MEN/Pants/pant-16.webp";
-import image9 from "../assets/images/MEN/Pants/Joggers.png";
+import image9 from "../assets/images/MEN/Pants/joggers.png";
 import image10 from "../assets/images/MEN/Pants/pant-4.webp";
 
 export const PantsDatas = [
