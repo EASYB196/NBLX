@@ -5,8 +5,8 @@ import blackcap2 from '../assets/images/CAPS/blackcap2.png';
 import Armlesshoodie from '../assets/images/MEN/Hoodie/Armlesshoodie.png';
 import Armlesshoodiebackview from '../assets/images/MEN/Hoodie/Armlesshoodiebackview.png';
 
-import rhinestone from '../assets/images/CAPS/Rhinestone.png';
-import rhinestone2 from '../assets/images/CAPS/Rhinestone.png';
+import rhinestone from '../assets/images/CAPS/rhinestone.png';
+import rhinestone2 from '../assets/images/CAPS/rhinestone.png';
 import joggers from '../assets/images/MEN/Pants/Joggers.png';
 import joggers2 from '../assets/images/MEN/Pants/Joggers.png';
 import agbada3 from '../assets/images/MEN/Agbada/Agbada-3.webp';
