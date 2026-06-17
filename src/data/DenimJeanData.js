@@ -1,13 +1,13 @@
-import image1 from "../assets/images/MEN/Agbada/Agbada-1.webp";
-import image2 from "../assets/images/MEN/Agbada/Agbada-2.webp";
-import image3 from "../assets/images/MEN/Agbada/Agbada-3.webp";
-import image4 from "../assets/images/MEN/Agbada/Agbada-4.webp";
-import image5 from "../assets/images/MEN/Agbada/Agbada-5.webp";
-import image6 from "../assets/images/MEN/Agbada/Agbada-6.webp";
-import image7 from "../assets/images/MEN/Agbada/Agbada-7.webp";
-import image8 from "../assets/images/MEN/Agbada/Agbada-8.webp";
-import image9 from "../assets/images/MEN/Agbada/Agbada-9.webp";
-import image10 from "../assets/images/MEN/Agbada/Agbada-10.webp";
+import image1 from "../assets/images/MEN/Agbada/agbada-1.webp";
+import image2 from "../assets/images/MEN/Agbada/agbada-2.webp";
+import image3 from "../assets/images/MEN/Agbada/agbada-3.webp";
+import image4 from "../assets/images/MEN/Agbada/agbada-4.webp";
+import image5 from "../assets/images/MEN/Agbada/agbada-5.webp";
+import image6 from "../assets/images/MEN/Agbada/agbada-6.webp";
+import image7 from "../assets/images/MEN/Agbada/agbada-7.webp";
+import image8 from "../assets/images/MEN/Agbada/agbada-8.webp";
+import image9 from "../assets/images/MEN/Agbada/agbada-9.webp";
+import image10 from "../assets/images/MEN/Agbada/agbada-10.webp";
 
 export const DenimJeansDatas = [
   {
