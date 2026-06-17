@@ -2,8 +2,8 @@
 import Men from '../assets/images/MEN/Casual/casual-1.webp';
 import Women from '../assets/images/crop_top_2.webp';
 import Agbada from '../assets/images/agbada_2.webp';
-import Jalabiya from '../assets/images/Herobg.png';
-import Kaftan from '../assets/images/Kaftan.webp';
+import Jalabiya from '../assets/images/herobg.png';
+import Kaftan from '../assets/images/kaftan.webp';
 import Accessories from '../assets/images/crop_top_2.webp';
 
 export const images = [
