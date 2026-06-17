@@ -37,14 +37,14 @@ import croptop5 from '../assets/images/WOMEN/Crop-top/crop-top7.webp';
 import croptop6 from '../assets/images/WOMEN/Crop-top/crop-top8.webp';
 import croptop7 from '../assets/images/WOMEN/Crop-top/crop-top9.webp';
 import croptop8 from '../assets/images/WOMEN/Crop-top/crop-top10.webp';
-import abaya1 from '../assets/images/WOMEN/Abaya/Abaya-3.webp';
-import abaya2 from '../assets/images/WOMEN/Abaya/Abaya-4.webp';
-import abaya3 from '../assets/images/WOMEN/Abaya/Abaya-5.webp';
-import abaya4 from '../assets/images/WOMEN/Abaya/Abaya-6.webp';
-import abaya5 from '../assets/images/WOMEN/Abaya/Abaya-7.webp';
-import abaya6 from '../assets/images/WOMEN/Abaya/Abaya-8.webp';
-import abaya7 from '../assets/images/WOMEN/Abaya/Abaya-9.webp';
-import abaya8 from '../assets/images/WOMEN/Abaya/Abaya-10.webp';
+import abaya1 from '../assets/images/WOMEN/Abaya/abaya-3.webp';
+import abaya2 from '../assets/images/WOMEN/Abaya/abaya-4.webp';
+import abaya3 from '../assets/images/WOMEN/Abaya/abaya-5.webp';
+import abaya4 from '../assets/images/WOMEN/Abaya/abaya-6.webp';
+import abaya5 from '../assets/images/WOMEN/Abaya/abaya-7.webp';
+import abaya6 from '../assets/images/WOMEN/Abaya/abaya-8.webp';
+import abaya7 from '../assets/images/WOMEN/Abaya/abaya-9.webp';
+import abaya8 from '../assets/images/WOMEN/Abaya/abaya-10.webp';
 
 export const FullBestSellerData = [
   {
