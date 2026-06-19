@@ -2,7 +2,7 @@ import pinkcap from '../assets/images/CAPS/pinkcap.png';
 import pinkcap2 from '../assets/images/CAPS/pinkcap2.png';
 import blackcap from '../assets/images/CAPS/blackcap.png';
 import blackcap2 from '../assets/images/CAPS/blackcap2.png';
-import Armlesshoodie from '../assets/images/MEN/H';
+import Armlesshoodie from '../assets/images/MEN/Hoodie/armlesshoodie.png';
 import Armlesshoodiebackview from '../assets/images/MEN/Hoodie/armlesshoodiebackview.png';
 
 import rhinestone from '../assets/images/CAPS/rhinestone.png';
