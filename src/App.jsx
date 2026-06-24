@@ -41,7 +41,7 @@ import Kaftan from './pages/NavPages/Mens/Shirt';
 // import CasualDetails from './components/MenDetails/CasualDetails';
 import PantsDetails from './components/MenDetails/PantsDetails';
 import TshirtDetails from './components/MenDetails/TshirtDetails';
-import ShirtDetails from './components/MenDetails/shirtDetails';
+import ShirtDetails from './components/MenDetails/ShirtDetails';
 import DenimJeanDetails from './components/MenDetails/DenimJeanDetails';
 import OuterwearJacketsDetails from './components/MenDetails/OuterwearJacketDetails';
 
