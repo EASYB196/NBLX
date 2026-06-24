@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 import { FaEye, FaShoppingCart } from 'react-icons/fa';
-import { JalabiyaDatas } from '../../../data/JalabiyaData';
+import { CropTopDatas } from '../../../data/CropTop';
 
-const JalabiyaData = ({ product }) => {
+const CropTopData = ({ product }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div className='md:px-5 font-serif'>
-      <Link to={`/jalabiya/${product.id}`}>
+      <Link to={`/croptop/${product.id}`}>
         <div
           className='relative group w-90 md:w-84   rounded-lg  shadow-lg'
           onMouseEnter={() => setIsHovered(true)}
@@ -61,28 +61,28 @@ const JalabiyaData = ({ product }) => {
     </div>
   );
 };
-const Jalabiya = () => {
+const CropTop = () => {
   return (
     <div className='bg-white mt-23 z-10 pt-10'>
       <div className='space-y-7'>
-        <h1 className='text-black text-5xl text-center '>Jalabiya</h1>
+        <h1 className='text-black text-5xl text-center '>CropTops</h1>
 
         <div className='flex items-center justify-center gap-5'>
           <Link to={'/'} className='text-black'>
             Home
           </Link>{' '}
           <FaChevronRight className='text-black w-2' />{' '}
-          <span className='text-black'>Jalabiya</span>
+          <span className='text-black'>Crop Top</span>
         </div>
       </div>
 
       <div className='grid grid-col md:grid-cols-4 gap-5 p-4 mt-25'>
-        {JalabiyaDatas.map((product) => (
-          <JalabiyaData key={product.id} product={product} />
+        {CropTopDatas.map((product) => (
+          <CropTopData key={product.id} product={product} />
         ))}
       </div>
     </div>
   );
 };
 
-export default Jalabiya;
+export default CropTop;

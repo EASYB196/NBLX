@@ -5,10 +5,10 @@ import blackcap2 from '../assets/images/CAPS/blackcap2.png';
 import Armlesshoodie from '../assets/images/MEN/Hoodie/armlesshoodie.png';
 import Armlesshoodiebackview from '../assets/images/MEN/Hoodie/armlesshoodiebackview.png';
 
-import rhinestone from '../assets/images/CAPS/rhinestone.png';
-import rhinestone2 from '../assets/images/CAPS/rhinestone.png';
-import joggers from '../assets/images/MEN/Pants/joggers.png';
-import joggers2 from '../assets/images/MEN/Pants/joggers.png';
+import rhinestone from '../assets/images/CAPS/rhinestone.jpg';
+import rhinestone2 from '../assets/images/CAPS/rhinestoneside.png';
+import jogger from '../assets/images/MEN/Pants/jogger.png';
+import jogger2 from '../assets/images/MEN/Pants/joggerback.png';
 import agbada3 from '../assets/images/MEN/Agbada/agbada-3.webp';
 import agbada4 from '../assets/images/MEN/Agbada/agbada-4.webp';
 import agbada5 from '../assets/images/MEN/Agbada/agbada-5.webp';
@@ -84,8 +84,8 @@ export const FullBestSellerData = [
     oldPrice: 1543000,
     inStock: 4,
     sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XS'],
-    image: joggers,
-    hoverImage: joggers2,
+    image: jogger,
+    hoverImage: jogger2,
   },
   {
     id: 'Elite-Recon',

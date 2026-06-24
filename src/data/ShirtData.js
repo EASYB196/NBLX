@@ -23,7 +23,7 @@ import image22 from "../assets/images/MEN/Shirts/shirtkaftan_19.webp"
 import image23 from "../assets/images/MEN/Shirts/shirtkaftan_20.webp"
 import image24 from "../assets/images/MEN/Shirts/shirtkaftan_7.webp"
 
-export const KaftanData = [
+export const ShirtData = [
    {
        id: "line-art-Kaftan",
        name: "Line Art Hand-painted Kaftan",

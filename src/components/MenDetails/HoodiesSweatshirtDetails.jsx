@@ -7,6 +7,9 @@ import { HoodiesSweatshirtsDatas } from '../../data/HoodiesSweatshirtsData.js';
 import { useCart } from '../../Context/cartContext';
 import { useWishlist } from '../../Context/WishlistContext';
 
+import sizechart from '../../assets/images/sizechart.png';
+
+
 function HoodiesSweatshirtsDetails() {
   const { id } = useParams();
   const product = HoodiesSweatshirtsDatas.find((item) => String(item.id) === String(id));
@@ -15,6 +18,9 @@ function HoodiesSweatshirtsDetails() {
   const [selectedSize, setSelectedSize] = useState('');
   const [quantity, setQuantity] = useState(1);
   // const scrollRef = useRef(null);
+
+    const [showSizeChart, setShowSizeChart] = useState(false);
+  
 
   const { addToCart, setShowCart } = useCart();
   const { toggleWishlist, isWishlisted } = useWishlist();
@@ -123,9 +129,30 @@ function HoodiesSweatshirtsDetails() {
           {/* PRICE */}
           <div className='text-2xl font-bold'>₦{product.price.toLocaleString('en-NG')}</div>
 
+    {/* QUANTITY */}
+          <div className='flex items-center gap-4'>
+            <p className='font-semibold text-xl'>Quantity:</p>
+
+            <button
+              onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+              className='w-10 h-10 bg-gray-100 rounded'
+            >
+              −
+            </button>
+
+            <span className='text-lg'>{quantity}</span>
+
+            <button
+              onClick={() => setQuantity((q) => q + 1)}
+              className='w-10 h-10 bg-gray-100 rounded'
+            >
+              +
+            </button>
+          </div>
+
           {/* SIZE */}
           <div>
-            <p className='mb-2 font-semibold'>
+            <p className='mb-2 font-semibold text-lg'>
               Select Size: <span className='text-gray-600'>{selectedSize}</span>
             </p>
 
@@ -144,26 +171,7 @@ function HoodiesSweatshirtsDetails() {
             </div>
           </div>
 
-          {/* QUANTITY */}
-          <div className='flex items-center gap-4'>
-            <p className='font-semibold'>Quantity:</p>
-
-            <button
-              onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-              className='w-10 h-10 bg-gray-100 rounded'
-            >
-              −
-            </button>
-
-            <span className='text-lg'>{quantity}</span>
-
-            <button
-              onClick={() => setQuantity((q) => q + 1)}
-              className='w-10 h-10 bg-gray-100 rounded'
-            >
-              +
-            </button>
-          </div>
+       
 
           {/* ADD BUTTON */}
           <button

@@ -7,6 +7,8 @@ import { DenimJeansDatas } from '../../data/DenimJeanData';
 import { useCart } from '../../Context/cartContext';
 import { useWishlist } from '../../Context/WishlistContext';
 
+import sizechart from '../../assets/images/sizechart.png';
+
 function DenimJeanDetails() {
   const { id } = useParams();
   const product = DenimJeansDatas.find((item) => String(item.id) === String(id));
@@ -15,6 +17,8 @@ function DenimJeanDetails() {
   const [selectedSize, setSelectedSize] = useState('');
   const [quantity, setQuantity] = useState(1);
   // const scrollRef = useRef(null);
+
+  const [showSizeChart, setShowSizeChart] = useState(false);
 
   const { addToCart, setShowCart } = useCart();
   const { toggleWishlist, isWishlisted } = useWishlist();
@@ -123,30 +127,9 @@ function DenimJeanDetails() {
           {/* PRICE */}
           <div className='text-2xl font-bold'>₦{product.price.toLocaleString('en-NG')}</div>
 
-          {/* SIZE */}
-          <div>
-            <p className='mb-2 font-semibold'>
-              Select Size: <span className='text-gray-600'>{selectedSize}</span>
-            </p>
-
-            <div className='flex flex-wrap gap-2'>
-              {product.sizes.map((size) => (
-                <button
-                  key={size}
-                  onClick={() => setSelectedSize(size)}
-                  className={`px-4 py-2 border rounded-lg transition ${
-                    selectedSize === size ? 'bg-black text-white' : 'hover:bg-gray-200'
-                  }`}
-                >
-                  {size}
-                </button>
-              ))}
-            </div>
-          </div>
-
           {/* QUANTITY */}
           <div className='flex items-center gap-4'>
-            <p className='font-semibold'>Quantity:</p>
+            <p className='font-semibold text-xl'>Quantity:</p>
 
             <button
               onClick={() => setQuantity((q) => Math.max(1, q - 1))}
@@ -165,14 +148,119 @@ function DenimJeanDetails() {
             </button>
           </div>
 
-          {/* ADD BUTTON */}
+          {/* SIZE */}
+          <div>
+            <p className='mb-2 font-semibold text-lg'>
+              Select Size: <span className='text-gray-600'>{selectedSize}</span>
+            </p>
+
+            <div className='flex flex-wrap gap-2'>
+              {product.sizes.map((size) => (
+                <button
+                  key={size}
+                  onClick={() => setSelectedSize(size)}
+                  className={`px-4 py-2 border rounded-lg transition ${
+                    selectedSize === size ? 'bg-black text-white' : 'hover:bg-gray-200'
+                  }`}
+                >
+                  {size}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Size chart */}
+
           <button
-            onClick={handleAddToCart}
-            className='w-full md:w-1/2 bg-black text-white py-3 rounded-xl hover:bg-gray-900'
+            onClick={() => setShowSizeChart(true)}
+            className='flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-black transition mt-2'
           >
-            Add to Cart
+            <img src={sizechart} alt='Size Guide' className='w-50 h-15 object-contain' />
           </button>
+
+          {/* BUTTONS */}
+          <div className='flex flex-col md:flex-row gap-4'>
+            <button
+              onClick={handleAddToCart}
+              className='w-full md:w-55 border py-3 rounded-xl hover:bg-black hover:text-white transition'
+            >
+              Add to Cart
+            </button>
+
+            <button className='w-full md:w-55 bg-black text-white py-3 rounded-xl hover:bg-gray-900 transition'>
+              Buy it now
+            </button>
+          </div>
         </div>
+        {showSizeChart && (
+          <div className='fixed inset-0 bg-black/50 z-50 flex items-center justify-center px-4'>
+            <div className='bg-white rounded-xl p-6 max-w-xl w-full relative'>
+              <button
+                onClick={() => setShowSizeChart(false)}
+                className='absolute top-3 right-4 text-2xl font-extrabold text-black'
+              >
+                ×
+              </button>
+
+              <h2 className='text-xl font-bold mb-4 text-black'>Denim & Jeans Size Guide</h2>
+
+              <div className='overflow-x-auto'>
+                <table className='w-full border-collapse border text-black'>
+                  <thead>
+                    <tr className='bg-gray-100'>
+                      <th className='border p-3'>Size</th>
+                      <th className='border p-3'>Waist (in)</th>
+                      <th className='border p-3'>Hip (in)</th>
+                      <th className='border p-3'>Inseam (in)</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td className='border p-3'>S</td>
+                      <td className='border p-3'>28-30</td>
+                      <td className='border p-3'>36-38</td>
+                      <td className='border p-3'>30</td>
+                    </tr>
+
+                    <tr>
+                      <td className='border p-3'>M</td>
+                      <td className='border p-3'>31-33</td>
+                      <td className='border p-3'>39-41</td>
+                      <td className='border p-3'>31</td>
+                    </tr>
+
+                    <tr>
+                      <td className='border p-3'>L</td>
+                      <td className='border p-3'>34-36</td>
+                      <td className='border p-3'>42-44</td>
+                      <td className='border p-3'>32</td>
+                    </tr>
+
+                    <tr>
+                      <td className='border p-3'>XL</td>
+                      <td className='border p-3'>37-39</td>
+                      <td className='border p-3'>45-47</td>
+                      <td className='border p-3'>33</td>
+                    </tr>
+
+                    <tr>
+                      <td className='border p-3'>XXL</td>
+                      <td className='border p-3'>40-42</td>
+                      <td className='border p-3'>48-50</td>
+                      <td className='border p-3'>34</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p className='text-xs text-gray-500 mt-4'>
+                Measurements are approximate and may vary slightly depending on the fit and
+                style.
+              </p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

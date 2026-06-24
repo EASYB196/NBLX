@@ -26,22 +26,27 @@ import ProductDetails from './pages/ProductDetails';
 import Casual from './pages/NavPages/Mens/Casual';
 import Pants from './pages/NavPages/Mens/Pants';
 import Tshirt from './pages/NavPages/Mens/Tshirt';
+import Shirt from './pages/NavPages/Mens/Shirt';
 import CropTop from './pages/NavPages/Women/CropTop';
 import Abaya from './pages/NavPages/Women/Abaya';
 import Watches from './pages/NavPages/Accessories/Watches';
 
 import Agbada from './pages/NavPages/Mens/Agbada';
 import Jalabiya from './pages/NavPages/Mens/Jalabiya';
-import Kaftan from './pages/NavPages/Mens/Kaftan';
+import Kaftan from './pages/NavPages/Mens/Shirt';
 
-import JalabiyaDetails from './components/MenDetails/JalabiyaDetails';
-import AgbadaDetails from './components/MenDetails/AgbadaDetails';
-import KaftanDetails from './components/MenDetails/KaftanDetails';
-import CasualDetails from './components/MenDetails/CasualDetails';
+// import JalabiyaDetails from './components/MenDetails/JalabiyaDetails';
+// import AgbadaDetails from './components/MenDetails/AgbadaDetails';
+// import KaftanDetails from './components/MenDetails/KaftanDetails';
+// import CasualDetails from './components/MenDetails/CasualDetails';
 import PantsDetails from './components/MenDetails/PantsDetails';
 import TshirtDetails from './components/MenDetails/TshirtDetails';
+import ShirtDetails from './components/MenDetails/shirtDetails';
 import DenimJeanDetails from './components/MenDetails/DenimJeanDetails';
 import OuterwearJacketsDetails from './components/MenDetails/OuterwearJacketDetails';
+
+import CropTopDetails from './components/WomenDetails/CropTopDetails';
+import AbayaDetails from './components/WomenDetails/AbayaDetails';
 
 // import Shirts from './pages/NavPages/Mens/Shirts';
 // import Footwear from './pages/NavPages/Mens/Footwear';
@@ -95,25 +100,28 @@ function AppContent() {
         <Route path='/casuals' element={<Casual />} />
         <Route path='/pants' element={<Pants />} />
         <Route path='/t-shirts' element={<Tshirt />} />
+        <Route path='/shirts' element={<Shirt />} />
         <Route path='/watches' element={<Watches />} />
         <Route path='/croptop' element={<CropTop />} />
         <Route path='/abaya' element={<Abaya />} />
         <Route path='/auth/:type' element={<AuthForm />} />
         <Route path='/agbada' element={<Agbada />} />
-        <Route path='/kafans-shirts' element={<Kaftan />} />
+        {/* <Route path='/kafans-shirts' element={<Kaftan />} /> */}
         <Route path='/Denim-Jeans' element={<DenimJean />} />
         <Route path='/Outerwear-Jackets' element={<OuterwearJacket />} />
         <Route path='/Hoodies-Sweatshirts' element={<HoodiesSweatshirts />} />
         <Route path='/jalabiya' element={<Jalabiya />} />
-        <Route path='/jalabiya/:id' element={<JalabiyaDetails />} />
-        <Route path='/agbada/:id' element={<AgbadaDetails />} />
-        <Route path='/kafans-shirts/:id' element={<KaftanDetails />} />
-        <Route path='/casuals/:id' element={<CasualDetails />} />
+        {/* <Route path='/jalabiya/:id' element={<JalabiyaDetails />} /> */}
+        <Route path='/croptop/:id' element={<CropTopDetails />} />
+        <Route path='/abaya/:id' element={<AbayaDetails />} />
+        {/* <Route path='/kafans-shirts/:id' element={<KaftanDetails />} /> */}
+        {/* <Route path='/casuals/:id' element={<CasualDetails />} /> */}
         <Route path='/pants/:id' element={<PantsDetails />} />
         <Route path='/Denim-Jeans/:id' element={<DenimJeanDetails />} />
         <Route path='/Outerwear-Jackets/:id' element={<OuterwearJacketsDetails />} />
         <Route path='/Hoodies-Sweatshirts/:id' element={<HoodiesSweatshirtsDetails />} />
-        <Route path='/t-shirt/:id' element={<TshirtDetails />} />
+        <Route path='/t-shirts/:id' element={<TshirtDetails />} />
+        <Route path='/shirts/:id' element={<ShirtDetails />} />
         <Route path='/bestseller/products/:id' element={<BestSellerDetail />} />
         <Route path='/bestseller' element={<BestSeller />} />
         <Route path='/terms-of-service' element={<TermsOfService />} />

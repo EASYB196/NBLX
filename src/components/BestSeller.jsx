@@ -42,7 +42,7 @@ const BestSellerList = () => {
           scroll-smooth
         '
       >
-        {BestSellerData.slice(0, 16).map((product) => (
+        {BestSellerData.slice(0, 9).map((product) => (
           <BestSellerCard key={product.id} product={product} />
         ))}
       </div>

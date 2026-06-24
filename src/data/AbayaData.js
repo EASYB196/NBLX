@@ -9,7 +9,7 @@ import image8 from "../assets/images/MEN/Pants/pant-16.webp";
 import image9 from "../assets/images/MEN/Pants/jogger.png";
 import image10 from "../assets/images/MEN/Pants/joggerback.png";
 
-export const PantsDatas = [
+export const AbayaDatas = [
   {
     id: "Historic-ozo-agbada",
     name: "The Historic Ozo x NFL Agbada",

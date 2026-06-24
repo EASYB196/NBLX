@@ -81,7 +81,6 @@ function ProductDetails({ data = [] }) {
           {/* Desktop thumbnails */}
           <div className='hidden md:flex gap-4'>
             <div className='flex flex-col gap-3'>
-            
               {images.map((img, idx) => (
                 <img
                   key={idx}

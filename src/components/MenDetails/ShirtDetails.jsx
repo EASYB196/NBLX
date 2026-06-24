@@ -3,15 +3,15 @@ import toast from 'react-hot-toast';
 import { useParams, Link } from 'react-router-dom';
 import { FaChevronLeft, FaChevronRight, FaHeart, FaRegHeart } from 'react-icons/fa6';
 
-import { PantsDatas } from '../../data/PantsData';
+import { ShirtData } from '../../data/ShirtData';
 import { useCart } from '../../Context/cartContext';
 import { useWishlist } from '../../Context/WishlistContext';
 
 import sizechart from '../../assets/images/sizechart.png';
 
-function PantsDetails() {
+function ShirtDetails() {
   const { id } = useParams();
-  const product = PantsDatas.find((item) => String(item.id) === String(id));
+  const product = ShirtData.find((item) => String(item.id) === String(id));
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [selectedSize, setSelectedSize] = useState('');
@@ -57,8 +57,8 @@ function PantsDetails() {
           Home
         </Link>
         <FaChevronRight />
-        <Link to='/Pants' className='hover:underline'>
-          Pants
+        <Link to='/shirts' className='hover:underline'>
+          Shirt{' '}
         </Link>
         <FaChevronRight />
         <span className='text-gray-500'>{product.name}</span>
@@ -175,7 +175,7 @@ function PantsDetails() {
               ))}
             </div>
           </div>
-{/* Size Chart Button */}
+          {/* Size Chart Button */}
           <button
             onClick={() => setShowSizeChart(true)}
             className='flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-black transition mt-2'
@@ -183,7 +183,7 @@ function PantsDetails() {
             <img src={sizechart} alt='Size Guide' className='w-50 h-15 object-contain' />
           </button>
 
-             {/* BUTTONS */}
+          {/* BUTTONS */}
           <div className='flex flex-col md:flex-row gap-4'>
             <button
               onClick={handleAddToCart}
@@ -199,7 +199,6 @@ function PantsDetails() {
         </div>
       </div>
 
-      
       {showSizeChart && (
         <div className='fixed inset-0 bg-black/50 z-50 flex items-center justify-center px-4'>
           <div className='bg-white rounded-xl p-6 max-w-lg w-full relative'>
@@ -256,4 +255,4 @@ function PantsDetails() {
   );
 }
 
-export default PantsDetails;
+export default ShirtDetails;

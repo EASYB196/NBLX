@@ -4,15 +4,14 @@ import { Link } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 import { FaEye, FaShoppingCart } from 'react-icons/fa';
-// import Footer from '../../../Footer';
-import { AbayaDatas } from '../../../data/AbayaData';
+import { ShirtData } from '../../../data/ShirtData';
 
-const AbayaData = ({ product }) => {
+const ShirtDatas = ({ product }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div className='md:px-5 font-serif'>
-      <Link to={`/Abaya/${product.id}`}>
+      <Link to={`/shirts/${product.id}`}>
         <div
           className='relative group w-90 md:w-84   rounded-lg  shadow-lg'
           onMouseEnter={() => setIsHovered(true)}
@@ -36,8 +35,8 @@ const AbayaData = ({ product }) => {
             transition={{ duration: 0.9, ease: 'easeInOut' }}
           />
 
-          <h3 className='text-sm font-semibold  text-black px-1 bg-red-400 rounded-xl w-13 text-center relative bottom-118 left-2 ml-3 md:ml-0'>
-            NEW
+          <h3 className='text-sm font-semibold  text-black px-1 bg-red-400 rounded-xl w-19 text-center relative bottom-118 left-2 ml-3 md:ml-0'>
+            ONSALE
           </h3>
 
           <div
@@ -57,37 +56,35 @@ const AbayaData = ({ product }) => {
 
       <div className=' bg-white text-black ml-4 md:ml-0'>
         <h3 className='text-sm md:text-lg font-semibold uppercase'>{product.name}</h3>
-        <p className='text-black'>₦{product.price.toLocaleString('en-NG')}</p>
+        <p className='text-black font-[cinzel] font-bold'>
+          ₦{product.price.toLocaleString('en-NG')}
+        </p>
       </div>
     </div>
   );
 };
-const Abaya = () => {
+const Shirt = () => {
   return (
     <div className='bg-white mt-23 z-10 pt-10'>
       <div className='space-y-7'>
-        <h1 className='text-black text-5xl text-center '>Abaya</h1>
+        <h1 className='text-black text-5xl text-center '>Shirt</h1>
 
         <div className='flex items-center justify-center gap-5'>
-          <Link
-            to={'/'}
-            className='text - black;
-'
-          >
+          <Link to={'/'} className='text-black'>
             Home
           </Link>{' '}
           <FaChevronRight className='text-black w-2' />{' '}
-          <span className='text-black'>Abaya</span>
+          <span className='text-black'>Shirt/shirts</span>
         </div>
       </div>
 
       <div className='grid grid-col md:grid-cols-4 gap-5 p-4 mt-25'>
-        {AbayaDatas.map((product) => (
-          <AbayaData key={product.id} product={product} />
+        {ShirtData.map((product) => (
+          <ShirtDatas key={product.id} product={product} />
         ))}
       </div>
     </div>
   );
 };
 
-export default Abaya;
+export default Shirt;

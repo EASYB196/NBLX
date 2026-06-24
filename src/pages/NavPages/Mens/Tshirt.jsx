@@ -154,7 +154,7 @@ const Tshirt = () => {
   return (
     <div className='bg-white mt-23 z-10 pt-10'>
       <div className='space-y-7'>
-        <h1 className='text-black text-5xl text-center '>Tshirt</h1>
+        <h1 className='text-black text-5xl text-center '>T-shirts</h1>
 
         <div className='flex items-center justify-center gap-5'>
           <Link to={'/'} className='text-black'>
