@@ -1,8 +1,8 @@
-import casual2 from '../assets/images/MEN/Hoodie/Hoodie.png';
+import casual2 from '../assets/images/MEN/Hoodie/image.png';
 import casual3 from '../assets/images/MEN/Casual/casual-3.webp';
 import casual4 from '../assets/images/MEN/Hoodie/Hoodie.png';
 import casual5 from '../assets/images/MEN/Casual/casual-3.webp';
-import casual6 from '../assets/images/MEN/Hoodie/Baggypant.png';
+import casual6 from '../assets/images/MEN/Hoodie/baggypant.png';
 import casual7 from '../assets/images/MEN/Casual/casual-2.webp';
 
 export const ProductData = [
