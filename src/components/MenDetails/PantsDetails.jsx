@@ -288,6 +288,12 @@ import { PantsDatas } from '../../data/PantsData';
 import { BestSellerData } from '../../data/BestSellerData';
 import { TshirtDatas } from '../../data/TshirtData';
 import { DenimJeansDatas } from '../../data/DenimJeanData.js';
+import { OuterwearJacketsDatas } from '../../data/OuterwearJacketsData.js';
+import { FemalePantDatas } from '../../data/FemalePant.js';
+import { TopDatas } from '../../data/Tops.js';
+import { SkirtsDatas } from '../../data/SkirtsData.js';
+import { DressesDatas } from '../../data/DressesData.js';
+import { HatsDatas } from '../../data/HatsData.js';
 
 import { useCart } from '../../Context/cartContext';
 import { useWishlist } from '../../Context/WishlistContext';
@@ -301,12 +307,18 @@ function PantsDetails() {
     (item) => String(item.id) === String(id)
   );
 
-  const allProducts = [
-    ...PantsDatas,
-    ...BestSellerData,
-    ...TshirtDatas,
-    ...DenimJeansDatas,
-  ];
+ const allProducts = [
+   ...HatsDatas.map((item) => ({ ...item, route: `/hats/${item.id}` })),
+   ...PantsDatas.map((item) => ({ ...item, route: `/pants/${item.id}` })),
+   ...BestSellerData.map((item) => ({ ...item, route: `/best-seller/${item.id}` })),
+   ...TshirtDatas.map((item) => ({ ...item, route: `/tshirt/${item.id}` })),
+   ...DenimJeansDatas.map((item) => ({ ...item, route: `/denim-jeans/${item.id}` })),
+   ...FemalePantDatas.map((item) => ({ ...item, route: `/female-pant/${item.id}` })),
+   ...TopDatas.map((item) => ({ ...item, route: `/tops/${item.id}` })),
+   ...OuterwearJacketsDatas.map((item) => ({ ...item, route: `/Outerwear-Jackets/${item.id}` })),
+   ...SkirtsDatas.map((item) => ({ ...item, route: `/skirts/${item.id}` })),
+   ...DressesDatas.map((item) => ({ ...item, route: `/dresses/${item.id}` })),
+ ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [selectedSize, setSelectedSize] = useState('');

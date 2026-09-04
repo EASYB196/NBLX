@@ -496,13 +496,7 @@ function TopDetails() {
     ...(product.hoverImage ? [product.hoverImage] : []),
   ];
 
-  /*
-    ================================
-    ADD TO CART
-    ================================
-    Save the correct Top detail-page
-    route with the cart item.
-  */
+
   const handleAddToCart = () => {
     if (!selectedSize) {
       toast.error('Please select a size!');

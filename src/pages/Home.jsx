@@ -36,7 +36,7 @@ function Home() {
       </div>{' '}
       <Section />
       <Servicefeatures />
-      <Arrival />
+      {/* <Arrival /> */}
       {/* <ProductList /> */}
       <CollectionsSection />
       {/* <StorySection /> */}
