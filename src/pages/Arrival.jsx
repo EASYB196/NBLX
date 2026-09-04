@@ -1,30 +1,5 @@
 
 
-
-// import React from 'react';
-
-// const Arrival = () => {
-//   return (
-//     <div className="bg-white font-[cinzel] pt-20 pb-10 px-5 md:px-10">
-
-//       <div className="flex flex-col items-start gap-2 border-b border-gray-400 pb-6">
-
-//         <h3 className="text-xs md:text-sm text-[#ff0000] uppercase tracking-widest">
-//           Latest Arrival
-//         </h3>
-
-//         <h2 className="text-black text-2xl md:text-3xl font-semibold">
-//           Shop Matching Styles
-//         </h2>
-
-//       </div>
-
-//     </div>
-//   );
-// };
-
-// export default Arrival;
-
 import React, { useState } from 'react';
 import { ProductData } from '../data/ProductData';
 import { FaEye, FaShoppingCart } from 'react-icons/fa';
@@ -40,14 +15,12 @@ const ProductCard = ({ product }) => {
 
   return (
     <div className='w-full'>
-
       <Link to={`/products/${product.id}`}>
         <div
           className='relative overflow-hidden rounded-2xl bg-gray-100 group cursor-pointer'
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-
           {/* MAIN IMAGE */}
           <motion.img
             src={product.image}
@@ -74,7 +47,6 @@ const ProductCard = ({ product }) => {
             </span>
           </div>
 
-       
           <div className='absolute inset-0 bg-black/5 rounded-2xl' />
         </div>
       </Link>
@@ -85,9 +57,7 @@ const ProductCard = ({ product }) => {
           {product.name}
         </h3>
 
-        <p className='font-bold font-[cinzel]'>
-          ₦{product.price.toLocaleString('en-NG')}
-        </p>
+        <p className='font-bold font-[cinzel]'>₦{product.price.toLocaleString('en-NG')}</p>
       </div>
     </div>
   );
@@ -98,22 +68,18 @@ const ProductCard = ({ product }) => {
 ========================= */
 const Arrival = () => {
   return (
-    <div className="bg-white font-[cinzel] pt-20 pb-16 px-5 md:px-10">
-
+    <div className='bg-white font-[cinzel] pt-20 pb-16 px-5 md:px-10'>
       {/* HEADER */}
-      <div className="flex flex-col items-start gap-2 border-b border-gray-300 pb-6 mb-10">
-        <h3 className="text-xs md:text-sm text-[#ff0000] uppercase tracking-widest">
+      <div className='flex flex-col items-start gap-2 border-b border-gray-300 pb-6 mb-10'>
+        <h3 className='text-xs md:text-sm text-[#ff0000] uppercase tracking-widest'>
           Latest Arrival
         </h3>
 
-        <h2 className="text-black text-2xl md:text-4xl font-semibold">
-          Shop Matching Styles
-        </h2>
+        <h2 className='text-black text-2xl md:text-4xl font-semibold'>Shop Matching Styles</h2>
       </div>
 
       {/* FEATURED + PRODUCTS */}
       <div className='grid grid-cols-1 lg:grid-cols-12 gap-8'>
-
         {/* LEFT FEATURED PRODUCT */}
         <div className='lg:col-span-7'>
           <div className='rounded-3xl overflow-hidden bg-gray-100 h-125 md:h-162.5'>
@@ -127,9 +93,7 @@ const Arrival = () => {
 
         {/* RIGHT SCROLL PRODUCTS */}
         <div className='lg:col-span-5'>
-
           <div className='flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth hide-scrollbar pb-2'>
-
             {/* PRODUCT 1 */}
             <div className='min-w-[80%] sm:min-w-[60%] lg:min-w-full snap-start'>
               <ProductCard product={ProductData[1]} />
@@ -139,12 +103,9 @@ const Arrival = () => {
             <div className='min-w-[80%] sm:min-w-[60%] lg:min-w-full snap-start'>
               <ProductCard product={ProductData[2]} />
             </div>
-
           </div>
-
         </div>
       </div>
-
     </div>
   );
 };

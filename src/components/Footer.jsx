@@ -52,7 +52,7 @@ const Footer = () => {
     },
     {
       icon: <FaWhatsapp />,
-      url: 'https://wa.me/2347041554896',
+      url: 'https://wa.me/2349117098144',
       label: 'WhatsApp',
     },
   ];
@@ -117,8 +117,6 @@ const Footer = () => {
             </p>
 
             <div className='mt-6 space-y-2 text-gray-400'>
-              <p>NBLX06@gmail.com</p>
-              <p>+234 704 155 4896</p>
             </div>
 
             {/* Newsletter */}

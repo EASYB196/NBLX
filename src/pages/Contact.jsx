@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';      
+import { Link } from 'react-router-dom';
 import { FiCopy } from 'react-icons/fi';
 import { FaWhatsapp } from 'react-icons/fa';
 import toast from 'react-hot-toast';
@@ -143,7 +143,7 @@ const Contact = () => {
                   href='mailto:NBLX06@gmail.com'
                   className='mt-1 text-black font-medium hover:underline break-all'
                 >
-                  NBLX06@gmail.com
+                  NBLXluxurywears1@gmail.com
                 </a>
               </div>
 
@@ -198,7 +198,7 @@ const Contact = () => {
               </button>
             </div>
             {/* Phone Card */}
-            <div className='bg-white border border-gray-200 rounded-2xl p-5 flex items-center justify-between gap-4 shadow-sm hover:shadow-md transition duration-300'>
+            {/* <div className='bg-white border border-gray-200 rounded-2xl p-5 flex items-center justify-between gap-4 shadow-sm hover:shadow-md transition duration-300'>
               <div>
                 <p className='text-sm text-gray-500'>Phone</p>
 
@@ -259,7 +259,7 @@ const Contact = () => {
                   </span>
                 )}
               </button>
-            </div>
+            </div> */}
 
             {/* WhatsApp Card */}
             <div className='relative overflow-hidden bg-white border border-gray-200 rounded-2xl p-5 flex items-center justify-between gap-4 shadow-sm hover:shadow-lg transition-all duration-500 group'>
@@ -271,7 +271,7 @@ const Contact = () => {
                 <p className='text-xs uppercase tracking-[0.2em] text-gray-400'>WhatsApp</p>
 
                 <a
-                  href='https://wa.me/2347041554896'
+                  href='https://wa.me/2349117098144'
                   target='_blank'
                   rel='noopener noreferrer'
                   className='mt-2 inline-block text-black font-semibold text-lg hover:tracking-wide transition-all duration-300'
@@ -445,23 +445,17 @@ const Contact = () => {
             </button>
 
             {/* Footer Text */}
-          <p className='text-xs sm:text-sm text-gray-500 leading-6 sm:leading-relaxed text-center sm:text-left'>
-  By submitting this form, you agree to our{' '}
-  <Link
-    to='/term-of-services'
-    className='text-black font-medium hover:underline'
-  >
-    Terms of Service
-  </Link>{' '}
-  and{' '}
-  <Link
-    to='/privacy-policy'
-    className='text-black font-medium hover:underline'
-  >
-    Privacy Policy
-  </Link>
-  .
-</p>
+            <p className='text-xs sm:text-sm text-gray-500 leading-6 sm:leading-relaxed text-center sm:text-left'>
+              By submitting this form, you agree to our{' '}
+              <Link to='/term-of-services' className='text-black font-medium hover:underline'>
+                Terms of Service
+              </Link>{' '}
+              and{' '}
+              <Link to='/privacy-policy' className='text-black font-medium hover:underline'>
+                Privacy Policy
+              </Link>
+              .
+            </p>
           </form>
         </div>
       </div>

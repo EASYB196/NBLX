@@ -1,8 +1,11 @@
+
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaHeart } from 'react-icons/fa';
 import { useWishlist } from '../Context/WishlistContext';
 import BreadCrumb from '../components/BreadCrumb';
+
 function Wishlist() {
   const { wishlistItems, toggleWishlist } = useWishlist();
 
@@ -14,7 +17,9 @@ function Wishlist() {
       <div className='mb-10'>
         <h1 className='text-3xl md:text-4xl font-bold'>My Wishlist</h1>
 
-        <p className='text-gray-500 mt-2'>{wishlistItems.length} item(s) saved</p>
+        <p className='text-gray-500 mt-2'>
+          {wishlistItems.length} item(s) saved
+        </p>
       </div>
 
       {/* EMPTY STATE */}
@@ -22,7 +27,9 @@ function Wishlist() {
         <div className='flex flex-col items-center justify-center py-20'>
           <FaHeart className='text-6xl text-gray-300 mb-4' />
 
-          <h2 className='text-2xl font-semibold mb-2'>Your wishlist is empty</h2>
+          <h2 className='text-2xl font-semibold mb-2'>
+            Your wishlist is empty
+          </h2>
 
           <p className='text-gray-500 text-center'>
             Add products to your wishlist and they'll appear here.
@@ -36,7 +43,8 @@ function Wishlist() {
               className='bg-white border rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300'
             >
               {/* CLICKABLE PRODUCT */}
-              <Link to={item.route || `/bestseller/products/${item.id}`}>
+              <Link to={item.route}>
+                {' '}
                 <div className='overflow-hidden'>
                   <img
                     src={item.image}
@@ -46,9 +54,13 @@ function Wishlist() {
                 </div>
 
                 <div className='p-4'>
-                  <h3 className='font-semibold text-lg'>{item.name}</h3>
+                  <h3 className='font-semibold text-lg'>
+                    {item.name}
+                  </h3>
 
-                  <p className='mt-2 font-bold'>₦{item.price.toLocaleString('en-NG')}</p>
+                  <p className='mt-2 font-bold'>
+                    ₦{item.price.toLocaleString('en-NG')}
+                  </p>
                 </div>
               </Link>
 

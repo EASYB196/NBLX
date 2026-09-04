@@ -31,13 +31,15 @@ function Home() {
   return (
     <div>
       <Header />
-      <BestSeller />
+      <div id='best-sellers'>
+        <BestSeller />
+      </div>{' '}
       <Section />
       <Servicefeatures />
       <Arrival />
       {/* <ProductList /> */}
       <CollectionsSection />
-      <StorySection />
+      {/* <StorySection /> */}
       {/* <CategoryCarousel /> */}
     </div>
   );

@@ -1,45 +1,81 @@
+// import React from 'react';
+// import { Link } from 'react-router-dom';
+
+// const BreadCrumb = ({ category, productName, categoryLink }) => {
+//   return (
+//     <div className='flex items-center flex-wrap gap-2 bg-white text-sm md:text-base px-4 md:px-10 py-4 mb-10 mt-20 border-b'>
+//       <Link to='/' className='text-gray-600 hover:text-black transition'>
+//         Home
+//       </Link>
+
+//       {category && (
+//         <>
+//           <span>/</span>
+
+//           {categoryLink ? (
+//             <Link to={categoryLink} className='text-gray-600 hover:text-black transition'>
+//               {category}
+//             </Link>
+//           ) : (
+//             <span className='text-gray-600'>{category}</span>
+//           )}
+//         </>
+//       )}
+
+//       {productName && (
+//         <>
+//           <span>/</span>
+
+//           <span className='text-gray-600 truncate max-w-50 md:max-w-full'>{productName}</span>
+//         </>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default BreadCrumb;
 
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const BreadCrumb = ({
-  category,
-  productName,
-  categoryLink,
-}) => {
+const BreadCrumb = ({ category, productName, categoryLink }) => {
   return (
-    <div className='flex items-center flex-wrap gap-2 bg-white text-sm md:text-base px-4 md:px-10 py-4 mb-10 mt-20 border-b'>
+    <div className='flex items-center flex-wrap gap-2 bg-white text-sm md:text-base px-4 md:px-10 py-4 mb-10 mt-20 border-b border-gray-200'>
+
+      {/* HOME */}
       <Link
         to='/'
-        className='text-gray-600 hover:text-black transition'
+        className='text-gray-500 hover:text-black transition-colors duration-200'
       >
         Home
       </Link>
 
+      {/* CATEGORY */}
       {category && (
         <>
-          <span>/</span>
+          <span className='text-gray-400'>/</span>
 
           {categoryLink ? (
             <Link
               to={categoryLink}
-              className='text-gray-600 hover:text-black transition'
+              className='text-gray-500 hover:text-black transition-colors duration-200'
             >
               {category}
             </Link>
           ) : (
-            <span className='text-gray-600'>
+            <span className='text-gray-500'>
               {category}
             </span>
           )}
         </>
       )}
 
+      {/* PRODUCT */}
       {productName && (
         <>
-          <span>/</span>
+          <span className='text-gray-400'>/</span>
 
-          <span className='text-gray-600 truncate max-w-50 md:max-w-full'>
+          <span className='text-gray-900 font-medium truncate max-w-50 md:max-w-full'>
             {productName}
           </span>
         </>

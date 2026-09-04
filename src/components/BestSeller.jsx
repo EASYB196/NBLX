@@ -25,7 +25,7 @@ const BestSellerList = () => {
   };
 
   return (
-    <section id='best-sellers' className='bg-white w-full'>
+    <section  className='bg-white w-full'>
       {/* HEADER CONTROLS */}
       <BestSellerHeader onPrev={scrollLeft} onNext={scrollRight} />
 

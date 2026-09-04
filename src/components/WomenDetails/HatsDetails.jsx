@@ -3,15 +3,44 @@ import toast from 'react-hot-toast';
 import { useParams, Link } from 'react-router-dom';
 import { FaChevronLeft, FaChevronRight, FaHeart, FaRegHeart } from 'react-icons/fa6';
 
-import { AbayaDatas } from '../../data/AbayaData';
+import YouMayAlsoLike from '../../components/YouMayAlsoLike';
+
+import { HatsDatas } from '../../data/HatsData';
+import { BestSellerData } from '../../data/BestSellerData';
+import {  TshirtDatas } from '../../data/TshirtData';
+import { DenimJeansDatas } from '../../data/DenimJeanData.js';
+import { TopDatas } from '../../data/Tops.js';
+import { SkirtsDatas } from '../../data/SkirtsData.js'; 
+import { FemalePantDatas } from '../../data/FemalePant.js';
+import { OuterwearJacketsDatas } from '../../data/OuterwearJacketsData.js';
+import { PantsDatas } from '../../data/PantsData';
+import { DressesDatas } from '../../data/DressesData.js';
+
+
+
 import { useCart } from '../../Context/cartContext';
 import { useWishlist } from '../../Context/WishlistContext';
 
 import sizechart from '../../assets/images/sizechart.png';
 
-function AbayaDetails() {
+
+function HatsDetails() {
   const { id } = useParams();
-  const product = AbayaDatas.find((item) => String(item.id) === String(id));
+  const product = HatsDatas.find((item) => String(item.id) === String(id));
+
+
+const allProducts = [
+  ...HatsDatas.map((item) => ({ ...item, route: `/hats/${item.id}` })),
+  ...PantsDatas.map((item) => ({ ...item, route: `/pants/${item.id}` })),
+  ...BestSellerData.map((item) => ({ ...item, route: `/best-seller/${item.id}` })),
+  ...TshirtDatas.map((item) => ({ ...item, route: `/tshirt/${item.id}` })),
+  ...DenimJeansDatas.map((item) => ({ ...item, route: `/denim-jeans/${item.id}` })),
+  ...FemalePantDatas.map((item) => ({ ...item, route: `/female-pant/${item.id}` })),
+  ...TopDatas.map((item) => ({ ...item, route: `/tops/${item.id}` })),
+  ...OuterwearJacketsDatas.map((item) => ({ ...item, route: `/Outerwear-Jackets/${item.id}` })),
+  ...SkirtsDatas.map((item) => ({ ...item, route: `/skirts/${item.id}` })),
+  ...DressesDatas.map((item) => ({ ...item, route: `/dresses/${item.id}` })),
+];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [selectedSize, setSelectedSize] = useState('');
@@ -57,8 +86,8 @@ function AbayaDetails() {
           Home
         </Link>
         <FaChevronRight />
-        <Link to='/abaya' className='hover:underline'>
-          Abaya{' '}
+        <Link to='/Hats' className='hover:underline'>
+          Hats
         </Link>
         <FaChevronRight />
         <span className='text-gray-500'>{product.name}</span>
@@ -89,7 +118,7 @@ function AbayaDetails() {
               onClick={() =>
                 toggleWishlist({
                   ...product,
-                  route: `/pants/${product.id}`,
+                  route: `/hats/${product.id}`,
                 })
               }
               className='absolute top-4 right-4 z-10 bg-white p-2 rounded-full shadow'
@@ -209,7 +238,7 @@ function AbayaDetails() {
               ×
             </button>
 
-            <h2 className='text-xl font-bold mb-4'>Pants Size Guide</h2>
+            <h2 className='text-xl font-bold mb-4'>Hats Size Guide</h2>
 
             <div className='overflow-x-auto'>
               <table className='w-full border'>
@@ -251,8 +280,12 @@ function AbayaDetails() {
           </div>
         </div>
       )}
+      <YouMayAlsoLike
+  products={allProducts}
+  currentProductId={product.id}
+/>
     </div>
   );
 }
 
-export default AbayaDetails;
+export default HatsDetails;

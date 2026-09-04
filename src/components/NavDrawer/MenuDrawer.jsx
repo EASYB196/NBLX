@@ -4,7 +4,8 @@ import { AnimatePresence } from 'framer-motion';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FaChevronDown } from 'react-icons/fa';
-import store from '../../assets/images/showroom.jpg';
+import store from '../../assets/images/nblx_logo.png';
+// import store from '../../assets/images/showroom.jpg';
 
 const MenuDrawer = ({
   open,
@@ -59,7 +60,7 @@ const MenuDrawer = ({
 
             {/* CONTENT */}
             <div className='p-5 flex flex-col gap-5 text-sm'>
-                <p className='cursor-pointer'>NEW ARRIVALS</p>
+              <p className='cursor-pointer'>NEW ARRIVALS</p>
 
               {/* MEN */}
               <div>
@@ -127,10 +128,10 @@ const MenuDrawer = ({
                 </AnimatePresence>
               </div>
 
-              <p className='cursor-pointer'>DENIM</p>
+              {/* <p className='cursor-pointer'>DENIM</p> */}
 
               {/* ACCESSORIES */}
-              <div>
+              {/* <div>
                 <div
                   onClick={() => toggleDropdown('accessories')}
                   className='flex justify-between items-center cursor-pointer'
@@ -160,16 +161,22 @@ const MenuDrawer = ({
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
-
+              </div> */}
+              {/* 
               <p className='cursor-pointer'>FOOTWEAR</p>
-              <p className='cursor-pointer'>LIFESTYLE</p>
-              <Link to='/bestseller' className='cursor-pointer'>
+              <p className='cursor-pointer'>LIFESTYLE</p> */}
+              <Link to='/#best-sellers' className='cursor-pointer'>
                 BEST SELLER{' '}
               </Link>
+              <div className='mt-35 '>
+                <img src={store} alt='store' className='w-full h-44 object-cover rounded-lg' />
+                <button className=' px-3 py-3 border ml-25 bg-black text-white text-lg rounded-full font-bold mt-5'>
+                  View Collection
+                </button>
+              </div>
 
               {/* STORE */}
-              <div className='mt-6'>
+              {/* <div className='mt-6'>
                 <img src={store} alt='store' className='w-full h-44 object-cover rounded-lg' />
 
                 <h2 className='text-center mt-4 text-lg font-medium'>STORE LOCATIONS</h2>
@@ -177,7 +184,7 @@ const MenuDrawer = ({
                 <button className='w-full mt-4 bg-black text-white py-3 rounded-full'>
                   VISIT US
                 </button>
-              </div>
+              </div> */}
             </div>
           </motion.div>
         </motion.div>
