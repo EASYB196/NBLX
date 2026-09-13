@@ -5,14 +5,14 @@
 // import { motion } from 'framer-motion';
 // import { FaEye, FaShoppingCart } from 'react-icons/fa';
 // // import Footer from '../../../Footer';
-// import { HatsDatas } from '../data/HatsData';
+// import { AccessoriesDatas } from '../data/AccessoriesData';
 
-// const HatsData = ({ product }) => {
+// const AccessoriesData = ({ product }) => {
 //   const [isHovered, setIsHovered] = useState(false);
 
 //   return (
 //     <div className='md:px-5 font-serif'>
-//       <Link to={`/hats/${product.id}`}>
+//       <Link to={`/Accessories/${product.id}`}>
 //         <div
 //           className='relative group w-90 md:w-84   rounded-lg  shadow-lg'
 //           onMouseEnter={() => setIsHovered(true)}
@@ -62,30 +62,30 @@
 //     </div>
 //   );
 // };
-// const Hats = () => {
+// const Accessories = () => {
 //   return (
 //     <div className='bg-white mt-23 z-10 pt-10'>
 //       <div className='space-y-7'>
-//         <h1 className='text-black text-5xl text-center '>Hats</h1>
+//         <h1 className='text-black text-5xl text-center '>Accessories</h1>
 
 //         <div className='flex items-center justify-center gap-5'>
 //           <Link to={'/'} className='text-black'>
 //             Home
 //           </Link>{' '}
-//           <FaChevronRight className='text-black w-2' /> <span className='text-black'>Hats</span>
+//           <FaChevronRight className='text-black w-2' /> <span className='text-black'>Accessories</span>
 //         </div>
 //       </div>
 
 //       <div className='grid grid-col md:grid-cols-4 gap-5 p-4 mt-25'>
-//         {HatsDatas.map((product) => (
-//           <HatsData key={product.id} product={product} />
+//         {AccessoriesDatas.map((product) => (
+//           <AccessoriesData key={product.id} product={product} />
 //         ))}
 //       </div>
 //     </div>
 //   );
 // };
 
-// export default Hats;
+// export default Accessories;
 
 import React, { useState } from 'react';
 import { FaChevronRight, FaHeart, FaRegHeart } from 'react-icons/fa6';
@@ -94,10 +94,10 @@ import { Link } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 
-import { HatsDatas } from '../data/HatsData';
+import { AccessoriesDatas } from '../data/AccessoriesData';
 import { useWishlist } from '../Context/WishlistContext';
 
-const HatsData = ({ product }) => {
+const AccessoriesData = ({ product }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const { toggleWishlist, isWishlisted } = useWishlist();
@@ -108,7 +108,7 @@ const HatsData = ({ product }) => {
 
     toggleWishlist({
       ...product,
-      route: `/hats/${product.id}`,
+      route: `/Accessories/${product.id}`,
     });
   };
 
@@ -122,7 +122,7 @@ const HatsData = ({ product }) => {
         onMouseLeave={() => setIsHovered(false)}
       >
 
-        <Link to={`/hats/${product.id}`}>
+        <Link to={`/Accessories/${product.id}`}>
           <div className="relative group w-90 md:w-84 rounded-lg shadow-lg overflow-hidden">
 
             {/* MAIN IMAGE */}
@@ -197,7 +197,7 @@ const HatsData = ({ product }) => {
   );
 };
 
-const Hats = () => {
+const Accessories = () => {
   return (
     <div className="bg-white mt-23 z-10 pt-10">
 
@@ -205,7 +205,7 @@ const Hats = () => {
       <div className="space-y-7">
 
         <h1 className="text-black text-5xl text-center">
-          Hats
+          Accessories
         </h1>
 
         {/* BREADCRUMB */}
@@ -221,7 +221,7 @@ const Hats = () => {
           <FaChevronRight className="text-black w-2" />
 
           <span className="text-black">
-            Hats
+            Accessories
           </span>
 
         </div>
@@ -230,8 +230,8 @@ const Hats = () => {
       {/* PRODUCTS GRID */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 p-4 mt-25">
 
-        {HatsDatas.map((product) => (
-          <HatsData
+        {AccessoriesDatas.map((product) => (
+          <AccessoriesData
             key={product.id}
             product={product}
           />
@@ -243,4 +243,4 @@ const Hats = () => {
   );
 };
 
-export default Hats;
+export default Accessories;

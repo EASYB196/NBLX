@@ -2,7 +2,7 @@ import image1 from "../assets/images/MEN/Pants/pant-14.webp";
 import image2 from "../assets/images/MEN/Pants/pant-15.webp";
 
 
-export const HatsDatas = [
+export const AccessoriesDatas = [
   {
     id: "Historic-ozo-agbada",
     name: "The Historic Ozo x NFL Agbada",

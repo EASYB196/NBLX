@@ -31,7 +31,7 @@
 // import Skirts from './pages/NavPages/Women/Skirts';
 // import FemalePant from './pages/NavPages/Women/FemalePant';
 // import Top from './pages/NavPages/Women/Tops';
-// import Hats from './pages/Hats';
+// import Accessories from './pages/Accessories';
 // import Dresses from './pages/NavPages/Women/Dresses';
 // import Watches from './pages/NavPages/Accessories/Watches';
 
@@ -54,7 +54,7 @@
 // import SkirtsDetails from './components/WomenDetails/SkirtsDetails';
 // import FemalePantDetails from './components/WomenDetails/FemalePantDetails';
 // import TopDetails from './components/WomenDetails/TopsDetails';
-// import HatsDetails from './components/WomenDetails/HatsDetails';
+// import AccessoriesDetails from './components/WomenDetails/AccessoriesDetails';
 // import DressesDetails from './components/WomenDetails/DressesDetails';
 
 // // import Shirts from './pages/NavPages/Mens/Shirts';
@@ -114,7 +114,7 @@
 //         <Route path='/skirts' element={<Skirts />} />
 //         <Route path='/female-pant' element={<FemalePant />} />
 //         <Route path='/tops' element={<Top />} />
-//         <Route path='/hats' element={<Hats />} />
+//         <Route path='/Accessories' element={<Accessories />} />
 //         <Route path='/Dresses' element={<Dresses />} />
 //         <Route path='/auth/:type' element={<AuthForm />} />
 //         <Route path='/agbada' element={<Agbada />} />
@@ -128,7 +128,7 @@
 //         <Route path='/skirts/:id' element={<SkirtsDetails />} />
 //         <Route path='/female-pant/:id' element={<FemalePantDetails />} />
 //         <Route path='/tops/:id' element={<TopDetails />} />
-//         <Route path='/hats/:id' element={<HatsDetails />} />
+//         <Route path='/Accessories/:id' element={<AccessoriesDetails />} />
 //         <Route path='/dresses/:id' element={<DressesDetails />} />
 
 //         <Route path='/pants/:id' element={<PantsDetails />} />
@@ -204,7 +204,7 @@ import CropTop from './pages/NavPages/Women/CropTop';
 import Skirts from './pages/NavPages/Women/Skirts';
 import FemalePant from './pages/NavPages/Women/FemalePant';
 import Top from './pages/NavPages/Women/Tops';
-import Hats from './pages/Hats';
+import Accessories from './pages/Accessories';
 import Dresses from './pages/NavPages/Women/Dresses';
 import Watches from './pages/NavPages/Accessories/Watches';
 
@@ -223,7 +223,7 @@ import CropTopDetails from './components/WomenDetails/CropTopDetails';
 import SkirtsDetails from './components/WomenDetails/SkirtsDetails';
 import FemalePantDetails from './components/WomenDetails/FemalePantDetails';
 import TopDetails from './components/WomenDetails/TopsDetails';
-import HatsDetails from './components/WomenDetails/HatsDetails';
+import AccessoriesDetails from './components/WomenDetails/AccessoriesDetails';
 import DressesDetails from './components/WomenDetails/DressesDetails';
 
 import BestSellerDetail from './components/BestSellerDetail';
@@ -316,7 +316,7 @@ function AppContent() {
 
         <Route path='/tops' element={<Top />} />
 
-        <Route path='/hats' element={<Hats />} />
+        <Route path='/accessories' element={<Accessories />} />
 
         <Route path='/Dresses' element={<Dresses />} />
 
@@ -338,7 +338,8 @@ function AppContent() {
 
         <Route path='/Denim-Jeans/:id' element={<DenimJeanDetails />} />
 
-        <Route path='/Outerwear-Jackets/:id' element={<OuterwearJacketsDetails />} />
+        <Route path='/Outerwear - Jackets;
+/:id' element={<OuterwearJacketsDetails />} />
 
         <Route path='/Hoodies-Sweatshirts/:id' element={<HoodiesSweatshirtsDetails />} />
 
@@ -354,7 +355,7 @@ function AppContent() {
 
         <Route path='/tops/:id' element={<TopDetails />} />
 
-        <Route path='/hats/:id' element={<HatsDetails />} />
+        <Route path='/Accessories/:id' element={<AccessoriesDetails />} />
 
         <Route path='/dresses/:id' element={<DressesDetails />} />
 

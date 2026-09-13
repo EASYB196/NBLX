@@ -3,34 +3,34 @@ import toast from 'react-hot-toast';
 import { useParams, Link } from 'react-router-dom';
 import { FaChevronLeft, FaChevronRight, FaHeart, FaRegHeart } from 'react-icons/fa6';
 
-import YouMayAlsoLike from '../../components/YouMayAlsoLike';
+import YouMayAlsoLike from '../YouMayAlsoLike.jsx';
 
-import { HatsDatas } from '../../data/HatsData';
-import { BestSellerData } from '../../data/BestSellerData';
-import {  TshirtDatas } from '../../data/TshirtData';
+import { AccessoriesDatas } from '../../data/AccessoriesData';
+import { BestSellerData } from '../../data/BestSellerData.js';
+import {  TshirtDatas } from '../../data/TshirtData.js';
 import { DenimJeansDatas } from '../../data/DenimJeanData.js';
 import { TopDatas } from '../../data/Tops.js';
 import { SkirtsDatas } from '../../data/SkirtsData.js'; 
 import { FemalePantDatas } from '../../data/FemalePant.js';
 import { OuterwearJacketsDatas } from '../../data/OuterwearJacketsData.js';
-import { PantsDatas } from '../../data/PantsData';
+import { PantsDatas } from '../../data/PantsData.js';
 import { DressesDatas } from '../../data/DressesData.js';
 
 
 
-import { useCart } from '../../Context/cartContext';
-import { useWishlist } from '../../Context/WishlistContext';
+import { useCart } from '../../Context/cartContext.jsx';
+import { useWishlist } from '../../Context/WishlistContext.jsx';
 
 import sizechart from '../../assets/images/sizechart.png';
 
 
-function HatsDetails() {
+function AccessoriesDetails() {
   const { id } = useParams();
-  const product = HatsDatas.find((item) => String(item.id) === String(id));
+  const product = AccessoriesDatas.find((item) => String(item.id) === String(id));
 
 
 const allProducts = [
-  ...HatsDatas.map((item) => ({ ...item, route: `/hats/${item.id}` })),
+  ...AccessoriesDatas.map((item) => ({ ...item, route: `/Accessories/${item.id}` })),
   ...PantsDatas.map((item) => ({ ...item, route: `/pants/${item.id}` })),
   ...BestSellerData.map((item) => ({ ...item, route: `/best-seller/${item.id}` })),
   ...TshirtDatas.map((item) => ({ ...item, route: `/tshirt/${item.id}` })),
@@ -86,8 +86,8 @@ const allProducts = [
           Home
         </Link>
         <FaChevronRight />
-        <Link to='/Hats' className='hover:underline'>
-          Hats
+        <Link to='/Accessories' className='hover:underline'>
+          Accessories
         </Link>
         <FaChevronRight />
         <span className='text-gray-500'>{product.name}</span>
@@ -118,7 +118,7 @@ const allProducts = [
               onClick={() =>
                 toggleWishlist({
                   ...product,
-                  route: `/hats/${product.id}`,
+                  route: `/Accessories/${product.id}`,
                 })
               }
               className='absolute top-4 right-4 z-10 bg-white p-2 rounded-full shadow'
@@ -238,7 +238,7 @@ const allProducts = [
               ×
             </button>
 
-            <h2 className='text-xl font-bold mb-4'>Hats Size Guide</h2>
+            <h2 className='text-xl font-bold mb-4'>Accessories Size Guide</h2>
 
             <div className='overflow-x-auto'>
               <table className='w-full border'>
@@ -288,4 +288,4 @@ const allProducts = [
   );
 }
 
-export default HatsDetails;
+export default AccessoriesDetails;

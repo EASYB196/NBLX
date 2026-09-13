@@ -293,7 +293,7 @@ import { FemalePantDatas } from '../../data/FemalePant.js';
 import { TopDatas } from '../../data/Tops.js';
 import { SkirtsDatas } from '../../data/SkirtsData.js';
 import { DressesDatas } from '../../data/DressesData.js';
-import { HatsDatas } from '../../data/HatsData.js';
+import { AccessoriesDatas } from '../../data/AccessoriesData.js';
 
 import { useCart } from '../../Context/cartContext';
 import { useWishlist } from '../../Context/WishlistContext';
@@ -308,7 +308,7 @@ function PantsDetails() {
   );
 
  const allProducts = [
-   ...HatsDatas.map((item) => ({ ...item, route: `/hats/${item.id}` })),
+   ...AccessoriesDatas.map((item) => ({ ...item, route: `/accessories/${item.id}` })),
    ...PantsDatas.map((item) => ({ ...item, route: `/pants/${item.id}` })),
    ...BestSellerData.map((item) => ({ ...item, route: `/best-seller/${item.id}` })),
    ...TshirtDatas.map((item) => ({ ...item, route: `/tshirt/${item.id}` })),

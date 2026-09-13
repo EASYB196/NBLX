@@ -110,8 +110,7 @@ function Section() {
     { name: 'Tops', image: tops, path: '/t-shirt' },
     { name: 'Bottoms', image: bottoms, path: '/Denim-Jeans' },
     { name: 'Sweatshirts', image: sweatshirt, path: '/Hoodies-Sweatshirts' },
-    { name: 'Hats', image: accessories, path: '/Hats' },
-    // { name: 'Accessories', image: accessories, path: '/accessories' },
+    { name: 'Accessories', image: accessories, path: '/accessories' },
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
