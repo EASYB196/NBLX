@@ -23,8 +23,8 @@ export const HoodiesSweatshirtsDatas = [
     hoverImage: Armlesshoodiebackview,
   },
    {
-    id: "Nylon-Hoodie",
-    name: "Nylon Hoodie",
+    id: "windbreaker tracksuit jacket",
+    name: "windbreaker tracksuit jacket",
     price: 60000,
     oldPrice: 320000,
     inStock: 4,
