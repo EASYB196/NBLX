@@ -38,7 +38,6 @@ import Watches from './pages/NavPages/Accessories/Watches';
 
 import Agbada from './pages/NavPages/Mens/Agbada';
 import Jalabiya from './pages/NavPages/Mens/Jalabiya';
-import Kaftan from './pages/NavPages/Mens/Shirt';
 
 import HoodiesSweatshirtsDetails from './components/MenDetails/HoodiesSweatshirtDetails';
 import PantsDetails from './components/MenDetails/PantsDetails';
@@ -112,7 +111,6 @@ function AppContent() {
             MEN CATEGORY PAGES
         ========================= */}
 
-        <Route path='/kafans-shirts' element={<Kaftan />} />
 
         <Route path='/casuals' element={<Casual />} />
 
@@ -120,7 +118,7 @@ function AppContent() {
 
         <Route path='/t-shirt' element={<Tshirt />} />
 
-        <Route path='/shirts' element={<Shirt />} />
+        {/* <Route path='/shirts' element={<Shirt />} /> */}
 
         <Route path='/agbada' element={<Agbada />} />
 
@@ -162,7 +160,7 @@ function AppContent() {
 
         <Route path='/t-shirt/:id' element={<TshirtDetails />} />
 
-        <Route path='/shirts/:id' element={<ShirtDetails />} />
+        {/* <Route path='/shirts/:id' element={<ShirtDetails />} /> */}
 
         <Route path='/Denim-Jeans/:id' element={<DenimJeanDetails />} />
 

@@ -6,6 +6,11 @@ import image4 from "../assets/images/MEN/T-Shirt/builtbackcrop-tshirt.jpg";
 // import image6 from "../assets/images/MEN/T-Shirt/tshirt-6.webp";
 import blacktanktop from "../assets/images/MEN/T-Shirt/blacktanktop-Fv.jpg";
 import blacktanktopbv from "../assets/images/MEN/T-Shirt/black-tank-top-Bv.jpg";
+import reglanshirtfv from "../assets/images/MEN/Shirt/black and white long-sleeved raglan shirt FV.jpg"
+import reglanshirtbv from "../assets/images/MEN/Shirt/black and white long-sleeved raglan shirt BV.jpg"
+import oversizedcrewnecktshirtfv from "../assets/images/MEN/T-Shirt/white oversized crew-neck t-shirt FV.jpg"
+import  oversizedcrewnecktshirtfvbv from "../assets/images/MEN/T-Shirt/white oversized crew-neck t-shirt BV.jpg"
+
 // import image9 from "../assets/images/MEN/T-Shirt/tshirt-9.webp";
 // import image10 from "../assets/images/MEN/T-Shirt/tshirt-10.webp";
 
@@ -23,7 +28,7 @@ export const TshirtDatas = [
   {
 id: "Built-Inspire-Shirt",
     name: "Crown T-shirt",
-    price: 885000,
+    price: 50000,
     oldPrice: 1000000,
     inStock: 7,
     sizes: ["S", "M", "L", "XL", "XXL", "3XS"],
@@ -41,5 +46,24 @@ id: "Built-Inspire-Shirt",
     image: blacktanktop,
     hoverImage: blacktanktopbv,
   },
-
+  {
+    id: "Reglan-Shirt",
+    name: "Reglan Shirt",
+    price: 40000,
+    oldPrice: 1543000,
+    inStock: 4,
+    sizes: ["S", "M", "L", "XL", "XXL", "3XS"],
+    image: reglanshirtfv,
+    hoverImage: reglanshirtbv,
+  },
+  {
+    id: "Oversized-Crew-Neck-T-Shirt",
+    name: "Oversized Crew Neck T-Shirt",
+    price: 45000,
+    oldPrice: 1543000,
+    inStock: 4,
+    sizes: ["S", "M", "L", "XL", "XXL", "3XS"],
+    image: oversizedcrewnecktshirtfv,
+    hoverImage: oversizedcrewnecktshirtfvbv,
+  },
 ];

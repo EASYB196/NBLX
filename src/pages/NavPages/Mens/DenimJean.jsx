@@ -90,7 +90,7 @@
 
 import React, { useState } from 'react';
 import { FaChevronRight, FaHeart, FaRegHeart } from 'react-icons/fa6';
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 
@@ -171,6 +171,8 @@ const DenimJeanData = ({ product }) => {
 
       {/* PRODUCT INFORMATION */}
       <div className='bg-white text-black mt-3 ml-4 md:ml-0'>
+        <h6 className='text-xs text-gray-500'>NBLX</h6>
+
         <h3 className='text-sm md:text-lg font-semibold uppercase'>{product.name}</h3>
 
         <p className='text-black font-medium'>₦{product.price.toLocaleString('en-NG')}</p>

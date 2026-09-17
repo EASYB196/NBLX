@@ -204,6 +204,8 @@ const TshirtData = ({ product }) => {
 
       {/* PRODUCT INFO */}
       <div className="bg-white text-black mt-3">
+            <h6 className='text-xs text-gray-500'>NBLX</h6>
+
         <h3 className="text-sm md:text-lg font-semibold uppercase">
           {product.name}
         </h3>

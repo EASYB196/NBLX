@@ -88,11 +88,10 @@
 
 // export default Pants;
 
-
 import React, { useState } from 'react';
 import { FaChevronRight, FaHeart, FaRegHeart } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
- // eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 
 import { PantsDatas } from '../../../data/PantsData';
@@ -114,21 +113,20 @@ const PantsData = ({ product }) => {
   };
 
   return (
-    <div className="md:px-5 font-serif">
+    <div className='md:px-5 font-serif'>
       {/* PRODUCT IMAGE CONTAINER */}
       <div
-        className="relative"
+        className='relative'
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
         <Link to={`/pants/${product.id}`}>
-          <div className="relative group w-90 md:w-84 rounded-lg shadow-lg overflow-hidden">
-
+          <div className='relative group w-90 md:w-84 rounded-lg shadow-lg overflow-hidden'>
             {/* MAIN IMAGE */}
             <motion.img
               src={product.image}
               alt={product.name}
-              className="w-full h-120 md:h-120 object-cover rounded-xl"
+              className='w-full h-120 md:h-120 object-cover rounded-xl'
               initial={{ opacity: 1 }}
               animate={{
                 opacity: isHovered ? 0 : 1,
@@ -143,7 +141,7 @@ const PantsData = ({ product }) => {
             <motion.img
               src={product.hoverImage}
               alt={`${product.name} alternate view`}
-              className="absolute inset-0 w-full h-120 object-cover rounded-xl"
+              className='absolute inset-0 w-full h-120 object-cover rounded-xl'
               initial={{ opacity: 0 }}
               animate={{
                 opacity: isHovered ? 1 : 0,
@@ -158,32 +156,26 @@ const PantsData = ({ product }) => {
 
         {/* ❤️ WISHLIST */}
         <button
-          type="button"
+          type='button'
           onClick={handleWishlist}
-          aria-label={
-            isWishlisted(product.id)
-              ? 'Remove from wishlist'
-              : 'Add to wishlist'
-          }
-          className="absolute top-3 right-3 z-20 bg-white p-2.5 rounded-full shadow-md hover:scale-105 transition-transform duration-200"
+          aria-label={isWishlisted(product.id) ? 'Remove from wishlist' : 'Add to wishlist'}
+          className='absolute top-3 right-3 z-20 bg-white p-2.5 rounded-full shadow-md hover:scale-105 transition-transform duration-200'
         >
           {isWishlisted(product.id) ? (
-            <FaHeart className="text-red-500 text-lg" />
+            <FaHeart className='text-red-500 text-lg' />
           ) : (
-            <FaRegHeart className="text-gray-500 text-lg hover:text-red-500 transition-colors" />
+            <FaRegHeart className='text-gray-500 text-lg hover:text-red-500 transition-colors' />
           )}
         </button>
       </div>
 
       {/* PRODUCT INFORMATION */}
-      <div className="bg-white text-black mt-3">
-        <h3 className="text-sm md:text-lg font-semibold uppercase">
-          {product.name}
-        </h3>
+      <div className='bg-white text-black mt-3'>
+        <h6 className='text-xs text-gray-500'>NBLX</h6>
 
-        <p className="text-black font-medium">
-          ₦{product.price.toLocaleString('en-NG')}
-        </p>
+        <h3 className='text-sm md:text-lg font-semibold uppercase'>{product.name}</h3>
+
+        <p className='text-black font-medium'>₦{product.price.toLocaleString('en-NG')}</p>
       </div>
     </div>
   );
@@ -191,35 +183,27 @@ const PantsData = ({ product }) => {
 
 const Pants = () => {
   return (
-    <div className="bg-white mt-23 z-10 pt-10">
-
+    <div className='bg-white mt-23 z-10 pt-10'>
       {/* PAGE HEADER */}
-      <div className="space-y-7">
-        <h1 className="text-black text-5xl text-center">
-          Pants
-        </h1>
+      <div className='space-y-7'>
+        <h1 className='text-black text-5xl text-center'>Pants</h1>
 
         {/* BREADCRUMB */}
-        <div className="flex items-center justify-center gap-5">
-          <Link to="/" className="text-black">
+        <div className='flex items-center justify-center gap-5'>
+          <Link to='/' className='text-black'>
             Home
           </Link>
 
-          <FaChevronRight className="text-black w-2" />
+          <FaChevronRight className='text-black w-2' />
 
-          <span className="text-black">
-            Pants
-          </span>
+          <span className='text-black'>Pants</span>
         </div>
       </div>
 
       {/* PRODUCTS */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 p-4 mt-25">
+      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 p-4 mt-25'>
         {PantsDatas.map((product) => (
-          <PantsData
-            key={product.id}
-            product={product}
-          />
+          <PantsData key={product.id} product={product} />
         ))}
       </div>
     </div>

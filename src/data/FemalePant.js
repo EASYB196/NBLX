@@ -1,17 +1,20 @@
-import image1 from "../assets/images/MEN/Pants/pant-1.webp";
-import image2 from "../assets/images/MEN/Pants/pant-10.webp";
+import Flameblackjackettrouserfv from "../assets/images/WOMEN/Pant/Flameblackjackettrouserfv.jpg";
+import Flameblackjackettrouserbv from "../assets/images/WOMEN/Pant/FlameblackjacketTrouserbv.jpg";    
+
+
+
 
 
 export const FemalePantDatas = [
   {
-    id: "Historic-ozo-agbada",
-    name: "The Historic Ozo x NFL Agbada",
-    price: 1273800,
+    id: "Flare-Flame-trouser",
+    name: "Flame Pant",
+    price: 30000,
     oldPrice: 1543000,
     inStock: 4,
     sizes: ["S", "M", "L", "XL", "XXL", "3XS"],
-    image: image1,
-    hoverImage: image2,
+    image: Flameblackjackettrouserfv,
+    hoverImage: Flameblackjackettrouserbv,
   },
   
 ];
