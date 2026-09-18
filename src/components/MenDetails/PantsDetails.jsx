@@ -275,12 +275,7 @@
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useParams, Link } from 'react-router-dom';
-import {
-  FaChevronLeft,
-  FaChevronRight,
-  FaHeart,
-  FaRegHeart,
-} from 'react-icons/fa6';
+import { FaChevronLeft, FaChevronRight, FaHeart, FaRegHeart } from 'react-icons/fa6';
 
 import YouMayAlsoLike from '../../components/YouMayAlsoLike';
 
@@ -294,7 +289,7 @@ import { TopDatas } from '../../data/Tops.js';
 import { SkirtsDatas } from '../../data/SkirtsData.js';
 import { DressesDatas } from '../../data/DressesData.js';
 import { AccessoriesDatas } from '../../data/AccessoriesData.js';
-
+import { CropTopDatas } from '../../data/CropTop.js';
 import { useCart } from '../../Context/cartContext';
 import { useWishlist } from '../../Context/WishlistContext';
 
@@ -303,22 +298,24 @@ import sizechart from '../../assets/images/sizechart.png';
 function PantsDetails() {
   const { id } = useParams();
 
-  const product = PantsDatas.find(
-    (item) => String(item.id) === String(id)
-  );
+  const product = PantsDatas.find((item) => String(item.id) === String(id));
 
- const allProducts = [
-   ...AccessoriesDatas.map((item) => ({ ...item, route: `/accessories/${item.id}` })),
-   ...PantsDatas.map((item) => ({ ...item, route: `/pants/${item.id}` })),
-   ...BestSellerData.map((item) => ({ ...item, route: `/best-seller/${item.id}` })),
-   ...TshirtDatas.map((item) => ({ ...item, route: `/tshirt/${item.id}` })),
-   ...DenimJeansDatas.map((item) => ({ ...item, route: `/denim-jeans/${item.id}` })),
-   ...FemalePantDatas.map((item) => ({ ...item, route: `/female-pant/${item.id}` })),
-   ...TopDatas.map((item) => ({ ...item, route: `/tops/${item.id}` })),
-   ...OuterwearJacketsDatas.map((item) => ({ ...item, route: `/Outerwear-Jackets/${item.id}` })),
-   ...SkirtsDatas.map((item) => ({ ...item, route: `/skirts/${item.id}` })),
-   ...DressesDatas.map((item) => ({ ...item, route: `/dresses/${item.id}` })),
- ];
+  const allProducts = [
+    ...AccessoriesDatas.map((item) => ({ ...item, route: `/accessories/${item.id}` })),
+    ...PantsDatas.map((item) => ({ ...item, route: `/pants/${item.id}` })),
+    ...BestSellerData.map((item) => ({ ...item, route: `/bestseller/products/${item.id}` })),
+    ...TshirtDatas.map((item) => ({ ...item, route: `/t-shirt/${item.id}` })),
+    ...DenimJeansDatas.map((item) => ({ ...item, route: `/denim-jeans/${item.id}` })),
+    ...FemalePantDatas.map((item) => ({ ...item, route: `/female-pant/${item.id}` })),
+    ...TopDatas.map((item) => ({ ...item, route: `/tops/${item.id}` })),
+    ...OuterwearJacketsDatas.map((item) => ({
+      ...item,
+      route: `/Outerwear-Jackets/${item.id}`,
+    })),
+    ...SkirtsDatas.map((item) => ({ ...item, route: `/skirts/${item.id}` })),
+    ...DressesDatas.map((item) => ({ ...item, route: `/dresses/${item.id}` })),
+    ...CropTopDatas.map((item) => ({ ...item, route: `/crop-top/${item.id}` })),
+  ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [selectedSize, setSelectedSize] = useState('');
@@ -332,21 +329,14 @@ function PantsDetails() {
     return <div className='text-black p-10'>Product not found</div>;
   }
 
-  const images = [
-    product.image,
-    ...(product.hoverImage ? [product.hoverImage] : []),
-  ];
+  const images = [product.image, ...(product.hoverImage ? [product.hoverImage] : [])];
 
   const handlePrev = () => {
-    setCurrentImageIndex(
-      (prev) => (prev - 1 + images.length) % images.length
-    );
+    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
   const handleNext = () => {
-    setCurrentImageIndex(
-      (prev) => (prev + 1) % images.length
-    );
+    setCurrentImageIndex((prev) => (prev + 1) % images.length);
   };
 
   const handleAddToCart = () => {
@@ -362,7 +352,7 @@ function PantsDetails() {
         route: `/pants/${product.id}`,
       },
       selectedSize,
-      quantity
+      quantity,
     );
 
     setShowCart(true);
@@ -372,7 +362,6 @@ function PantsDetails() {
 
   return (
     <div className='bg-white text-black min-h-screen py-10 px-4 md:px-10 font-[Raleway]'>
-
       {/* BREADCRUMB */}
       <div className='flex items-center justify-center gap-2 md:gap-4 mt-23 text-sm md:text-base'>
         <Link to='/' className='hover:underline'>
@@ -387,16 +376,12 @@ function PantsDetails() {
 
         <FaChevronRight />
 
-        <span className='text-gray-500'>
-          {product.name}
-        </span>
+        <span className='text-gray-500'>{product.name}</span>
       </div>
 
       <div className='max-w-7xl mx-auto flex flex-col md:flex-row gap-10 mt-10'>
-
         {/* LEFT - IMAGES */}
         <div className='flex gap-4 w-full md:w-1/2'>
-
           {/* THUMBNAILS (DESKTOP) */}
           <div className='hidden md:flex flex-col gap-3'>
             {images.map((img, idx) => (
@@ -406,9 +391,7 @@ function PantsDetails() {
                 alt=''
                 onClick={() => setCurrentImageIndex(idx)}
                 className={`w-20 h-24 object-cover rounded-lg cursor-pointer border ${
-                  currentImageIndex === idx
-                    ? 'border-black'
-                    : 'border-transparent'
+                  currentImageIndex === idx ? 'border-black' : 'border-transparent'
                 }`}
               />
             ))}
@@ -416,7 +399,6 @@ function PantsDetails() {
 
           {/* MAIN IMAGE */}
           <div className='relative w-full h-100 md:h-125'>
-
             {/* WISHLIST */}
             <button
               type='button'
@@ -428,11 +410,7 @@ function PantsDetails() {
               }
               className='absolute top-4 right-4 z-10 bg-white p-2 rounded-full shadow'
             >
-              {isWishlisted(product.id) ? (
-                <FaHeart className='text-red-500' />
-              ) : (
-                <FaRegHeart />
-              )}
+              {isWishlisted(product.id) ? <FaHeart className='text-red-500' /> : <FaRegHeart />}
             </button>
 
             <img
@@ -462,41 +440,28 @@ function PantsDetails() {
 
         {/* RIGHT - INFO */}
         <div className='flex-1 space-y-6'>
-
-          <h1 className='text-2xl md:text-3xl font-bold'>
-            {product.name}
-          </h1>
+          <h1 className='text-2xl md:text-3xl font-bold'>{product.name}</h1>
 
           {/* PRICE */}
-          <div className='text-2xl font-bold'>
-            ₦{product.price.toLocaleString('en-NG')}
-          </div>
+          <div className='text-2xl font-bold'>₦{product.price.toLocaleString('en-NG')}</div>
 
           {/* QUANTITY */}
           <div className='flex items-center gap-4'>
-            <p className='font-semibold text-xl'>
-              Quantity:
-            </p>
+            <p className='font-semibold text-xl'>Quantity:</p>
 
             <button
               type='button'
-              onClick={() =>
-                setQuantity((q) => Math.max(1, q - 1))
-              }
+              onClick={() => setQuantity((q) => Math.max(1, q - 1))}
               className='w-10 h-10 bg-gray-100 rounded'
             >
               −
             </button>
 
-            <span className='text-lg'>
-              {quantity}
-            </span>
+            <span className='text-lg'>{quantity}</span>
 
             <button
               type='button'
-              onClick={() =>
-                setQuantity((q) => q + 1)
-              }
+              onClick={() => setQuantity((q) => q + 1)}
               className='w-10 h-10 bg-gray-100 rounded'
             >
               +
@@ -505,15 +470,11 @@ function PantsDetails() {
 
           {/* SIZE */}
           <div className='space-y-4'>
-
             <div className='flex items-center justify'>
               <p className='font-semibold text-lg'>
                 Select Size
-
                 {selectedSize && (
-                  <span className='ml-2 text-gray-500 font-normal'>
-                    ({selectedSize})
-                  </span>
+                  <span className='ml-2 text-gray-500 font-normal'>({selectedSize})</span>
                 )}
               </p>
             </div>
@@ -542,16 +503,11 @@ function PantsDetails() {
             onClick={() => setShowSizeChart(true)}
             className='flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-black transition mt-2'
           >
-            <img
-              src={sizechart}
-              alt='Size Guide'
-              className='w-50 h-15 object-contain'
-            />
+            <img src={sizechart} alt='Size Guide' className='w-50 h-15 object-contain' />
           </button>
 
           {/* BUTTONS */}
           <div className='flex flex-col md:flex-row gap-4'>
-
             <button
               type='button'
               onClick={handleAddToCart}
@@ -566,7 +522,6 @@ function PantsDetails() {
             >
               Buy it now
             </button>
-
           </div>
         </div>
       </div>
@@ -575,7 +530,6 @@ function PantsDetails() {
       {showSizeChart && (
         <div className='fixed inset-0 bg-black/50 z-50 flex items-center justify-center px-4'>
           <div className='bg-white rounded-xl p-6 max-w-lg w-full relative'>
-
             <button
               type='button'
               onClick={() => setShowSizeChart(false)}
@@ -584,9 +538,7 @@ function PantsDetails() {
               ×
             </button>
 
-            <h2 className='text-xl font-bold mb-4'>
-              Pants Size Guide
-            </h2>
+            <h2 className='text-xl font-bold mb-4'>Pants Size Guide</h2>
 
             <div className='overflow-x-auto'>
               <table className='w-full border'>
@@ -630,11 +582,7 @@ function PantsDetails() {
       )}
 
       {/* YOU MAY ALSO LIKE */}
-      <YouMayAlsoLike
-        products={allProducts}
-        currentProductId={product.id}
-      />
-
+      <YouMayAlsoLike products={allProducts} currentProductId={product.id} />
     </div>
   );
 }

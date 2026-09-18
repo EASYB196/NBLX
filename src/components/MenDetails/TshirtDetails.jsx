@@ -31,11 +31,8 @@
 
 //   const [showSizeChart, setShowSizeChart] = useState(false);
 
-
-  
 //   const { addToCart, setShowCart } = useCart();
 //   const { toggleWishlist, isWishlisted } = useWishlist();
-
 
 //   if (!product) {
 //     return <div className='text-black p-10'>Product not found</div>;
@@ -50,7 +47,6 @@
 //   const handleNext = () => {
 //     setCurrentImageIndex((prev) => (prev + 1) % images.length);
 //   };
-
 
 //   const handleAddToCart = () => {
 //     if (!selectedSize) {
@@ -276,7 +272,6 @@
 
 // export default TshirtDetails;
 
-
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useParams, Link } from 'react-router-dom';
@@ -294,30 +289,41 @@ import { TopDatas } from '../../data/Tops.js';
 import { SkirtsDatas } from '../../data/SkirtsData.js';
 import { DressesDatas } from '../../data/DressesData.js';
 import { AccessoriesDatas } from '../../data/AccessoriesData.js';
-import { ShirtData } from '../../data/ShirtData.js';
-
+import { CropTopDatas } from '../../data/CropTop.js';
+import { HoodiesSweatshirtsDatas } from '../../data/HoodiesSweatshirtsData.js';
 
 import { useCart } from '../../Context/cartContext';
 import { useWishlist } from '../../Context/WishlistContext';
 
 import sizechart from '../../assets/images/sizechart.png';
 
+import ProductDescription from '../../components/Product/ProductDescription';
+// import ProductAccordion from '../../components/ProductAccordion';
+
 function TshirtDetails() {
   const { id } = useParams();
   const product = TshirtDatas.find((item) => String(item.id) === String(id));
 
-const allProducts = [
-  ...AccessoriesDatas.map((item) => ({ ...item, route: `/accessories/${item.id}` })),
-  ...PantsDatas.map((item) => ({ ...item, route: `/pants/${item.id}` })),
-  ...BestSellerData.map((item) => ({ ...item, route: `/best-seller/${item.id}` })),
-  ...TshirtDatas.map((item) => ({ ...item, route: `/tshirt/${item.id}` })),
-  ...DenimJeansDatas.map((item) => ({ ...item, route: `/denim-jeans/${item.id}` })),
-  ...FemalePantDatas.map((item) => ({ ...item, route: `/female-pant/${item.id}` })),
-  ...TopDatas.map((item) => ({ ...item, route: `/tops/${item.id}` })),
-  ...OuterwearJacketsDatas.map((item) => ({ ...item, route: `/Outerwear-Jackets/${item.id}` })),
-  ...SkirtsDatas.map((item) => ({ ...item, route: `/skirts/${item.id}` })),
-  ...DressesDatas.map((item) => ({ ...item, route: `/dresses/${item.id}` })),
-];
+  const allProducts = [
+    ...AccessoriesDatas.map((item) => ({ ...item, route: `/accessories/${item.id}` })),
+    ...PantsDatas.map((item) => ({ ...item, route: `/pants/${item.id}` })),
+    ...BestSellerData.map((item) => ({ ...item, route: `/bestseller/products/${item.id}` })),
+    ...TshirtDatas.map((item) => ({ ...item, route: `/t-shirt/${item.id}` })),
+    ...DenimJeansDatas.map((item) => ({ ...item, route: `/denim-jeans/${item.id}` })),
+    ...FemalePantDatas.map((item) => ({ ...item, route: `/female-pant/${item.id}` })),
+    ...TopDatas.map((item) => ({ ...item, route: `/tops/${item.id}` })),
+    ...OuterwearJacketsDatas.map((item) => ({
+      ...item,
+      route: `/Outerwear-Jackets/${item.id}`,
+    })),
+    ...SkirtsDatas.map((item) => ({ ...item, route: `/skirts/${item.id}` })),
+    ...DressesDatas.map((item) => ({ ...item, route: `/dresses/${item.id}` })),
+    ...CropTopDatas.map((item) => ({ ...item, route: `/crop-top/${item.id}` })),
+    ...HoodiesSweatshirtsDatas.map((item) => ({
+      ...item,
+      route: `/Hoodies-Sweatshirts/${item.id}`,
+    })),
+  ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [selectedSize, setSelectedSize] = useState('');
@@ -333,21 +339,14 @@ const allProducts = [
     return <div className='text-black p-10'>Product not found</div>;
   }
 
-  const images = [
-    product.image,
-    ...(product.hoverImage ? [product.hoverImage] : []),
-  ];
+  const images = [product.image, ...(product.hoverImage ? [product.hoverImage] : [])];
 
   const handlePrev = () => {
-    setCurrentImageIndex(
-      (prev) => (prev - 1 + images.length) % images.length
-    );
+    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
   const handleNext = () => {
-    setCurrentImageIndex(
-      (prev) => (prev + 1) % images.length
-    );
+    setCurrentImageIndex((prev) => (prev + 1) % images.length);
   };
 
   const handleAddToCart = () => {
@@ -363,7 +362,7 @@ const allProducts = [
         route: `/t-shirt/${product.id}`,
       },
       selectedSize,
-      quantity
+      quantity,
     );
 
     setShowCart(true);
@@ -398,9 +397,7 @@ const allProducts = [
                 alt=''
                 onClick={() => setCurrentImageIndex(idx)}
                 className={`w-20 h-24 object-cover rounded-lg cursor-pointer border ${
-                  currentImageIndex === idx
-                    ? 'border-black'
-                    : 'border-transparent'
+                  currentImageIndex === idx ? 'border-black' : 'border-transparent'
                 }`}
               />
             ))}
@@ -418,11 +415,7 @@ const allProducts = [
               }
               className='absolute top-4 right-4 z-10 bg-white p-2 rounded-full shadow'
             >
-              {isWishlisted(product.id) ? (
-                <FaHeart className='text-red-500' />
-              ) : (
-                <FaRegHeart />
-              )}
+              {isWishlisted(product.id) ? <FaHeart className='text-red-500' /> : <FaRegHeart />}
             </button>
 
             <img
@@ -450,14 +443,10 @@ const allProducts = [
 
         {/* RIGHT - INFO */}
         <div className='flex-1 space-y-6'>
-          <h1 className='text-2xl md:text-3xl font-bold'>
-            {product.name}
-          </h1>
+          <h1 className='text-2xl md:text-3xl font-bold'>{product.name}</h1>
 
           {/* PRICE */}
-          <div className='text-2xl font-bold'>
-            ₦{product.price.toLocaleString('en-NG')}
-          </div>
+          <div className='text-2xl font-bold'>₦{product.price.toLocaleString('en-NG')}</div>
 
           {/* QUANTITY */}
           <div className='flex items-center gap-4'>
@@ -486,9 +475,7 @@ const allProducts = [
               <p className='font-semibold text-lg'>
                 Select Size
                 {selectedSize && (
-                  <span className='ml-2 text-gray-500 font-normal'>
-                    ({selectedSize})
-                  </span>
+                  <span className='ml-2 text-gray-500 font-normal'>({selectedSize})</span>
                 )}
               </p>
             </div>
@@ -515,11 +502,7 @@ const allProducts = [
             onClick={() => setShowSizeChart(true)}
             className='flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-black transition mt-2'
           >
-            <img
-              src={sizechart}
-              alt='Size Guide'
-              className='w-50 h-15 object-contain'
-            />
+            <img src={sizechart} alt='Size Guide' className='w-50 h-15 object-contain' />
           </button>
 
           {/* BUTTONS */}
@@ -548,9 +531,7 @@ const allProducts = [
               ×
             </button>
 
-            <h2 className='text-xl font-bold mb-4'>
-              Tshirt Size Guide
-            </h2>
+            <h2 className='text-xl font-bold mb-4'>Tshirt Size Guide</h2>
 
             <div className='overflow-x-auto'>
               <table className='w-full border'>
@@ -592,11 +573,19 @@ const allProducts = [
           </div>
         </div>
       )}
-
-      <YouMayAlsoLike
-        products={allProducts}
-        currentProductId={product.id}
+      <ProductDescription
+        description={product.description}
+        features={product.features}
+        fabric={product.fabric}
+        care={product.care}
       />
+
+      {/* <ProductAccordion 
+          fabric={product.fabric} 
+          care={product.care} 
+        /> */}
+
+      <YouMayAlsoLike products={allProducts} currentProductId={product.id} />
     </div>
   );
 }

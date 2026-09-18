@@ -309,11 +309,18 @@ import {
 
 import YouMayAlsoLike from '../../components/YouMayAlsoLike';
 
-import { OuterwearJacketsDatas } from '../../data/OuterwearJacketsData.js';
-import { PantsDatas } from '../../data/PantsData';
+import { PantsDatas } from '../../data/PantsData.js';
 import { BestSellerData } from '../../data/BestSellerData';
 import { TshirtDatas } from '../../data/TshirtData';
 import { DenimJeansDatas } from '../../data/DenimJeanData.js';
+import { OuterwearJacketsDatas } from '../../data/OuterwearJacketsData.js';
+import { FemalePantDatas } from '../../data/FemalePant.js';
+import { TopDatas } from '../../data/Tops.js';
+import { SkirtsDatas } from '../../data/SkirtsData.js';
+import { DressesDatas } from '../../data/DressesData.js';
+import { AccessoriesDatas } from '../../data/AccessoriesData.js';
+import { CropTopDatas } from '../../data/CropTop.js';
+import {HoodiesSweatshirtsDatas} from "../../data/HoodiesSweatshirtsData.js"
 
 import { useCart } from '../../Context/cartContext';
 import { useWishlist } from '../../Context/WishlistContext';
@@ -328,13 +335,19 @@ function OuterwearJacketsDetails() {
   );
 
   const allProducts = [
-    ...OuterwearJacketsDatas,
-    ...PantsDatas,
-    ...BestSellerData,
-    ...TshirtDatas,
-    ...DenimJeansDatas,
-  ];
-
+  ...AccessoriesDatas.map((item) => ({ ...item, route: `/accessories/${item.id}` })),
+  ...PantsDatas.map((item) => ({ ...item, route: `/pants/${item.id}` })),
+  ...BestSellerData.map((item) => ({ ...item, route: `/bestseller/products/${item.id}` })),
+  ...TshirtDatas.map((item) => ({ ...item, route: `/t-shirt/${item.id}` })),
+  ...DenimJeansDatas.map((item) => ({ ...item, route: `/denim-jeans/${item.id}` })),
+  ...FemalePantDatas.map((item) => ({ ...item, route: `/female-pant/${item.id}` })),
+  ...TopDatas.map((item) => ({ ...item, route: `/tops/${item.id}` })),
+  ...OuterwearJacketsDatas.map((item) => ({ ...item, route: `/Outerwear-Jackets/${item.id}` })),
+  ...SkirtsDatas.map((item) => ({ ...item, route: `/skirts/${item.id}` })),
+  ...DressesDatas.map((item) => ({ ...item, route: `/dresses/${item.id}` })),
+  ...CropTopDatas.map((item) => ({ ...item, route: `/crop-top/${item.id}` })),
+  ...HoodiesSweatshirtsDatas.map((item) => ({ ...item, route: `/Hoodies-Sweatshirts/${item.id}` })),
+];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [selectedSize, setSelectedSize] = useState('');
   const [quantity, setQuantity] = useState(1);
