@@ -32,7 +32,7 @@ const slides = [
     subtitle: 'Streetwear Built For The Culture Not The Trend.',
     title: 'Build a versatile wardrobe with timeless, well-made essentials that suit you.',
     buttonText: 'Discover More',
-    link: '/kafans-shirts',
+    link: '/t-shirt',
   },
 
   {

@@ -18,13 +18,31 @@ const YouMayAlsoLike = ({ products = [], currentProductId, title = 'You May Also
    * If your products don't have category, we fall back
    * to name + id.
    */
+
+  // const uniqueProducts = useMemo(() => {
+  //   const seen = new Set();
+
+  //   return products.filter((product) => {
+  //     const uniqueKey = product.category
+  //       ? `${product.category}-${product.id}`
+  //       : `${product.name}-${product.id}`;
+
+  //     if (seen.has(uniqueKey)) {
+  //       return false;
+  //     }
+
+  //     seen.add(uniqueKey);
+  //     return true;
+  //   });
+  // }, [products]);
+
   const uniqueProducts = useMemo(() => {
     const seen = new Set();
 
     return products.filter((product) => {
-      const uniqueKey = product.category
-        ? `${product.category}-${product.id}`
-        : `${product.name}-${product.id}`;
+      const uniqueKey = String(product.name || '')
+        .trim()
+        .toLowerCase();
 
       if (seen.has(uniqueKey)) {
         return false;

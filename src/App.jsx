@@ -70,6 +70,9 @@ import DenimJean from './pages/NavPages/Mens/DenimJean';
 import OuterwearJacket from './pages/NavPages/Mens/OuterwearJacket';
 import HoodiesSweatshirts from './pages/NavPages/Mens/HoodiesSweatshirts';
 
+import Checkout from './pages/Checkout';
+import OrderSuccess from './pages/OrderSuccess';
+
 function AppContent() {
   const location = useLocation();
 
@@ -91,6 +94,9 @@ function AppContent() {
         ========================= */}
 
         <Route path='/' element={<Home />} />
+
+        <Route path='/order-success' element={<OrderSuccess/>} />
+        <Route path='/checkout' element={<Checkout/>} />
 
         <Route path='/wishlist' element={<Wishlist />} />
 

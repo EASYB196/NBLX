@@ -38,7 +38,7 @@ const FloatingButtons = () => {
           href='https://wa.me/2347041554896'
           target='_blank'
           rel='noopener noreferrer'
-          className='fixed bottom-20 right-5 z-999'
+          className='fixed bottom-20 right-5 z-40'
         >
           <img
             src={whatsapp}

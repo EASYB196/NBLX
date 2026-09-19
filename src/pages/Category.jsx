@@ -172,12 +172,10 @@ const Category = () => {
       name: 'SHOP WOMEN',
       key: 'women',
       children: [
-        { name: 'Crop Top', path: '/crop-top' },
         { name: 'Skirts', path: '/skirts' },
         { name: 'Female Pants', path: '/female-pant' },
         { name: 'Tops', path: '/tops' },
-        { name: 'Hats', path: '/hats' },
-        { name: 'Dresses', path: '/dresses' },
+       
       ],
     },
 
