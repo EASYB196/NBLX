@@ -13,7 +13,9 @@ const iconMap = {
 const ServiceFeatures = () => {
   return (
     <section className='w-full bg-white py-16 px-6 md:px-12 lg:px-20'>
+    
       <div className='max-w-7xl mx-auto'>
+      
         <div className='grid md:grid-cols-4 gap-8'>
           {features.map((item, index) => (
             <div

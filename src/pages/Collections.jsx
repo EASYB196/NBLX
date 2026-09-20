@@ -111,11 +111,11 @@ const collections = [
     link: '/Outerwear-Jackets',
   },
   {
-    title: 'Hats',
+    title: 'Accessories',
     desc: 'Minimal, stylish, and versatile headwear made to complete your everyday streetwear fit effortlessly.',
     image: hatImg,
-    cta: 'SHOP HATS',
-    link: '/hats',
+    cta: 'SHOP ACCESSORIES',
+    link: '/accessories',
   },
   {
     title: 'BOTTOMS',
@@ -136,7 +136,7 @@ const CollectionsSection = () => {
 
           <h2 className='text-3xl md:text-5xl font-light mt-2'>Shop by Collections</h2>
         </div>
-        <Link
+        {/* <Link
           to='/collections'
           className='
     inline-flex
@@ -163,7 +163,7 @@ const CollectionsSection = () => {
   '
         >
           VIEW ALL
-        </Link>
+        </Link> */}
       </div>
 
       {/* Divider */}

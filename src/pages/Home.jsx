@@ -35,10 +35,22 @@ function Home() {
         <BestSeller />
       </div>{' '}
       <Section />
-      <Servicefeatures />
+      <section className='overflow-hidden border-t border-b py-6 whitespace-nowrap'>
+            <Servicefeatures />
+
+        <div className='animate-marquee text-sm md:text-base font-medium text-gray-600'>
+          {Array(15).fill('crafted with purpose • NBLX • ').join('')}
+        </div>
+      </section>
       {/* <Arrival /> */}
       {/* <ProductList /> */}
       <CollectionsSection />
+      <section className='overflow-hidden border-t border-b py-6 whitespace-nowrap'>
+        <div className='animate-marquee text-sm md:text-base font-medium text-gray-600'>
+          {Array(15).fill('crafted with purpose • NBLX • ').join('')}
+        </div>
+      </section>
+      
       {/* <StorySection /> */}
       {/* <CategoryCarousel /> */}
     </div>

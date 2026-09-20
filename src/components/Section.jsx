@@ -121,6 +121,7 @@ function Section() {
 
   return (
     <div className='relative w-full h-screen overflow-hidden bg-black'>
+    
       {/* 🔥 SMOOTH CROSSFADE BACKGROUNDS */}
       {categories.map((item, index) => (
         <img

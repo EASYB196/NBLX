@@ -70,7 +70,7 @@ import DenimJean from './pages/NavPages/Mens/DenimJean';
 import OuterwearJacket from './pages/NavPages/Mens/OuterwearJacket';
 import HoodiesSweatshirts from './pages/NavPages/Mens/HoodiesSweatshirts';
 
-import Checkout from './pages/Checkout';
+import CheckOut from './pages/Checkout';
 import OrderSuccess from './pages/OrderSuccess';
 
 function AppContent() {
@@ -81,13 +81,9 @@ function AppContent() {
   return (
     <>
       <ScrollToTop />
-
       <Toaster position='top-center' reverseOrder={false} />
-
       <CartDrawer />
-
       {!isAuthPage && <NavBar />}
-
       <Routes>
         {/* =========================
             MAIN PAGES
@@ -95,8 +91,8 @@ function AppContent() {
 
         <Route path='/' element={<Home />} />
 
-        <Route path='/order-success' element={<OrderSuccess/>} />
-        <Route path='/checkout' element={<Checkout/>} />
+        <Route path='/order-success' element={<OrderSuccess />} />
+        <Route path='/checkout' element={<CheckOut />} />
 
         <Route path='/wishlist' element={<Wishlist />} />
 
@@ -116,7 +112,6 @@ function AppContent() {
         {/* =========================
             MEN CATEGORY PAGES
         ========================= */}
-
 
         <Route path='/casuals' element={<Casual />} />
 
@@ -170,10 +165,7 @@ function AppContent() {
 
         <Route path='/Denim-Jeans/:id' element={<DenimJeanDetails />} />
 
-        <Route
-          path='/Outerwear-Jackets/:id'
-          element={<OuterwearJacketsDetails />}
-        />
+        <Route path='/Outerwear-Jackets/:id' element={<OuterwearJacketsDetails />} />
 
         <Route path='/Hoodies-Sweatshirts/:id' element={<HoodiesSweatshirtsDetails />} />
 
@@ -231,8 +223,7 @@ function AppContent() {
 
         <Route path='/product/:type/:id' element={<ProductDetails />} />
       </Routes>
-
-      {!isAuthPage && <Footer />}
+      {!isAuthPage && location.pathname !== '/checkout' && <Footer />}{' '}
     </>
   );
 }

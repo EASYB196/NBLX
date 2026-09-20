@@ -1,5 +1,3 @@
-
-
 // import React, { useState } from 'react';
 // import { FaChevronRight, FaHeart, FaRegHeart } from 'react-icons/fa6';
 // import { Link } from 'react-router-dom';
@@ -145,7 +143,6 @@
 
 // export default OuterwearJacket;
 
-
 import React, { useState } from 'react';
 import { FaChevronRight, FaHeart, FaRegHeart } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
@@ -168,6 +165,11 @@ const OuterwearJacketData = ({ product }) => {
     toggleWishlist({
       ...product,
       route: `/Outerwear-Jackets/${product.id}`,
+      selectedColor: product.selectedColor || 'Default',
+      images:
+        product.images ||
+        [product.image, product.hoverImage].filter(Boolean),
+      image: product.image,
     });
   };
 
@@ -219,13 +221,19 @@ const OuterwearJacketData = ({ product }) => {
           type="button"
           onClick={handleWishlist}
           aria-label={
-            isWishlisted(product.id)
+            isWishlisted(
+              product.id,
+              product.selectedColor || 'Default',
+            )
               ? 'Remove from wishlist'
               : 'Add to wishlist'
           }
           className="absolute top-3 right-3 z-20 bg-white p-2.5 rounded-full shadow-md hover:scale-105 transition-transform duration-200"
         >
-          {isWishlisted(product.id) ? (
+          {isWishlisted(
+            product.id,
+            product.selectedColor || 'Default',
+          ) ? (
             <FaHeart className="text-red-500 text-lg" />
           ) : (
             <FaRegHeart className="text-gray-500 text-lg hover:text-red-500 transition-colors" />
@@ -235,7 +243,7 @@ const OuterwearJacketData = ({ product }) => {
 
       {/* PRODUCT DETAILS */}
       <div className="bg-white text-black mt-3">
-            <h6 className='text-xs text-gray-500'>NBLX</h6>
+        <h6 className="text-xs text-gray-500">NBLX</h6>
 
         <h3 className="text-sm md:text-lg font-semibold uppercase">
           {product.name}
