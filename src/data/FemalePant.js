@@ -29,17 +29,17 @@ export const FemalePantDatas = [
     price: 30000,
     oldPrice: 1543000,
     inStock: 4,
-    sizes: ["S", "M", "L", "XL", "XXL", "3XS"],
+    sizes: ["S", "M", "L", "XL", "XXL", "3XL"],
 
     colors: [
-      {
-        name: "Default",
-        value: "#000000",
-        images: [
-          Flameblackjackettrouserfv,
-          Flameblackjackettrouserbv,
-        ],
-      },
+      // {
+      //   name: "Black",
+      //   value: "#000000",
+      //   images: [
+      //     Flameblackjackettrouserfv,
+      //     Flameblackjackettrouserbv,
+      //   ],
+      // },
     ],
 
     image: Flameblackjackettrouserfv,

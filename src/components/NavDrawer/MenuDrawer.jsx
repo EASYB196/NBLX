@@ -131,7 +131,7 @@ const MenuDrawer = ({
               {/* <p className='cursor-pointer'>DENIM</p> */}
 
               {/* ACCESSORIES */}
-              {/* <div>
+              <div>
                 <div
                   onClick={() => toggleDropdown('accessories')}
                   className='flex justify-between items-center cursor-pointer'
@@ -161,7 +161,7 @@ const MenuDrawer = ({
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div> */}
+              </div>
               {/* 
               <p className='cursor-pointer'>FOOTWEAR</p>
               <p className='cursor-pointer'>LIFESTYLE</p> */}

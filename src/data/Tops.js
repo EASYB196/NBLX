@@ -29,11 +29,11 @@ export const TopDatas = [
     sizes: ["S", "M", "L", "XL", "XXL", "3XS"],
 
     colors: [
-      {
-        name: "Default",
-        value: "#000000",
-        images: [greatmindcroptee, greatmindcropteebv],
-      },
+      // {
+      //   name: "Black",
+      //   value: "#000000",
+      //   images: [greatmindcroptee, greatmindcropteebv],
+      // },
     ],
 
     image: greatmindcroptee,

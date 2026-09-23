@@ -452,12 +452,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useParams, Link } from 'react-router-dom';
-import {
-  FaChevronLeft,
-  FaChevronRight,
-  FaHeart,
-  FaRegHeart,
-} from 'react-icons/fa6';
+import { FaChevronLeft, FaChevronRight, FaHeart, FaRegHeart } from 'react-icons/fa6';
 
 import YouMayAlsoLike from '../../components/YouMayAlsoLike';
 
@@ -482,9 +477,7 @@ import sizechart from '../../assets/images/sizechart.png';
 function FemalePantDetails() {
   const { id } = useParams();
 
-  const product = FemalePantDatas.find(
-    (item) => String(item.id) === String(id),
-  );
+  const product = FemalePantDatas.find((item) => String(item.id) === String(id));
 
   const allProducts = [
     ...AccessoriesDatas.map((item) => ({
@@ -572,11 +565,7 @@ function FemalePantDetails() {
   const selectedColorVariant = useMemo(() => {
     if (!product?.colors?.length) return null;
 
-    return (
-      product.colors.find(
-        (color) => color.name === selectedColor,
-      ) || product.colors[0]
-    );
+    return product.colors.find((color) => color.name === selectedColor) || product.colors[0];
   }, [product, selectedColor]);
 
   /* COLOR IMAGES */
@@ -585,12 +574,9 @@ function FemalePantDetails() {
       return selectedColorVariant.images;
     }
 
-    return [
-      product?.image,
-      ...(product?.hoverImage
-        ? [product.hoverImage]
-        : []),
-    ].filter(Boolean);
+    return [product?.image, ...(product?.hoverImage ? [product.hoverImage] : [])].filter(
+      Boolean,
+    );
   }, [product, selectedColorVariant]);
 
   /* RESET IMAGE WHEN COLOR CHANGES */
@@ -599,11 +585,7 @@ function FemalePantDetails() {
   }, [selectedColor]);
 
   if (!product) {
-    return (
-      <div className='text-black p-10'>
-        Product not found
-      </div>
-    );
+    return <div className='text-black p-10'>Product not found</div>;
   }
 
   // YOU MAY ALSO LIKE
@@ -619,17 +601,12 @@ function FemalePantDetails() {
 
   // PREVIOUS IMAGE
   const handlePrev = () => {
-    setCurrentImageIndex(
-      (prev) =>
-        (prev - 1 + images.length) % images.length,
-    );
+    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
   // NEXT IMAGE
   const handleNext = () => {
-    setCurrentImageIndex(
-      (prev) => (prev + 1) % images.length,
-    );
+    setCurrentImageIndex((prev) => (prev + 1) % images.length);
   };
 
   // ADD TO CART
@@ -647,12 +624,7 @@ function FemalePantDetails() {
       images,
     };
 
-    addToCart(
-      cartProduct,
-      selectedSize,
-      quantity,
-      selectedColor || 'Default',
-    );
+    addToCart(cartProduct, selectedSize, quantity, selectedColor || 'Default');
 
     setShowCart(true);
 
@@ -686,9 +658,7 @@ function FemalePantDetails() {
 
         <FaChevronRight />
 
-        <span className='text-gray-500'>
-          {product.name}
-        </span>
+        <span className='text-gray-500'>{product.name}</span>
       </div>
 
       {/* ================= PRODUCT DETAILS ================= */}
@@ -704,9 +674,7 @@ function FemalePantDetails() {
                   type='button'
                   onClick={() => setCurrentImageIndex(idx)}
                   className={`rounded-lg border ${
-                    currentImageIndex === idx
-                      ? 'border-black'
-                      : 'border-transparent'
+                    currentImageIndex === idx ? 'border-black' : 'border-transparent'
                   }`}
                 >
                   <img
@@ -726,19 +694,13 @@ function FemalePantDetails() {
               type='button'
               onClick={handleWishlist}
               aria-label={
-                isWishlisted(
-                  product.id,
-                  selectedColor || 'Default',
-                )
+                isWishlisted(product.id, selectedColor || 'Default')
                   ? 'Remove from wishlist'
                   : 'Add to wishlist'
               }
               className='absolute top-4 right-4 z-10 bg-white p-3 rounded-full shadow hover:scale-105 transition'
             >
-              {isWishlisted(
-                product.id,
-                selectedColor || 'Default',
-              ) ? (
+              {isWishlisted(product.id, selectedColor || 'Default') ? (
                 <FaHeart className='text-red-500' />
               ) : (
                 <FaRegHeart />
@@ -781,14 +743,10 @@ function FemalePantDetails() {
         {/* ================= RIGHT - PRODUCT INFO ================= */}
         <div className='flex-1 space-y-6'>
           {/* PRODUCT NAME */}
-          <h1 className='text-2xl md:text-3xl font-bold'>
-            {product.name}
-          </h1>
+          <h1 className='text-2xl md:text-3xl font-bold'>{product.name}</h1>
 
           {/* PRICE */}
-          <div className='text-2xl font-bold'>
-            ₦{product.price.toLocaleString('en-NG')}
-          </div>
+          <div className='text-2xl font-bold'>₦{product.price.toLocaleString('en-NG')}</div>
 
           {/* COLOR */}
           {product.colors?.length > 0 && (
@@ -796,9 +754,7 @@ function FemalePantDetails() {
               <p className='mb-3 font-semibold text-lg'>
                 Color:{' '}
                 {selectedColor && (
-                  <span className='text-gray-600 font-normal'>
-                    {selectedColor}
-                  </span>
+                  <span className='text-gray-600 font-normal'>{selectedColor}</span>
                 )}
               </p>
 
@@ -807,9 +763,7 @@ function FemalePantDetails() {
                   <button
                     key={color.name}
                     type='button'
-                    onClick={() =>
-                      handleColorChange(color.name)
-                    }
+                    onClick={() => handleColorChange(color.name)}
                     aria-label={`Select ${color.name}`}
                     title={color.name}
                     className={`w-8 h-8 rounded-full border-2 transition ${
@@ -828,30 +782,22 @@ function FemalePantDetails() {
 
           {/* QUANTITY */}
           <div className='flex items-center gap-4'>
-            <p className='font-semibold text-xl'>
-              Quantity:
-            </p>
+            <p className='font-semibold text-xl'>Quantity:</p>
 
             <button
               type='button'
-              onClick={() =>
-                setQuantity((q) => Math.max(1, q - 1))
-              }
+              onClick={() => setQuantity((q) => Math.max(1, q - 1))}
               aria-label='Decrease quantity'
               className='w-10 h-10 bg-gray-100 rounded hover:bg-gray-200 transition'
             >
               −
             </button>
 
-            <span className='text-lg min-w-5 text-center'>
-              {quantity}
-            </span>
+            <span className='text-lg min-w-5 text-center'>{quantity}</span>
 
             <button
               type='button'
-              onClick={() =>
-                setQuantity((q) => q + 1)
-              }
+              onClick={() => setQuantity((q) => q + 1)}
               aria-label='Increase quantity'
               className='w-10 h-10 bg-gray-100 rounded hover:bg-gray-200 transition'
             >
@@ -864,9 +810,7 @@ function FemalePantDetails() {
             <p className='font-semibold text-lg'>
               Select Size
               {selectedSize && (
-                <span className='ml-2 text-gray-500 font-normal'>
-                  ({selectedSize})
-                </span>
+                <span className='ml-2 text-gray-500 font-normal'>({selectedSize})</span>
               )}
             </p>
 
@@ -894,11 +838,7 @@ function FemalePantDetails() {
             onClick={() => setShowSizeChart(true)}
             className='flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-black transition mt-2'
           >
-            <img
-              src={sizechart}
-              alt='Size Guide'
-              className='w-50 h-15 object-contain'
-            />
+            <img src={sizechart} alt='Size Guide' className='w-50 h-15 object-contain' />
           </button>
 
           {/* BUTTONS */}
@@ -931,9 +871,7 @@ function FemalePantDetails() {
                 Discover More
               </p>
 
-              <h2 className='text-2xl md:text-3xl font-bold'>
-                You May Also Like
-              </h2>
+              <h2 className='text-2xl md:text-3xl font-bold'>You May Also Like</h2>
             </div>
 
             <Link
@@ -947,11 +885,7 @@ function FemalePantDetails() {
           {/* PRODUCTS */}
           <div className='grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6'>
             {relatedProducts.map((item) => (
-              <Link
-                key={item.id}
-                to={`/female-Pant/${item.id}`}
-                className='group'
-              >
+              <Link key={item.id} to={`/female-Pant/${item.id}`} className='group'>
                 {/* IMAGE */}
                 <div className='relative aspect-[3/4] overflow-hidden rounded-xl bg-gray-100'>
                   <img
@@ -976,17 +910,13 @@ function FemalePantDetails() {
                       e.preventDefault();
                       e.stopPropagation();
 
-                      const selectedColor =
-                        item.selectedColor || 'Default';
+                      const selectedColor = item.selectedColor || 'Default';
 
                       const itemImages =
                         item.images ||
-                        [
-                          item.image,
-                          ...(item.hoverImage
-                            ? [item.hoverImage]
-                            : []),
-                        ].filter(Boolean);
+                        [item.image, ...(item.hoverImage ? [item.hoverImage] : [])].filter(
+                          Boolean,
+                        );
 
                       toggleWishlist({
                         ...item,
@@ -997,19 +927,13 @@ function FemalePantDetails() {
                       });
                     }}
                     aria-label={
-                      isWishlisted(
-                        item.id,
-                        item.selectedColor || 'Default',
-                      )
+                      isWishlisted(item.id, item.selectedColor || 'Default')
                         ? 'Remove from wishlist'
                         : 'Add to wishlist'
                     }
                     className='absolute top-3 right-3 z-10 bg-white p-2 rounded-full shadow hover:scale-105 transition'
                   >
-                    {isWishlisted(
-                      item.id,
-                      item.selectedColor || 'Default',
-                    ) ? (
+                    {isWishlisted(item.id, item.selectedColor || 'Default') ? (
                       <FaHeart className='text-red-500' />
                     ) : (
                       <FaRegHeart />
@@ -1019,13 +943,9 @@ function FemalePantDetails() {
 
                 {/* PRODUCT INFO */}
                 <div className='mt-4'>
-                  <h3 className='font-medium text-sm md:text-base truncate'>
-                    {item.name}
-                  </h3>
+                  <h3 className='font-medium text-sm md:text-base truncate'>{item.name}</h3>
 
-                  <p className='font-semibold mt-1'>
-                    ₦{item.price.toLocaleString('en-NG')}
-                  </p>
+                  <p className='font-semibold mt-1'>₦{item.price.toLocaleString('en-NG')}</p>
                 </div>
               </Link>
             ))}
@@ -1036,72 +956,91 @@ function FemalePantDetails() {
       {/* ================= SIZE CHART MODAL ================= */}
       {showSizeChart && (
         <div
-          className='fixed inset-0 bg-black/50 z-50 flex items-center justify-center px-4'
+          className='fixed inset-0 bg-black/50 z-50 flex items-center justify-center px-3 sm:px-4 py-4'
           onClick={() => setShowSizeChart(false)}
         >
           <div
-            className='bg-white rounded-xl p-6 max-w-lg w-full relative'
+            className='bg-white rounded-xl p-4 sm:p-6 max-w-xl w-full max-h-[90vh] overflow-y-auto relative'
             onClick={(e) => e.stopPropagation()}
           >
             {/* CLOSE */}
             <button
               type='button'
               onClick={() => setShowSizeChart(false)}
-              className='absolute top-3 right-4 text-2xl font-extrabold hover:text-gray-500'
+              className='absolute top-2 right-3 sm:top-3 sm:right-4 text-2xl font-extrabold hover:text-gray-500'
               aria-label='Close size chart'
             >
               ×
             </button>
 
-            <h2 className='text-xl font-bold mb-4'>
-              Female Pants Size Guide
-            </h2>
+            <h2 className='text-lg sm:text-xl font-bold mb-4 pr-8'>Female Pants Size Guide</h2>
 
-            <div className='overflow-x-auto'>
-              <table className='w-full border'>
+            {/* TABLE */}
+            <div className='overflow-x-auto -mx-1'>
+              <table className='w-full min-w-[500px] border text-sm sm:text-base'>
                 <thead>
                   <tr className='bg-gray-100'>
-                    <th className='border p-2'>Size</th>
-                    <th className='border p-2'>Waist</th>
-                    <th className='border p-2'>Length</th>
+                    <th className='border p-2 sm:p-3'>Size</th>
+                    <th className='border p-2 sm:p-3'>Waist (in)</th>
+                    <th className='border p-2 sm:p-3'>Hip (in)</th>
+                    <th className='border p-2 sm:p-3'>Length (in)</th>
                   </tr>
                 </thead>
 
                 <tbody>
                   <tr>
-                    <td className='border p-2'>S</td>
-                    <td className='border p-2'>30-32</td>
-                    <td className='border p-2'>40</td>
+                    <td className='border p-2 sm:p-3'>S</td>
+                    <td className='border p-2 sm:p-3'>26-28</td>
+                    <td className='border p-2 sm:p-3'>36-38</td>
+                    <td className='border p-2 sm:p-3'>40</td>
                   </tr>
 
                   <tr>
-                    <td className='border p-2'>M</td>
-                    <td className='border p-2'>32-34</td>
-                    <td className='border p-2'>41</td>
+                    <td className='border p-2 sm:p-3'>M</td>
+                    <td className='border p-2 sm:p-3'>28-30</td>
+                    <td className='border p-2 sm:p-3'>38-40</td>
+                    <td className='border p-2 sm:p-3'>41</td>
                   </tr>
 
                   <tr>
-                    <td className='border p-2'>L</td>
-                    <td className='border p-2'>34-36</td>
-                    <td className='border p-2'>42</td>
+                    <td className='border p-2 sm:p-3'>L</td>
+                    <td className='border p-2 sm:p-3'>30-32</td>
+                    <td className='border p-2 sm:p-3'>40-42</td>
+                    <td className='border p-2 sm:p-3'>42</td>
                   </tr>
 
                   <tr>
-                    <td className='border p-2'>XL</td>
-                    <td className='border p-2'>36-38</td>
-                    <td className='border p-2'>43</td>
+                    <td className='border p-2 sm:p-3'>XL</td>
+                    <td className='border p-2 sm:p-3'>32-34</td>
+                    <td className='border p-2 sm:p-3'>42-44</td>
+                    <td className='border p-2 sm:p-3'>43</td>
+                  </tr>
+
+                  <tr>
+                    <td className='border p-2 sm:p-3'>XXL</td>
+                    <td className='border p-2 sm:p-3'>34-36</td>
+                    <td className='border p-2 sm:p-3'>44-46</td>
+                    <td className='border p-2 sm:p-3'>44</td>
+                  </tr>
+
+                  <tr>
+                    <td className='border p-2 sm:p-3'>3XL</td>
+                    <td className='border p-2 sm:p-3'>36-38</td>
+                    <td className='border p-2 sm:p-3'>46-48</td>
+                    <td className='border p-2 sm:p-3'>45</td>
                   </tr>
                 </tbody>
               </table>
             </div>
+
+            <p className='text-xs text-gray-500 mt-4 leading-relaxed'>
+              Measurements are approximate and may vary slightly depending on design and fit.
+            </p>
           </div>
         </div>
       )}
 
-      <YouMayAlsoLike
-        products={allProducts}
-        currentProductId={product.id}
-      />
+      <YouMayAlsoLike products={allProducts} currentProductId={product.id} />
     </div>
   );
 }

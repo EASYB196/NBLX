@@ -1,323 +1,3 @@
-// import React, { useState } from 'react';
-// import toast from 'react-hot-toast';
-// import { useParams, Link } from 'react-router-dom';
-// import { FaChevronLeft, FaChevronRight, FaHeart, FaRegHeart } from 'react-icons/fa6';
-
-// import YouMayAlsoLike from '../../components/YouMayAlsoLike';
-
-// import { PantsDatas } from '../../data/PantsData.js';
-// import { BestSellerData } from '../../data/BestSellerData';
-// import { TshirtDatas } from '../../data/TshirtData';
-// import { DenimJeansDatas } from '../../data/DenimJeanData.js';
-// import { OuterwearJacketsDatas } from '../../data/OuterwearJacketsData.js';
-// import { FemalePantDatas } from '../../data/FemalePant.js';
-// import { TopDatas } from '../../data/Tops.js';
-// import { SkirtsDatas } from '../../data/SkirtsData.js';
-// import { DressesDatas } from '../../data/DressesData.js';
-// import { AccessoriesDatas } from '../../data/AccessoriesData.js';
-// import { CropTopDatas } from '../../data/CropTop.js';
-// import { HoodiesSweatshirtsDatas } from '../../data/HoodiesSweatshirtsData.js';
-
-// import { useCart } from '../../Context/cartContext';
-// import { useWishlist } from '../../Context/WishlistContext';
-
-// import sizechart from '../../assets/images/sizechart.png';
-
-// import ProductDescription from '../../components/Product/ProductDescription';
-// // import ProductAccordion from '../../components/ProductAccordion';
-
-// function TshirtDetails() {
-//   const { id } = useParams();
-//   const product = TshirtDatas.find((item) => String(item.id) === String(id));
-
-//   const allProducts = [
-//     ...AccessoriesDatas.map((item) => ({ ...item, route: `/accessories/${item.id}` })),
-//     ...PantsDatas.map((item) => ({ ...item, route: `/pants/${item.id}` })),
-//     ...BestSellerData.map((item) => ({ ...item, route: `/bestseller/products/${item.id}` })),
-//     ...TshirtDatas.map((item) => ({ ...item, route: `/t-shirt/${item.id}` })),
-//     ...DenimJeansDatas.map((item) => ({ ...item, route: `/denim-jeans/${item.id}` })),
-//     ...FemalePantDatas.map((item) => ({ ...item, route: `/female-pant/${item.id}` })),
-//     ...TopDatas.map((item) => ({ ...item, route: `/tops/${item.id}` })),
-//     ...OuterwearJacketsDatas.map((item) => ({
-//       ...item,
-//       route: `/Outerwear-Jackets/${item.id}`,
-//     })),
-//     ...SkirtsDatas.map((item) => ({ ...item, route: `/skirts/${item.id}` })),
-//     ...DressesDatas.map((item) => ({ ...item, route: `/dresses/${item.id}` })),
-//     ...CropTopDatas.map((item) => ({ ...item, route: `/crop-top/${item.id}` })),
-//     ...HoodiesSweatshirtsDatas.map((item) => ({
-//       ...item,
-//       route: `/Hoodies-Sweatshirts/${item.id}`,
-//     })),
-//   ];
-
-//   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-//   const [selectedSize, setSelectedSize] = useState('');
-//   const [quantity, setQuantity] = useState(1);
-//   // const scrollRef = useRef(null);
-
-//   const [showSizeChart, setShowSizeChart] = useState(false);
-
-//   const { addToCart, setShowCart } = useCart();
-//   const { toggleWishlist, isWishlisted } = useWishlist();
-
-//   if (!product) {
-//     return <div className='text-black p-10'>Product not found</div>;
-//   }
-
-//   const images = [product.image, ...(product.hoverImage ? [product.hoverImage] : [])];
-
-//   const handlePrev = () => {
-//     setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
-//   };
-
-//   const handleNext = () => {
-//     setCurrentImageIndex((prev) => (prev + 1) % images.length);
-//   };
-
-//   const handleAddToCart = () => {
-//     if (!selectedSize) {
-//       toast.error('Please select a size!');
-//       return;
-//     }
-
-//     // Save the T-shirt detail page route with the cart item
-//     addToCart(
-//       {
-//         ...product,
-//         route: `/t-shirt/${product.id}`,
-//       },
-//       selectedSize,
-//       quantity,
-//     );
-
-//     setShowCart(true);
-
-//     toast.success('Item added to cart!');
-//   };
-
-//   return (
-//     <div className='bg-white text-black min-h-screen py-10 px-4 md:px-10 font-[Raleway]'>
-//       {/* BREADCRUMB */}
-//       <div className='flex items-center justify-center gap-2 md:gap-4 mt-23 text-sm md:text-base'>
-//         <Link to='/' className='hover:underline'>
-//           Home
-//         </Link>
-//         <FaChevronRight />
-//         <Link to='/t-shirt' className='hover:underline'>
-//           Tshirt
-//         </Link>
-//         <FaChevronRight />
-//         <span className='text-gray-500'>{product.name}</span>
-//       </div>
-
-//       <div className='max-w-7xl mx-auto flex flex-col md:flex-row gap-10 mt-10'>
-//         {/* LEFT - IMAGES */}
-//         <div className='flex gap-4 w-full md:w-1/2'>
-//           {/* THUMBNAILS (DESKTOP) */}
-//           <div className='hidden md:flex flex-col gap-3'>
-//             {images.map((img, idx) => (
-//               <img
-//                 key={idx}
-//                 src={img}
-//                 alt=''
-//                 onClick={() => setCurrentImageIndex(idx)}
-//                 className={`w-20 h-24 object-cover rounded-lg cursor-pointer border ${
-//                   currentImageIndex === idx ? 'border-black' : 'border-transparent'
-//                 }`}
-//               />
-//             ))}
-//           </div>
-
-//           {/* MAIN IMAGE */}
-//           <div className='relative w-full h-100 md:h-125'>
-//             {/* WISHLIST */}
-//             <button
-//               onClick={() =>
-//                 toggleWishlist({
-//                   ...product,
-//                   route: `/t-shirt/${product.id}`,
-//                 })
-//               }
-//               className='absolute top-4 right-4 z-10 bg-white p-2 rounded-full shadow'
-//             >
-//               {isWishlisted(product.id) ? <FaHeart className='text-red-500' /> : <FaRegHeart />}
-//             </button>
-
-//             <img
-//               src={images[currentImageIndex]}
-//               className='w-full h-full object-cover rounded-xl'
-//               alt='product'
-//             />
-
-//             {/* ARROWS */}
-//             <button
-//               onClick={handlePrev}
-//               className='absolute left-2 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full'
-//             >
-//               <FaChevronLeft />
-//             </button>
-
-//             <button
-//               onClick={handleNext}
-//               className='absolute right-2 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full'
-//             >
-//               <FaChevronRight />
-//             </button>
-//           </div>
-//         </div>
-
-//         {/* RIGHT - INFO */}
-//         <div className='flex-1 space-y-6'>
-//           <h1 className='text-2xl md:text-3xl font-bold'>{product.name}</h1>
-
-//           {/* PRICE */}
-//           <div className='text-2xl font-bold'>₦{product.price.toLocaleString('en-NG')}</div>
-
-//           {/* QUANTITY */}
-//           <div className='flex items-center gap-4'>
-//             <p className='font-semibold text-xl'>Quantity:</p>
-
-//             <button
-//               onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-//               className='w-10 h-10 bg-gray-100 rounded'
-//             >
-//               −
-//             </button>
-
-//             <span className='text-lg'>{quantity}</span>
-
-//             <button
-//               onClick={() => setQuantity((q) => q + 1)}
-//               className='w-10 h-10 bg-gray-100 rounded'
-//             >
-//               +
-//             </button>
-//           </div>
-
-//           {/* SIZE */}
-//           <div className='space-y-4'>
-//             <div className='flex items-center justify'>
-//               <p className='font-semibold text-lg'>
-//                 Select Size
-//                 {selectedSize && (
-//                   <span className='ml-2 text-gray-500 font-normal'>({selectedSize})</span>
-//                 )}
-//               </p>
-//             </div>
-
-//             <div className='flex flex-wrap gap-3'>
-//               {product.sizes.map((size) => (
-//                 <button
-//                   key={size}
-//                   onClick={() => setSelectedSize(size)}
-//                   className={`min-w-13.75 px-4 py-3 rounded-lg border text-sm font-medium transition-all duration-200 ${
-//                     selectedSize === size
-//                       ? 'bg-black text-white border-black'
-//                       : 'bg-white text-black border-gray-300 hover:border-black hover:bg-gray-50'
-//                   }`}
-//                 >
-//                   {size}
-//                 </button>
-//               ))}
-//             </div>
-//           </div>
-
-//           {/* Size Chart Button */}
-//           <button
-//             onClick={() => setShowSizeChart(true)}
-//             className='flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-black transition mt-2'
-//           >
-//             <img src={sizechart} alt='Size Guide' className='w-50 h-15 object-contain' />
-//           </button>
-
-//           {/* BUTTONS */}
-//           <div className='flex flex-col md:flex-row gap-4'>
-//             <button
-//               onClick={handleAddToCart}
-//               className='w-full md:w-55 border py-3 rounded-xl hover:bg-black hover:text-white transition'
-//             >
-//               Add to Cart
-//             </button>
-
-//             <button className='w-full md:w-55 bg-black text-white py-3 rounded-xl hover:bg-gray-900 transition'>
-//               Buy it now
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-
-//       {showSizeChart && (
-//         <div className='fixed inset-0 bg-black/50 z-50 flex items-center justify-center px-4'>
-//           <div className='bg-white rounded-xl p-6 max-w-lg w-full relative'>
-//             <button
-//               onClick={() => setShowSizeChart(false)}
-//               className='absolute top-3 right-4 text-2xl font-extrabold'
-//             >
-//               ×
-//             </button>
-
-//             <h2 className='text-xl font-bold mb-4'>Tshirt Size Guide</h2>
-
-//             <div className='overflow-x-auto'>
-//               <table className='w-full border'>
-//                 <thead>
-//                   <tr className='bg-gray-100'>
-//                     <th className='border p-2'>Size</th>
-//                     <th className='border p-2'>Waist</th>
-//                     <th className='border p-2'>Length</th>
-//                   </tr>
-//                 </thead>
-
-//                 <tbody>
-//                   <tr>
-//                     <td className='border p-2'>S</td>
-//                     <td className='border p-2'>30-32</td>
-//                     <td className='border p-2'>40</td>
-//                   </tr>
-
-//                   <tr>
-//                     <td className='border p-2'>M</td>
-//                     <td className='border p-2'>32-34</td>
-//                     <td className='border p-2'>41</td>
-//                   </tr>
-
-//                   <tr>
-//                     <td className='border p-2'>L</td>
-//                     <td className='border p-2'>34-36</td>
-//                     <td className='border p-2'>42</td>
-//                   </tr>
-
-//                   <tr>
-//                     <td className='border p-2'>XL</td>
-//                     <td className='border p-2'>36-38</td>
-//                     <td className='border p-2'>43</td>
-//                   </tr>
-//                 </tbody>
-//               </table>
-//             </div>
-//           </div>
-//         </div>
-//       )}
-//       <ProductDescription
-//         description={product.description}
-//         features={product.features}
-//         fabric={product.fabric}
-//         care={product.care}
-//       />
-
-//       {/* <ProductAccordion
-//           fabric={product.fabric}
-//           care={product.care}
-//         /> */}
-
-//       <YouMayAlsoLike products={allProducts} currentProductId={product.id} />
-//     </div>
-//   );
-// }
-
-// export default TshirtDetails;
-
 import React, { useEffect, useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useParams, Link } from 'react-router-dom';
@@ -348,21 +28,17 @@ import sizechart from '../../assets/images/sizechart.png';
 
 import ProductDescription from '../../components/Product/ProductDescription';
 
+import { sizeCharts } from '../../data/TshirtData.js';
+
 function TshirtDetails() {
   const { id } = useParams();
 
-  /*
-   * DECODE THE URL ID
-   *
-   * This allows product IDs containing spaces or special
-   * characters to work correctly.
-   */
   const decodedId = decodeURIComponent(id);
 
   const product = TshirtDatas.find((item) => String(item.id) === String(decodedId));
 
   /*
-   * ALL PRODUCTS FOR YMAL
+   * ALL PRODUCTS FOR YOU MAY ALSO LIKE
    */
   const allProducts = useMemo(
     () => [
@@ -439,7 +115,7 @@ function TshirtDetails() {
   const { toggleWishlist, isWishlisted } = useWishlist();
 
   /*
-   * SET DEFAULT COLOR WHEN PRODUCT LOADS
+   * SET DEFAULT COLOR
    */
   useEffect(() => {
     if (product?.colors?.length > 0) {
@@ -449,6 +125,8 @@ function TshirtDetails() {
     }
 
     setCurrentImageIndex(0);
+    setSelectedSize('');
+    setQuantity(1);
   }, [product]);
 
   /*
@@ -476,14 +154,17 @@ function TshirtDetails() {
   }, [product, selectedColorVariant]);
 
   /*
-   * KEEP IMAGE INDEX VALID
+   * RESET IMAGE WHEN COLOR CHANGES
    */
   useEffect(() => {
     setCurrentImageIndex(0);
   }, [selectedColor]);
 
+  /*
+   * KEEP IMAGE INDEX VALID
+   */
   useEffect(() => {
-    if (currentImageIndex >= images.length) {
+    if (images.length > 0 && currentImageIndex >= images.length) {
       setCurrentImageIndex(0);
     }
   }, [images.length, currentImageIndex]);
@@ -525,11 +206,10 @@ function TshirtDetails() {
 
     const cartProduct = {
       ...product,
-
       route: `/t-shirt/${encodeURIComponent(product.id)}`,
-
-      selectedColor: selectedColor,
+      selectedColor: selectedColor || 'Default',
       image: images[currentImageIndex],
+      images: images,
     };
 
     addToCart(cartProduct, selectedSize || 'Default', quantity, selectedColor || 'Default');
@@ -537,6 +217,19 @@ function TshirtDetails() {
     setShowCart(true);
 
     toast.success('Item added to cart!');
+  };
+
+  /*
+   * WISHLIST
+   */
+  const handleWishlist = () => {
+    toggleWishlist({
+      ...product,
+      route: `/t-shirt/${encodeURIComponent(product.id)}`,
+      selectedColor: selectedColor || 'Default',
+      images: images,
+      image: images[0],
+    });
   };
 
   return (
@@ -581,15 +274,7 @@ function TshirtDetails() {
             {/* WISHLIST */}
             <button
               type='button'
-              onClick={() =>
-                toggleWishlist({
-                  ...product,
-                  route: `/t-shirt/${encodeURIComponent(product.id)}`,
-                  selectedColor: selectedColor || 'Default',
-                  images: images,
-                  image: images[0],
-                })
-              }
+              onClick={handleWishlist}
               className='absolute top-4 right-4 z-10 bg-white p-2 rounded-full shadow'
               aria-label={
                 isWishlisted(product.id, selectedColor || 'Default')
@@ -603,11 +288,13 @@ function TshirtDetails() {
                 <FaRegHeart />
               )}
             </button>
+
             <img
               src={images[currentImageIndex]}
               className='w-full h-full object-cover rounded-xl'
               alt={product.name}
             />
+
             {/* ARROWS */}
             {images.length > 1 && (
               <>
@@ -714,7 +401,7 @@ function TshirtDetails() {
             </div>
 
             <div className='flex flex-wrap gap-3'>
-              {product.sizes.map((size) => (
+              {product.sizes?.map((size) => (
                 <button
                   key={size}
                   type='button'
@@ -763,54 +450,67 @@ function TshirtDetails() {
       {/* SIZE CHART MODAL */}
       {showSizeChart && (
         <div className='fixed inset-0 bg-black/50 z-50 flex items-center justify-center px-4'>
-          <div className='bg-white rounded-xl p-6 max-w-lg w-full relative'>
+          <div className='bg-white rounded-xl p-6 max-w-2xl w-full relative'>
             <button
               type='button'
               onClick={() => setShowSizeChart(false)}
               className='absolute top-3 right-4 text-2xl font-extrabold'
+              aria-label='Close size guide'
             >
               ×
             </button>
 
-            <h2 className='text-xl font-bold mb-4'>Tshirt Size Guide</h2>
+            {(() => {
+              const chart = sizeCharts[product.id];
 
-            <div className='overflow-x-auto'>
-              <table className='w-full border'>
-                <thead>
-                  <tr className='bg-gray-100'>
-                    <th className='border p-2'>Size</th>
-                    <th className='border p-2'>Waist</th>
-                    <th className='border p-2'>Length</th>
-                  </tr>
-                </thead>
+              if (!chart) {
+                return <p className='text-gray-500'>Size guide currently unavailable.</p>;
+              }
 
-                <tbody>
-                  <tr>
-                    <td className='border p-2'>S</td>
-                    <td className='border p-2'>30-32</td>
-                    <td className='border p-2'>40</td>
-                  </tr>
+              return (
+                <>
+                  <h2 className='text-xl font-bold mb-2'>{chart.title}</h2>
 
-                  <tr>
-                    <td className='border p-2'>M</td>
-                    <td className='border p-2'>32-34</td>
-                    <td className='border p-2'>41</td>
-                  </tr>
+                  {chart.fit && <p className='text-sm text-gray-500 mb-4'>Fit: {chart.fit}</p>}
 
-                  <tr>
-                    <td className='border p-2'>L</td>
-                    <td className='border p-2'>34-36</td>
-                    <td className='border p-2'>42</td>
-                  </tr>
+                  <div className='overflow-x-auto'>
+                    <table className='w-full border-collapse border text-sm'>
+                      <thead>
+                        <tr className='bg-gray-100'>
+                          {chart.columns.map((column) => (
+                            <th key={column} className='border p-3 text-left'>
+                              {column}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
 
-                  <tr>
-                    <td className='border p-2'>XL</td>
-                    <td className='border p-2'>36-38</td>
-                    <td className='border p-2'>43</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+                      <tbody>
+                        {chart.rows.map((row, index) => (
+                          <tr key={index}>
+                            {row.map((value, valueIndex) => (
+                              <td key={valueIndex} className='border p-3'>
+                                {value}
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+
+                  {/* <p className='text-xs text-gray-500 mt-4'>
+                    Measurements are approximate. For the
+                    best fit, compare these measurements with
+                    a similar garment you already own.
+                  </p> */}
+                  <p className='text-xs text-gray-500 mt-4'>
+                    Measurements are approximate and may vary slightly depending on design and
+                    fit.
+                  </p>
+                </>
+              );
+            })()}
           </div>
         </div>
       )}
