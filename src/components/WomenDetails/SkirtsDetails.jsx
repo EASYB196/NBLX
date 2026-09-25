@@ -362,6 +362,10 @@ import { AccessoriesDatas } from '../../data/AccessoriesData.js';
 import { CropTopDatas } from '../../data/CropTop.js';
 import { HoodiesSweatshirtsDatas } from '../../data/HoodiesSweatshirtsData.js';
 
+import ProductDescription from '../../components/Product/ProductDescription';
+
+
+
 import { useCart } from '../../Context/cartContext';
 import { useWishlist } from '../../Context/WishlistContext';
 
@@ -833,6 +837,15 @@ function SkirtsDetails() {
           </div>
         </div>
       )}
+
+  {/* PRODUCT DESCRIPTION */}
+      <ProductDescription
+        description={product.description}
+        features={product.features}
+        fabric={product.fabric}
+        care={product.care}
+      />
+
 
       {/* YOU MAY ALSO LIKE */}
       <YouMayAlsoLike

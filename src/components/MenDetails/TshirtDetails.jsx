@@ -529,4 +529,5 @@ function TshirtDetails() {
   );
 }
 
+
 export default TshirtDetails;

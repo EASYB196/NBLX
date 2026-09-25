@@ -569,6 +569,7 @@
 
 // export default PantsDetails;
 
+
 import React, { useEffect, useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useParams, Link } from 'react-router-dom';
@@ -592,6 +593,8 @@ import { SkirtsDatas } from '../../data/SkirtsData.js';
 import { DressesDatas } from '../../data/DressesData.js';
 import { AccessoriesDatas } from '../../data/AccessoriesData.js';
 import { CropTopDatas } from '../../data/CropTop.js';
+
+import ProductDescription from "../Product/ProductDescription.jsx"
 
 import { useCart } from '../../Context/cartContext';
 import { useWishlist } from '../../Context/WishlistContext';
@@ -1009,12 +1012,31 @@ function PantsDetails() {
                     <td className="border p-2 sm:p-3">36-38</td>
                     <td className="border p-2 sm:p-3">43</td>
                   </tr>
+                  <tr>
+                    <td className="border p-2 sm:p-3 font-semibold">XXL</td>
+                    <td className="border p-2 sm:p-3">38-40</td>
+                    <td className="border p-2 sm:p-3">44</td>
+                  </tr>
+                  <tr>
+                    <td className="border p-2 sm:p-3 font-semibold">3XL</td>
+                    <td className="border p-2 sm:p-3">40-42p</td>
+                    <td className="border p-2 sm:p-3">45</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
           </div>
         </div>
       )}
+
+      {/* PRODUCT DESCRIPTION */}
+
+            <ProductDescription
+              description={product.description}
+              features={product.features}
+              fabric={product.fabric}
+              care={product.care}
+            />
 
       {/* RECOMMENDED PRODUCTS */}
       <div className="mt-12 sm:mt-16">

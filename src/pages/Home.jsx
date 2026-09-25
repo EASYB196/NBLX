@@ -4,7 +4,6 @@ import { useLocation } from 'react-router-dom';
 import Header from '../pages/Header';
 import Category from '../pages/Category';
 import Arrival from '../pages/Arrival';
-import ProductList from '../components/ProductList';
 import Button from '../components/Button';
 import StorySection from '../components/StorySection';
 import CategoryCarousel from '../components/CategoryCarousel';
@@ -34,7 +33,9 @@ function Home() {
       <div id='best-sellers'>
         <BestSeller />
       </div>{' '}
+      {/* <Arrival /> */}
       <Section />
+
       <section className='overflow-hidden border-t border-b py-6 whitespace-nowrap'>
         <Servicefeatures />
 
@@ -42,12 +43,10 @@ function Home() {
           {Array(15).fill('crafted with purpose • NBLX • ').join('')}
         </div>
       </section>
-      {/* <Arrival /> */}
-      {/* <ProductList /> */}
       <CollectionsSection />
       <section className='overflow-hidden border-t border-b py-6 whitespace-nowrap'>
         <div className='animate-marquee text-sm md:text-base font-medium text-gray-600'>
-          {Array(15).fill('crafted with purpose • NBLX • ').join('')}
+          {Array(15).fill('Move Different Think Bigger • NBLX • ').join('')}
         </div>
       </section>
       {/* <StorySection /> */}

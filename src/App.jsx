@@ -20,7 +20,6 @@ import Home from './pages/Home';
 import Sms from './pages/sms';
 import Collections from './pages/Collections';
 import Kids from './pages/Kids';
-import ProductList from './components/ProductList';
 import ProductDetails from './pages/ProductDetails';
 
 import Casual from './pages/NavPages/Mens/Casual';
@@ -104,7 +103,6 @@ function AppContent() {
 
         <Route path='/faqs' element={<Faqs />} />
 
-        <Route path='/products' element={<ProductList />} />
 
         {/* Generic product route */}
         <Route path='/products/:id' element={<ProductDetails />} />

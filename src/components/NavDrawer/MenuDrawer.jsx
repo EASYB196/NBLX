@@ -60,7 +60,7 @@ const MenuDrawer = ({
 
             {/* CONTENT */}
             <div className='p-5 flex flex-col gap-5 text-sm'>
-              <p className='cursor-pointer'>NEW ARRIVALS</p>
+              {/* <p className='cursor-pointer'>NEW ARRIVALS</p> */}
 
               {/* MEN */}
               <div>
@@ -131,7 +131,7 @@ const MenuDrawer = ({
               {/* <p className='cursor-pointer'>DENIM</p> */}
 
               {/* ACCESSORIES */}
-              <div>
+              {/* <div>
                 <div
                   onClick={() => toggleDropdown('accessories')}
                   className='flex justify-between items-center cursor-pointer'
@@ -161,18 +161,20 @@ const MenuDrawer = ({
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
+              </div> */}
+
+              <Link to='/accessories' className='cursor-pointer'>
+                ACCESSORIES{' '}
+              </Link>
+
               {/* 
               <p className='cursor-pointer'>FOOTWEAR</p>
               <p className='cursor-pointer'>LIFESTYLE</p> */}
               <Link to='/#best-sellers' className='cursor-pointer'>
                 BEST SELLER{' '}
               </Link>
-              <div className='mt-35 '>
+              <div className='mt-62 '>
                 <img src={store} alt='store' className='w-full h-44 object-cover rounded-lg' />
-                <button className=' px-3 py-3 border ml-25 bg-black text-white text-lg rounded-full font-bold mt-5'>
-                  View Collection
-                </button>
               </div>
 
               {/* STORE */}

@@ -19,7 +19,7 @@ const Footer = () => {
   const supportLinks = [
     { name: 'Contact Us', path: '/contact' },
     { name: 'FAQs', path: '/faqs' },
-    { name: 'Track Order', path: '/track-order' },
+    // { name: 'Track Order', path: '/track-order' },
     { name: 'Shipping & Delivery Information', path: '/shipping-policy' },
   ];
 
@@ -76,9 +76,7 @@ const Footer = () => {
 
       <div
         className={`overflow-hidden transition-all duration-300 ${
-          openSection === sectionKey
-            ? 'max-h-96 mt-5'
-            : 'max-h-0 md:max-h-96 md:mt-5'
+          openSection === sectionKey ? 'max-h-96 mt-5' : 'max-h-0 md:max-h-96 md:mt-5'
         }`}
       >
         <div className='flex flex-col gap-3'>
@@ -105,19 +103,15 @@ const Footer = () => {
           {/* Brand + Newsletter */}
           <div>
             <Link to='/'>
-              <h2 className='text-3xl font-semibold tracking-wide'>
-                NBLX 
-              </h2>
+              <h2 className='text-3xl font-semibold tracking-wide'>NBLX</h2>
             </Link>
 
             <p className='text-gray-400 leading-relaxed mt-5 max-w-md'>
-              Timeless essentials crafted for everyday confidence. Discover
-              premium fashion designed with simplicity, quality, and style in
-              mind.
+              Timeless essentials crafted for everyday confidence. Discover premium fashion
+              designed with simplicity, quality, and style in mind.
             </p>
 
-            <div className='mt-6 space-y-2 text-gray-400'>
-            </div>
+            <div className='mt-6 space-y-2 text-gray-400'></div>
 
             {/* Newsletter */}
             {/* <div className='mt-10'>
@@ -169,23 +163,13 @@ const Footer = () => {
                 </button>
               </div>
             </div> */}
-
-            
           </div>
 
           {/* Customer Support */}
-          <FooterSection
-            title='Customer Support'
-            links={supportLinks}
-            sectionKey='support'
-          />
+          <FooterSection title='Customer Support' links={supportLinks} sectionKey='support' />
 
           {/* Legal */}
-          <FooterSection
-            title='Legal'
-            links={legalLinks}
-            sectionKey='legal'
-          />
+          <FooterSection title='Legal' links={legalLinks} sectionKey='legal' />
         </div>
 
         {/* Social Section */}
@@ -228,9 +212,7 @@ const Footer = () => {
             </div>
 
             <div className='text-center lg:text-right'>
-              <p className='text-gray-500 text-sm'>
-                Secure Shopping Experience
-              </p>
+              <p className='text-gray-500 text-sm'>Secure Shopping Experience</p>
 
               <p className='text-gray-400 text-sm mt-1'>
                 Trusted fashion essentials crafted with care.

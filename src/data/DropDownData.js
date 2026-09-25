@@ -22,4 +22,8 @@ export const dropdownData = {
     // { name: 'Co-Ords', path: '/croptop' },
     // { name: 'Hand Bags', path: '/croptop' },
   ],
+  // accessories:[
+  //       { name: 'Accessories', path: '/accessories' },
+
+  // ]
 };

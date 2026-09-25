@@ -11,7 +11,7 @@ export const DenimJeansDatas = [
     price: 50000,
     oldPrice: 1000000,
     inStock: 7,
-    sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XS'],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
 
     // colors: [
     //   {
@@ -24,6 +24,25 @@ export const DenimJeansDatas = [
 
     image: elegantcargojean,
     hoverImage: elegantcargojeanbv,
+
+     description:
+      'Elevate your casual style with the Same Faces Collared Button-Up Shirt. Crafted from combed cotton, it offers a refined silhouette featuring clean seam lines and maximum breathability.',
+
+    features: [
+      'Standard tailored fit',
+      'Reinforced crew neck collar',
+      'Breathable weave for all-day comfort',
+      'Anti-pilling finish',
+    ],
+
+    fabric: '100% Combed Organic Cotton (200 GSM)',
+
+    care: [
+      'Machine wash cold with like colors',
+      'Line dry in shade',
+      'Warm iron if needed',
+      'Do not dry clean',
+    ],
   },
 
   {
@@ -32,7 +51,7 @@ export const DenimJeansDatas = [
     price: 65000,
     oldPrice: 1543000,
     inStock: 4,
-    sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XS'],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
 
     // colors: [
     //   {
@@ -44,6 +63,25 @@ export const DenimJeansDatas = [
 
     image: imperialblossomcargodenim,
     hoverImage: imperialblossomcargodenimbv,
+
+     description:
+      'Elevate your casual style with the Same Faces Collared Button-Up Shirt. Crafted from combed cotton, it offers a refined silhouette featuring clean seam lines and maximum breathability.',
+
+    features: [
+      'Standard tailored fit',
+      'Reinforced crew neck collar',
+      'Breathable weave for all-day comfort',
+      'Anti-pilling finish',
+    ],
+
+    fabric: '100% Combed Organic Cotton (200 GSM)',
+
+    care: [
+      'Machine wash cold with like colors',
+      'Line dry in shade',
+      'Warm iron if needed',
+      'Do not dry clean',
+    ],
   },
 
   // {

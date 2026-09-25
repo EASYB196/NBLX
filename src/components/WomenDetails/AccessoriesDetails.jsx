@@ -341,12 +341,7 @@
 import React, { useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useParams, Link } from 'react-router-dom';
-import {
-  FaChevronLeft,
-  FaChevronRight,
-  FaHeart,
-  FaRegHeart,
-} from 'react-icons/fa6';
+import { FaChevronLeft, FaChevronRight, FaHeart, FaRegHeart } from 'react-icons/fa6';
 
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
@@ -366,6 +361,8 @@ import { DressesDatas } from '../../data/DressesData.js';
 import { CropTopDatas } from '../../data/CropTop.js';
 import { HoodiesSweatshirtsDatas } from '../../data/HoodiesSweatshirtsData.js';
 
+import ProductDescription from '../../components/Product/ProductDescription';
+
 import { useCart } from '../../Context/cartContext.jsx';
 import { useWishlist } from '../../Context/WishlistContext.jsx';
 
@@ -374,9 +371,7 @@ function AccessoriesDetails() {
 
   const decodedId = decodeURIComponent(id);
 
-  const product = AccessoriesDatas.find(
-    (item) => String(item.id) === String(decodedId),
-  );
+  const product = AccessoriesDatas.find((item) => String(item.id) === String(decodedId));
 
   const allProducts = useMemo(
     () => [
@@ -451,31 +446,21 @@ function AccessoriesDetails() {
   const { toggleWishlist, isWishlisted } = useWishlist();
 
   if (!product) {
-    return (
-      <div className='text-black p-10'>
-        Product not found
-      </div>
-    );
+    return <div className='text-black p-10'>Product not found</div>;
   }
 
-  const images = [
-    product.image,
-    ...(product.hoverImage ? [product.hoverImage] : []),
-  ].filter(Boolean);
+  const images = [product.image, ...(product.hoverImage ? [product.hoverImage] : [])].filter(
+    Boolean,
+  );
 
   const hasSizes = Array.isArray(product.sizes) && product.sizes.length > 0;
 
   const handlePrev = () => {
-    setCurrentImageIndex(
-      (prev) =>
-        (prev - 1 + images.length) % images.length,
-    );
+    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
   const handleNext = () => {
-    setCurrentImageIndex(
-      (prev) => (prev + 1) % images.length,
-    );
+    setCurrentImageIndex((prev) => (prev + 1) % images.length);
   };
 
   const handleAddToCart = () => {
@@ -510,18 +495,13 @@ function AccessoriesDetails() {
 
         <FaChevronRight />
 
-        <Link
-          to='/Accessories'
-          className='hover:underline'
-        >
+        <Link to='/Accessories' className='hover:underline'>
           Accessories
         </Link>
 
         <FaChevronRight />
 
-        <span className='text-gray-500'>
-          {product.name}
-        </span>
+        <span className='text-gray-500'>{product.name}</span>
       </div>
 
       <div className='max-w-7xl mx-auto flex flex-col md:flex-row gap-10 mt-10'>
@@ -534,13 +514,9 @@ function AccessoriesDetails() {
                 key={`${img}-${idx}`}
                 src={img}
                 alt={`${product.name} view ${idx + 1}`}
-                onClick={() =>
-                  setCurrentImageIndex(idx)
-                }
+                onClick={() => setCurrentImageIndex(idx)}
                 className={`w-20 h-24 object-cover rounded-lg cursor-pointer border ${
-                  currentImageIndex === idx
-                    ? 'border-black'
-                    : 'border-transparent'
+                  currentImageIndex === idx ? 'border-black' : 'border-transparent'
                 }`}
               />
             ))}
@@ -554,23 +530,13 @@ function AccessoriesDetails() {
               onClick={() =>
                 toggleWishlist({
                   ...product,
-                  route: `/Accessories/${encodeURIComponent(
-                    product.id,
-                  )}`,
+                  route: `/Accessories/${encodeURIComponent(product.id)}`,
                 })
               }
-              aria-label={
-                isWishlisted(product.id)
-                  ? 'Remove from wishlist'
-                  : 'Add to wishlist'
-              }
+              aria-label={isWishlisted(product.id) ? 'Remove from wishlist' : 'Add to wishlist'}
               className='absolute top-4 right-4 z-10 bg-white p-2 rounded-full shadow'
             >
-              {isWishlisted(product.id) ? (
-                <FaHeart className='text-red-500' />
-              ) : (
-                <FaRegHeart />
-              )}
+              {isWishlisted(product.id) ? <FaHeart className='text-red-500' /> : <FaRegHeart />}
             </button>
 
             <img
@@ -607,42 +573,28 @@ function AccessoriesDetails() {
         {/* RIGHT - INFO */}
         <div className='flex-1 space-y-6'>
           {/* PRODUCT NAME */}
-          <h1 className='text-2xl md:text-3xl font-bold'>
-            {product.name}
-          </h1>
+          <h1 className='text-2xl md:text-3xl font-bold'>{product.name}</h1>
 
           {/* PRICE */}
-          <div className='text-2xl font-bold'>
-            ₦{product.price.toLocaleString('en-NG')}
-          </div>
+          <div className='text-2xl font-bold'>₦{product.price.toLocaleString('en-NG')}</div>
 
           {/* QUANTITY */}
           <div className='flex items-center gap-4'>
-            <p className='font-semibold text-xl'>
-              Quantity:
-            </p>
+            <p className='font-semibold text-xl'>Quantity:</p>
 
             <button
               type='button'
-              onClick={() =>
-                setQuantity((q) =>
-                  Math.max(1, q - 1),
-                )
-              }
+              onClick={() => setQuantity((q) => Math.max(1, q - 1))}
               className='w-10 h-10 bg-gray-100 rounded'
             >
               −
             </button>
 
-            <span className='text-lg'>
-              {quantity}
-            </span>
+            <span className='text-lg'>{quantity}</span>
 
             <button
               type='button'
-              onClick={() =>
-                setQuantity((q) => q + 1)
-              }
+              onClick={() => setQuantity((q) => q + 1)}
               className='w-10 h-10 bg-gray-100 rounded'
             >
               +
@@ -655,11 +607,8 @@ function AccessoriesDetails() {
               <div className='flex items-center'>
                 <p className='font-semibold text-lg'>
                   Select Size
-
                   {selectedSize && (
-                    <span className='ml-2 text-gray-500 font-normal'>
-                      ({selectedSize})
-                    </span>
+                    <span className='ml-2 text-gray-500 font-normal'>({selectedSize})</span>
                   )}
                 </p>
               </div>
@@ -669,9 +618,7 @@ function AccessoriesDetails() {
                   <button
                     key={size}
                     type='button'
-                    onClick={() =>
-                      setSelectedSize(size)
-                    }
+                    onClick={() => setSelectedSize(size)}
                     className={`min-w-13.75 px-4 py-3 rounded-lg border text-sm font-medium transition-all duration-200 ${
                       selectedSize === size
                         ? 'bg-black text-white border-black'
@@ -705,20 +652,18 @@ function AccessoriesDetails() {
         </div>
       </div>
 
+     
+
       {/* PRODUCT DESCRIPTION */}
-      {product.description && (
-        <div className='mt-10'>
-          <p className='text-gray-700'>
-            {product.description}
-          </p>
-        </div>
-      )}
+      <ProductDescription
+        description={product.description}
+        features={product.features}
+        fabric={product.fabric}
+        care={product.care}
+      />
 
       {/* YOU MAY ALSO LIKE */}
-      <YouMayAlsoLike
-        products={allProducts}
-        currentProductId={product.id}
-      />
+      <YouMayAlsoLike products={allProducts} currentProductId={product.id} />
     </div>
   );
 }

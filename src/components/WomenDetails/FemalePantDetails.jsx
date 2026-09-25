@@ -449,6 +449,7 @@
 
 // export default FemalePantDetails;
 
+
 import React, { useEffect, useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useParams, Link } from 'react-router-dom';
@@ -468,6 +469,10 @@ import { DressesDatas } from '../../data/DressesData.js';
 import { AccessoriesDatas } from '../../data/AccessoriesData.js';
 import { CropTopDatas } from '../../data/CropTop.js';
 import { HoodiesSweatshirtsDatas } from '../../data/HoodiesSweatshirtsData.js';
+
+import ProductDescription from '../../components/Product/ProductDescription';
+
+
 
 import { useCart } from '../../Context/cartContext';
 import { useWishlist } from '../../Context/WishlistContext';
@@ -1039,6 +1044,14 @@ function FemalePantDetails() {
           </div>
         </div>
       )}
+
+  {/* PRODUCT DESCRIPTION */}
+      <ProductDescription
+        description={product.description}
+        features={product.features}
+        fabric={product.fabric}
+        care={product.care}
+      />
 
       <YouMayAlsoLike products={allProducts} currentProductId={product.id} />
     </div>
