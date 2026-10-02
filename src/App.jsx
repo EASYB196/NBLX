@@ -252,16 +252,7 @@
 
 // export default App;
 
-
-
-
-
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useLocation,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 
 import './App.css';
 import { Toaster } from 'react-hot-toast';
@@ -350,10 +341,7 @@ function AppContent() {
     <>
       <ScrollToTop />
 
-      <Toaster
-        position='top-center'
-        reverseOrder={false}
-      />
+      <Toaster position='top-center' reverseOrder={false} />
 
       <CartDrawer />
 
@@ -390,248 +378,129 @@ function AppContent() {
             GENERIC PRODUCT ROUTE
         ========================= */}
 
-        <Route
-          path='/products/:id'
-          element={<ProductDetails />}
-        />
+        <Route path='/products/:id' element={<ProductDetails />} />
 
         {/* =========================
             MEN CATEGORY PAGES
         ========================= */}
 
-        <Route
-          path='/casuals'
-          element={<Casual />}
-        />
+        <Route path='/casuals' element={<Casual />} />
 
-        <Route
-          path='/pants'
-          element={<Pants />}
-        />
+        <Route path='/pants' element={<Pants />} />
 
-        <Route
-          path='/t-shirt'
-          element={<Tshirt />}
-        />
+        <Route path='/t-shirt' element={<Tshirt />} />
 
         {/* <Route path='/shirts' element={<Shirt />} /> */}
 
-        <Route
-          path='/agbada'
-          element={<Agbada />}
-        />
+        <Route path='/agbada' element={<Agbada />} />
 
-        <Route
-          path='/Denim-Jeans'
-          element={<DenimJean />}
-        />
+        <Route path='/Denim-Jeans' element={<DenimJean />} />
 
-        <Route
-          path='/Outerwear-Jackets'
-          element={<OuterwearJacket />}
-        />
+        <Route path='/Outerwear-Jackets' element={<OuterwearJacket />} />
 
-        <Route
-          path='/Hoodies-Sweatshirts'
-          element={<HoodiesSweatshirts />}
-        />
+        <Route path='/Hoodies-Sweatshirts' element={<HoodiesSweatshirts />} />
 
-        <Route
-          path='/jalabiya'
-          element={<Jalabiya />}
-        />
+        <Route path='/jalabiya' element={<Jalabiya />} />
 
         {/* =========================
             WOMEN CATEGORY PAGES
         ========================= */}
 
-        <Route
-          path='/crop-top'
-          element={<CropTop />}
-        />
+        <Route path='/crop-top' element={<CropTop />} />
 
-        <Route
-          path='/skirts'
-          element={<Skirts />}
-        />
+        <Route path='/skirts' element={<Skirts />} />
 
-        <Route
-          path='/female-pant'
-          element={<FemalePant />}
-        />
+        <Route path='/female-pant' element={<FemalePant />} />
 
-        <Route
-          path='/tops'
-          element={<Top />}
-        />
+        <Route path='/tops' element={<Top />} />
 
-        <Route
-          path='/accessories'
-          element={<Accessories />}
-        />
+        <Route path='/accessories' element={<Accessories />} />
 
-        <Route
-          path='/Dresses'
-          element={<Dresses />}
-        />
+        <Route path='/Dresses' element={<Dresses />} />
 
         {/* =========================
             ACCESSORIES
         ========================= */}
 
-        <Route
-          path='/watches'
-          element={<Watches />}
-        />
+        <Route path='/watches' element={<Watches />} />
 
         {/* =========================
             MEN PRODUCT DETAILS
         ========================= */}
 
-        <Route
-          path='/pants/:id'
-          element={<PantsDetails />}
-        />
+        <Route path='/pants/:id' element={<PantsDetails />} />
 
-        <Route
-          path='/t-shirt/:id'
-          element={<TshirtDetails />}
-        />
+        <Route path='/t-shirt/:id' element={<TshirtDetails />} />
 
         {/* <Route
           path='/shirts/:id'
           element={<ShirtDetails />}
         /> */}
 
-        <Route
-          path='/Denim-Jeans/:id'
-          element={<DenimJeanDetails />}
-        />
+        <Route path='/Denim-Jeans/:id' element={<DenimJeanDetails />} />
 
-        <Route
-          path='/Outerwear-Jackets/:id'
-          element={<OuterwearJacketsDetails />}
-        />
+        <Route path='/Outerwear-Jackets/:id' element={<OuterwearJacketsDetails />} />
 
-        <Route
-          path='/Hoodies-Sweatshirts/:id'
-          element={<HoodiesSweatshirtsDetails />}
-        />
+        <Route path='/Hoodies-Sweatshirts/:id' element={<HoodiesSweatshirtsDetails />} />
 
         {/* =========================
             WOMEN PRODUCT DETAILS
         ========================= */}
 
-        <Route
-          path='/crop-top/:id'
-          element={<CropTopDetails />}
-        />
+        <Route path='/crop-top/:id' element={<CropTopDetails />} />
 
-        <Route
-          path='/skirts/:id'
-          element={<SkirtsDetails />}
-        />
+        <Route path='/skirts/:id' element={<SkirtsDetails />} />
 
-        <Route
-          path='/female-pant/:id'
-          element={<FemalePantDetails />}
-        />
+        <Route path='/female-pant/:id' element={<FemalePantDetails />} />
 
-        <Route
-          path='/tops/:id'
-          element={<TopDetails />}
-        />
+        <Route path='/tops/:id' element={<TopDetails />} />
 
-        <Route
-          path='/Accessories/:id'
-          element={<AccessoriesDetails />}
-        />
+        <Route path='/Accessories/:id' element={<AccessoriesDetails />} />
 
-        <Route
-          path='/dresses/:id'
-          element={<DressesDetails />}
-        />
+        <Route path='/dresses/:id' element={<DressesDetails />} />
 
         {/* =========================
             BEST SELLERS
         ========================= */}
 
-        <Route
-          path='/bestseller'
-          element={<BestSeller />}
-        />
+        <Route path='/bestseller' element={<BestSeller />} />
 
-        <Route
-          path='/bestseller/products/:id'
-          element={<BestSellerDetail />}
-        />
+        <Route path='/bestseller/products/:id' element={<BestSellerDetail />} />
 
         {/* =========================
             AUTHENTICATION
         ========================= */}
 
-        <Route
-          path='/auth/login'
-          element={<AuthForm />}
-        />
+        <Route path='/auth/login' element={<AuthForm />} />
 
-        <Route
-          path='/auth/signup'
-          element={<AuthForm />}
-        />
+        <Route path='/auth/signup' element={<AuthForm />} />
 
-        <Route
-          path='/auth/sms'
-          element={<Sms />}
-        />
+        <Route path='/auth/sms' element={<Sms />} />
 
         {/* =========================
             INFORMATION / POLICIES
         ========================= */}
 
-        <Route
-          path='/terms-of-service'
-          element={<TermsOfService />}
-        />
+        <Route path='/terms-of-service' element={<TermsOfService />} />
 
-        <Route
-          path='/privacy-policy'
-          element={<PrivacyPolicy />}
-        />
+        <Route path='/privacy-policy' element={<PrivacyPolicy />} />
 
-        <Route
-          path='/returns'
-          element={<ReturnPolicy />}
-        />
+        <Route path='/returns' element={<ReturnPolicy />} />
 
-        <Route
-          path='/shipping-policy'
-          element={<ShippingPolicy />}
-        />
+        <Route path='/shipping-policy' element={<ShippingPolicy />} />
 
-        <Route
-          path='/story'
-          element={<Story />}
-        />
+        <Route path='/story' element={<Story />} />
 
-        <Route
-          path='/contact'
-          element={<Contact />}
-        />
+        <Route path='/contact' element={<Contact />} />
 
         {/* =========================
             GENERIC PRODUCT ROUTE
         ========================= */}
 
-        <Route
-          path='/product/:type/:id'
-          element={<ProductDetails />}
-        />
+        <Route path='/product/:type/:id' element={<ProductDetails />} />
       </Routes>
 
-      {!isAuthPage && location.pathname !== '/checkout' && (
-        <Footer />
-      )}
+      {!isAuthPage && location.pathname !== '/checkout' && <Footer />}
     </>
   );
 }
