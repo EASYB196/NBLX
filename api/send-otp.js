@@ -396,14 +396,11 @@
 //   }
 // }
 
-
 import { Resend } from 'resend';
-import { adminAuth, adminDb } from '../../lib/firebaseAdmin.js';
-import { generateOtp, hashOtp } from '../../lib/otp.js';
+import { adminAuth, adminDb } from '../lib/firebaseAdmin.js';
+import { generateOtp, hashOtp } from '../lib/otp.js';
 
-const resend = new Resend(
-  process.env.RESEND_API_KEY
-);
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const OTP_EXPIRY = 10 * 60 * 1000;
 const RESEND_COOLDOWN = 30 * 1000;
@@ -440,71 +437,36 @@ export default async function handler(req, res) {
       });
     }
 
-    // ==========================================
-    // VERIFY FIREBASE TOKEN
-    // ==========================================
-
-    const decodedToken =
-      await adminAuth.verifyIdToken(idToken);
-
+    const decodedToken = await adminAuth.verifyIdToken(idToken);
     const uid = decodedToken.uid;
 
-    // ==========================================
-    // GET FIREBASE USER
-    // ==========================================
-
-    const userRecord =
-      await adminAuth.getUser(uid);
-
-    const email =
-      userRecord.email;
+    const userRecord = await adminAuth.getUser(uid);
+    const email = userRecord.email;
 
     if (!email) {
       return res.status(400).json({
         success: false,
-        message:
-          'No email address is associated with this account',
+        message: 'No email address is associated with this account',
       });
     }
-
-    // ==========================================
-    // ALREADY VERIFIED
-    // ==========================================
 
     if (userRecord.emailVerified) {
       return res.status(400).json({
         success: false,
-        message:
-          'This email address is already verified',
+        message: 'This email address is already verified',
       });
     }
 
-    // ==========================================
-    // OTP DOCUMENT
-    // ==========================================
-
-    const otpRef =
-      adminDb
-        .collection('emailOtps')
-        .doc(uid);
-
-    const existingOtp =
-      await otpRef.get();
-
-    // ==========================================
-    // RATE LIMIT
-    // ==========================================
+    const otpRef = adminDb.collection('emailOtps').doc(uid);
+    const existingOtp = await otpRef.get();
 
     if (existingOtp.exists) {
-      const existingData =
-        existingOtp.data();
+      const existingData = existingOtp.data();
 
       const lastSentAt =
-        existingData?.lastSentAt?.toMillis?.() ||
-        0;
+        existingData?.lastSentAt?.toMillis?.() || 0;
 
-      const elapsed =
-        Date.now() - lastSentAt;
+      const elapsed = Date.now() - lastSentAt;
 
       if (elapsed < RESEND_COOLDOWN) {
         return res.status(429).json({
@@ -518,25 +480,9 @@ export default async function handler(req, res) {
       }
     }
 
-    // ==========================================
-    // GENERATE OTP
-    // ==========================================
-
-    const otp =
-      generateOtp();
-
-    const otpHash =
-      hashOtp(
-        otp,
-        uid
-      );
-
-    const expiresAt =
-      Date.now() + OTP_EXPIRY;
-
-    // ==========================================
-    // SAVE OTP
-    // ==========================================
+    const otp = generateOtp();
+    const otpHash = hashOtp(otp, uid);
+    const expiresAt = Date.now() + OTP_EXPIRY;
 
     await otpRef.set({
       uid,
@@ -548,27 +494,18 @@ export default async function handler(req, res) {
       createdAt: new Date(),
     });
 
-    // ==========================================
-    // SEND EMAIL
-    // ==========================================
+    const displayName = escapeHtml(
+      userRecord.displayName || 'there'
+    );
 
-    const displayName =
-      escapeHtml(
-        userRecord.displayName || 'there'
-      );
-
-    const {
-      data,
-      error,
-    } = await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from:
         process.env.RESEND_FROM_EMAIL ||
         'onboarding@resend.dev',
 
       to: [email],
 
-      subject:
-        'Your NBLX verification code',
+      subject: 'Your NBLX verification code',
 
       html: `
         <!DOCTYPE html>
@@ -589,7 +526,6 @@ export default async function handler(req, res) {
               font-family:Arial,Helvetica,sans-serif;
             "
           >
-
             <div
               style="
                 max-width:560px;
@@ -600,7 +536,6 @@ export default async function handler(req, res) {
                 box-shadow:0 10px 30px rgba(0,0,0,0.08);
               "
             >
-
               <div
                 style="
                   background:#000000;
@@ -626,7 +561,6 @@ export default async function handler(req, res) {
                   text-align:center;
                 "
               >
-
                 <h2
                   style="
                     margin:0 0 12px;
@@ -702,7 +636,6 @@ export default async function handler(req, res) {
                   If you did not create a NBLX account,
                   you can safely ignore this email.
                 </p>
-
               </div>
 
               <div
@@ -722,46 +655,31 @@ export default async function handler(req, res) {
                   © ${new Date().getFullYear()} NBLX
                 </p>
               </div>
-
             </div>
-
           </body>
         </html>
       `,
     });
 
-    // ==========================================
-    // RESEND ERROR
-    // ==========================================
-
     if (error) {
-      console.error(
-        'Resend error:',
-        error
-      );
+      console.error('Resend error:', error);
 
       await otpRef.delete();
 
       return res.status(500).json({
         success: false,
-        message:
-          'Unable to send verification email',
+        message: 'Unable to send verification email',
       });
     }
 
     return res.status(200).json({
       success: true,
-      message:
-        'Verification code sent successfully',
+      message: 'Verification code sent successfully',
       email,
       id: data?.id || null,
     });
-
   } catch (error) {
-    console.error(
-      'Send OTP error:',
-      error
-    );
+    console.error('Send OTP error:', error);
 
     return res.status(500).json({
       success: false,

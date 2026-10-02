@@ -226,15 +226,12 @@
 
 
 
-
 import {
   adminAuth,
   adminDb,
-} from '../../lib/firebaseAdmin.js';
+} from '../lib/firebaseAdmin.js';
 
-import {
-  hashOtp,
-} from '../../lib/otp.js';
+import { hashOtp } from '../lib/otp.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -245,20 +242,12 @@ export default async function handler(req, res) {
   }
 
   try {
-    const {
-      idToken,
-      otp,
-    } = req.body || {};
-
-    // ==========================================
-    // VALIDATION
-    // ==========================================
+    const { idToken, otp } = req.body || {};
 
     if (!idToken) {
       return res.status(401).json({
         success: false,
-        message:
-          'Authentication token is required',
+        message: 'Authentication token is required',
       });
     }
 
@@ -270,29 +259,15 @@ export default async function handler(req, res) {
       });
     }
 
-    // ==========================================
-    // VERIFY FIREBASE TOKEN
-    // ==========================================
-
     const decodedToken =
-      await adminAuth.verifyIdToken(
-        idToken
-      );
+      await adminAuth.verifyIdToken(idToken);
 
-    const uid =
-      decodedToken.uid;
-
-    // ==========================================
-    // GET OTP
-    // ==========================================
+    const uid = decodedToken.uid;
 
     const otpRef =
-      adminDb
-        .collection('emailOtps')
-        .doc(uid);
+      adminDb.collection('emailOtps').doc(uid);
 
-    const otpSnapshot =
-      await otpRef.get();
+    const otpSnapshot = await otpRef.get();
 
     if (!otpSnapshot.exists) {
       return res.status(400).json({
@@ -302,17 +277,9 @@ export default async function handler(req, res) {
       });
     }
 
-    const otpData =
-      otpSnapshot.data();
+    const otpData = otpSnapshot.data();
 
-    // ==========================================
-    // CHECK EXPIRY
-    // ==========================================
-
-    if (
-      Date.now() >
-      Number(otpData.expiresAt)
-    ) {
+    if (Date.now() > Number(otpData.expiresAt)) {
       await otpRef.delete();
 
       return res.status(400).json({
@@ -322,14 +289,7 @@ export default async function handler(req, res) {
       });
     }
 
-    // ==========================================
-    // CHECK ATTEMPTS
-    // ==========================================
-
-    const attempts =
-      Number(
-        otpData.attempts || 0
-      );
+    const attempts = Number(otpData.attempts || 0);
 
     if (attempts >= 5) {
       await otpRef.delete();
@@ -341,64 +301,31 @@ export default async function handler(req, res) {
       });
     }
 
-    // ==========================================
-    // HASH ENTERED OTP
-    // ==========================================
+    const enteredHash = hashOtp(otp, uid);
 
-    const enteredHash =
-      hashOtp(
-        otp,
-        uid
-      );
-
-    // ==========================================
-    // INVALID OTP
-    // ==========================================
-
-    if (
-      enteredHash !==
-      otpData.otpHash
-    ) {
+    if (enteredHash !== otpData.otpHash) {
       await otpRef.update({
-        attempts:
-          attempts + 1,
+        attempts: attempts + 1,
       });
 
       return res.status(400).json({
         success: false,
-        message:
-          'Invalid verification code',
+        message: 'Invalid verification code',
       });
     }
 
-    // ==========================================
-    // MARK EMAIL VERIFIED
-    // ==========================================
-
-    await adminAuth.updateUser(
-      uid,
-      {
-        emailVerified: true,
-      }
-    );
-
-    // ==========================================
-    // DELETE OTP
-    // ==========================================
+    await adminAuth.updateUser(uid, {
+      emailVerified: true,
+    });
 
     await otpRef.delete();
 
     return res.status(200).json({
       success: true,
-      message:
-        'Email verified successfully',
+      message: 'Email verified successfully',
     });
-
   } catch (error) {
-    console.error(
-      'Verify OTP error:',
-      error
-    );
+    console.error('Verify OTP error:', error);
 
     return res.status(500).json({
       success: false,
