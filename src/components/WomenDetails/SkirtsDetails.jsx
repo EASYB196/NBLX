@@ -435,8 +435,47 @@ function SkirtsDetails() {
   const [quantity, setQuantity] = useState(1);
   const [showSizeChart, setShowSizeChart] = useState(false);
 
-  const { addToCart, setShowCart } = useCart();
+  const { addToCart, setShowCart,buyNow
+ } = useCart();
   const { toggleWishlist, isWishlisted } = useWishlist();
+
+
+
+    /*
+   * BUY NOW
+   *
+   * All processing/loading/navigation is
+   * handled by CartContext.
+   *
+   * No local spinner.
+   * No Processing text.
+   */
+  const handleBuyNow = () => {
+    const cartProduct =
+      createCartProduct();
+
+    buyNow(
+      cartProduct,
+      selectedSize || '',
+      quantity,
+      selectedColor || 'Default',
+    );
+  };
+   /*
+   * CREATE CART PRODUCT
+   *
+   * Shared by Add to Cart and Buy Now.
+   */
+  const createCartProduct = () => ({
+    ...product,
+    route: `/t-shirt/${encodeURIComponent(
+      product.id,
+    )}`,
+    selectedColor:
+      selectedColor || 'Default',
+    image: images[currentImageIndex],
+    images: images,
+  });
 
   // Set default color
   useEffect(() => {
@@ -764,8 +803,9 @@ function SkirtsDetails() {
               Add to Cart
             </button>
 
-            <button
+               <button
               type='button'
+              onClick={handleBuyNow}
               className='w-full md:w-55 bg-black text-white py-3 rounded-xl hover:bg-gray-900 transition'
             >
               Buy it now

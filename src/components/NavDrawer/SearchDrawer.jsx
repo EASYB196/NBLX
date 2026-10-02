@@ -462,9 +462,9 @@
 
 //                   <div
 //                     className='
-//     flex 
-//     flex-wrap 
-//     gap-2 
+//     flex
+//     flex-wrap
+//     gap-2
 //   '
 //                   >
 //                     {[
@@ -1271,7 +1271,6 @@
 
 // export default SearchDrawer;
 
-
 import React, { useEffect, useMemo, useRef } from 'react';
 
 import { Link } from 'react-router-dom';
@@ -1331,19 +1330,9 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
       const title = product?.title || '';
       const category = product?.category || '';
       const description = product?.description || '';
-      const tags = Array.isArray(product?.tags)
-        ? product.tags.join(' ')
-        : product?.tags || '';
+      const tags = Array.isArray(product?.tags) ? product.tags.join(' ') : product?.tags || '';
 
-      const searchableText = [
-        name,
-        title,
-        category,
-        description,
-        tags,
-      ]
-        .join(' ')
-        .toLowerCase();
+      const searchableText = [name, title, category, description, tags].join(' ').toLowerCase();
 
       return searchableText.includes(query);
     });
@@ -1351,10 +1340,7 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
     // Remove duplicate products
     const uniqueProducts = Array.from(
       new Map(
-        results.map((product) => [
-          product.id || product.name?.toLowerCase(),
-          product,
-        ]),
+        results.map((product) => [product.id || product.name?.toLowerCase(), product]),
       ).values(),
     );
 
@@ -1366,9 +1352,10 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
   // ======================================================
 
   const recommendedProducts = useMemo(() => {
-    return UniqueSearchProducts.filter(
-      (product) => product?.image && product?.name,
-    ).slice(0, 4);
+    return UniqueSearchProducts.filter((product) => product?.image && product?.name).slice(
+      0,
+      4,
+    );
   }, []);
 
   // ======================================================
@@ -1431,11 +1418,7 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
           transition-opacity
           duration-300
 
-          ${
-            open
-              ? 'opacity-100 visible'
-              : 'opacity-0 invisible pointer-events-none'
-          }
+          ${open ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}
         `}
         onClick={closeDrawer}
       />
@@ -1475,52 +1458,50 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
           ${open ? 'translate-x-0' : 'translate-x-full'}
         `}
       >
-        <div className="h-full flex flex-col">
-
+        <div className='h-full flex flex-col'>
           {/* ==================================================
               HEADER
           ================================================== */}
 
           <header
-            className="
+            className='
               px-5
               sm:px-7
               pt-6
               pb-5
               border-b
               border-gray-200
-            "
+            '
           >
-
             {/* HEADER TOP */}
 
             <div
-              className="
+              className='
                 flex
                 items-center
                 justify-between
                 mb-6
-              "
+              '
             >
               <div>
                 <p
-                  className="
+                  className='
                     text-[10px]
                     uppercase
                     tracking-[0.3em]
                     text-gray-400
                     mb-1
-                  "
+                  '
                 >
                   NBLX
                 </p>
 
                 <h2
-                  className="
+                  className='
                     text-xl
                     font-bold
                     tracking-tight
-                  "
+                  '
                 >
                   Search
                 </h2>
@@ -1529,10 +1510,10 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
               {/* CLOSE */}
 
               <button
-                type="button"
+                type='button'
                 onClick={closeDrawer}
-                aria-label="Close search"
-                className="
+                aria-label='Close search'
+                className='
                   group
 
                   w-10
@@ -1557,26 +1538,26 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
                   focus:outline-none
                   focus-visible:ring-2
                   focus-visible:ring-black
-                "
+                '
               >
                 <FaTimes
-                  className="
+                  className='
                     text-sm
 
                     transition-transform
                     duration-300
 
                     group-hover:rotate-90
-                  "
+                  '
                 />
               </button>
             </div>
 
             {/* SEARCH INPUT */}
 
-            <div className="relative group">
+            <div className='relative group'>
               <FaSearch
-                className="
+                className='
                   absolute
                   left-4
                   top-1/2
@@ -1592,17 +1573,17 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
                   duration-300
 
                   group-focus-within:text-black
-                "
+                '
               />
 
               <input
                 ref={inputRef}
-                type="search"
+                type='search'
                 value={searchQuery}
                 onChange={(event) => setSearchQuery(event.target.value)}
-                placeholder="Search shirts, hoodies, jackets..."
-                autoComplete="off"
-                className="
+                placeholder='Search shirts, hoodies, jackets...'
+                autoComplete='off'
+                className='
                   w-full
                   h-13
 
@@ -1627,17 +1608,17 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
 
                   transition-all
                   duration-300
-                "
+                '
               />
 
               {/* CLEAR */}
 
               {searchQuery && (
                 <button
-                  type="button"
+                  type='button'
                   onClick={clearSearch}
-                  aria-label="Clear search"
-                  className="
+                  aria-label='Clear search'
+                  className='
                     absolute
                     right-4
                     top-1/2
@@ -1661,9 +1642,9 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
 
                     transition-all
                     duration-200
-                  "
+                  '
                 >
-                  <FaTimes className="text-[9px]" />
+                  <FaTimes className='text-[9px]' />
                 </button>
               )}
             </div>
@@ -1674,7 +1655,7 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
           ================================================== */}
 
           <main
-            className="
+            className='
               flex-1
               overflow-y-auto
 
@@ -1682,9 +1663,8 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
               sm:px-7
 
               py-6
-            "
+            '
           >
-
             {/* ==================================================
                 INITIAL STATE
             ================================================== */}
@@ -1692,45 +1672,45 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
             {!searchQuery.trim() && (
               <section>
                 <p
-                  className="
+                  className='
                     text-sm
                     text-gray-500
                     leading-relaxed
                     mb-7
-                  "
+                  '
                 >
                   Find your next piece from the complete NBLX collection.
                 </p>
 
                 {/* QUICK SEARCH */}
 
-                <div className="mb-9">
+                <div className='mb-9'>
                   <div
-                    className="
+                    className='
                       flex
                       items-center
                       justify-between
                       mb-4
-                    "
+                    '
                   >
                     <h3
-                      className="
+                      className='
                         text-xs
                         font-bold
                         uppercase
                         tracking-[0.18em]
-                      "
+                      '
                     >
                       Explore
                     </h3>
                   </div>
 
                   <div
-                    className="
+                    className='
                       flex
                       flex-wrap
                       gap-2
-                    "
+                    '
                   >
                     {[
                       { name: 'T-Shirts & Tops', path: '/t-shirt' },
@@ -1744,18 +1724,16 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
                         name: 'Hoodies & Sweatshirts',
                         path: '/Hoodies-Sweatshirts',
                       },
-                      { name: 'Shirts', path: '/kafans-shirts' },
-                      { name: 'Crop Top', path: '/crop-top' },
+
                       { name: 'Tops', path: '/tops' },
                       { name: 'Female Pants', path: '/female-pant' },
-                      { name: 'Dresses', path: '/dresses' },
                       { name: 'Skirts', path: '/skirts' },
                     ].map((category) => (
                       <Link
                         key={category.path}
                         to={category.path}
                         onClick={closeDrawer}
-                        className="
+                        className='
                           group
 
                           px-4
@@ -1777,7 +1755,7 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
 
                           transition-all
                           duration-300
-                        "
+                        '
                       >
                         {category.name}
                       </Link>
@@ -1792,28 +1770,28 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
                 {recommendedProducts.length > 0 && (
                   <section>
                     <div
-                      className="
+                      className='
                         flex
                         items-center
                         justify-between
                         mb-4
-                      "
+                      '
                     >
                       <h3
-                        className="
+                        className='
                           text-xs
                           font-bold
                           uppercase
                           tracking-[0.18em]
-                        "
+                        '
                       >
                         Featured
                       </h3>
 
                       <Link
-                        to="/collections"
+                        to='/collections'
                         onClick={handleProductClick}
-                        className="
+                        className='
                           group
 
                           flex
@@ -1822,51 +1800,50 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
 
                           text-xs
                           font-semibold
-                        "
+                        '
                       >
                         View all
-
                         <FaArrowRight
-                          className="
+                          className='
                             text-[9px]
 
                             transition-transform
                             duration-300
 
                             group-hover:translate-x-1
-                          "
+                          '
                         />
                       </Link>
                     </div>
 
                     <div
-                      className="
+                      className='
                         grid
                         grid-cols-2
                         gap-x-4
                         gap-y-6
-                      "
+                      '
                     >
                       {recommendedProducts.map((product) => (
                         <Link
                           key={product.id}
                           to={getProductRoute(product)}
                           onClick={handleProductClick}
-                          className="group"
+                          className='group'
                         >
                           <div
-                            className="
+                            className='
                               relative
                               aspect-[4/5]
                               overflow-hidden
                               rounded-xl
                               bg-gray-100
-                            "
+                            '
                           >
                             <img
                               src={product.image}
                               alt={product.name}
-                              className="
+                              className='
                                 w-full
                                 h-full
 
@@ -1877,13 +1854,13 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
                                 ease-out
 
                                 group-hover:scale-105
-                              "
+                              '
                             />
 
                             {/* HOVER CTA */}
 
                             <div
-                              className="
+                              className='
                                 absolute
                                 left-3
                                 right-3
@@ -1898,10 +1875,10 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
 
                                 transition-all
                                 duration-300
-                              "
+                              '
                             >
                               <div
-                                className="
+                                className='
                                   flex
                                   items-center
                                   justify-between
@@ -1914,21 +1891,21 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
                                   rounded-lg
 
                                   shadow-lg
-                                "
+                                '
                               >
                                 <span
-                                  className="
+                                  className='
                                     text-[10px]
                                     font-bold
                                     uppercase
                                     tracking-[0.15em]
-                                  "
+                                  '
                                 >
                                   View Product
                                 </span>
 
                                 <span
-                                  className="
+                                  className='
                                     w-6
                                     h-6
 
@@ -1940,36 +1917,33 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
                                     flex
                                     items-center
                                     justify-center
-                                  "
+                                  '
                                 >
-                                  <FaArrowRight className="text-[8px]" />
+                                  <FaArrowRight className='text-[8px]' />
                                 </span>
                               </div>
                             </div>
                           </div>
 
                           <p
-                            className="
+                            className='
                               mt-3
                               text-sm
                               font-semibold
                               truncate
-                            "
+                            '
                           >
                             {product.name}
                           </p>
 
                           <p
-                            className="
+                            className='
                               mt-1
                               text-sm
                               text-gray-500
-                            "
+                            '
                           >
-                            ₦
-                            {Number(product.price || 0).toLocaleString(
-                              'en-NG',
-                            )}
+                            ₦{Number(product.price || 0).toLocaleString('en-NG')}
                           </p>
                         </Link>
                       ))}
@@ -1986,31 +1960,31 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
             {searchQuery.trim() && filteredProducts.length > 0 && (
               <section>
                 <div
-                  className="
+                  className='
                     flex
                     items-end
                     justify-between
                     mb-5
-                  "
+                  '
                 >
                   <div>
                     <p
-                      className="
+                      className='
                         text-[10px]
                         uppercase
                         tracking-[0.2em]
                         text-gray-400
                         mb-1
-                      "
+                      '
                     >
                       Results
                     </p>
 
                     <h3
-                      className="
+                      className='
                         text-lg
                         font-bold
-                      "
+                      '
                     >
                       {filteredProducts.length} product
                       {filteredProducts.length !== 1 ? 's' : ''}
@@ -2020,13 +1994,13 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
 
                 {/* RESULTS */}
 
-                <div className="space-y-2">
+                <div className='space-y-2'>
                   {filteredProducts.map((product) => (
                     <Link
                       key={product.id}
                       to={getProductRoute(product)}
                       onClick={handleProductClick}
-                      className="
+                      className='
                         group
                         flex
                         items-center
@@ -2036,12 +2010,12 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
                         hover:bg-gray-50
                         transition-all
                         duration-300
-                      "
+                      '
                     >
                       {/* IMAGE */}
 
                       <div
-                        className="
+                        className='
                           relative
 
                           w-20
@@ -2054,12 +2028,12 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
                           rounded-lg
 
                           bg-gray-100
-                        "
+                        '
                       >
                         <img
                           src={product.image}
                           alt={product.name}
-                          className="
+                          className='
                             w-full
                             h-full
 
@@ -2069,58 +2043,55 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
                             duration-500
 
                             group-hover:scale-105
-                          "
+                          '
                         />
                       </div>
 
                       {/* PRODUCT INFO */}
 
                       <div
-                        className="
+                        className='
                           flex-1
                           min-w-0
-                        "
+                        '
                       >
                         <h4
-                          className="
+                          className='
                             text-sm
                             font-semibold
                             truncate
-                          "
+                          '
                         >
                           {product.name}
                         </h4>
 
                         {product.category && (
                           <p
-                            className="
+                            className='
                               mt-1
                               text-xs
                               text-gray-400
-                            "
+                            '
                           >
                             {product.category}
                           </p>
                         )}
 
                         <p
-                          className="
+                          className='
                             mt-2
                             text-sm
                             font-medium
-                          "
+                          '
                         >
-                          ₦
-                          {Number(product.price || 0).toLocaleString(
-                            'en-NG',
-                          )}
+                          ₦{Number(product.price || 0).toLocaleString('en-NG')}
                         </p>
                       </div>
 
                       {/* ARROW */}
 
                       <div
-                        className="
+                        className='
                           w-9
                           h-9
 
@@ -2141,17 +2112,17 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
 
                           transition-all
                           duration-300
-                        "
+                        '
                       >
                         <FaArrowRight
-                          className="
+                          className='
                             text-[9px]
 
                             transition-transform
                             duration-300
 
                             group-hover:translate-x-0.5
-                          "
+                          '
                         />
                       </div>
                     </Link>
@@ -2167,15 +2138,15 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
             {searchQuery.trim() && filteredProducts.length === 0 && (
               <section>
                 <div
-                  className="
+                  className='
                     text-center
 
                     pt-5
                     pb-8
-                  "
+                  '
                 >
                   <div
-                    className="
+                    className='
                       w-14
                       h-14
 
@@ -2190,39 +2161,36 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
                       justify-center
 
                       mb-5
-                    "
+                    '
                   >
-                    <FaSearch className="text-gray-400" />
+                    <FaSearch className='text-gray-400' />
                   </div>
 
                   <p
-                    className="
+                    className='
                       text-[10px]
                       uppercase
                       tracking-[0.2em]
                       text-gray-400
 
                       mb-2
-                    "
+                    '
                   >
                     Nothing found
                   </p>
 
                   <h3
-                    className="
+                    className='
                       text-xl
                       font-bold
-                    "
+                    '
                   >
                     No results for
-                    <span className="font-normal">
-                      {' '}
-                      "{searchQuery}"
-                    </span>
+                    <span className='font-normal'> "{searchQuery}"</span>
                   </h3>
 
                   <p
-                    className="
+                    className='
                       max-w-sm
 
                       mx-auto
@@ -2233,18 +2201,18 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
                       text-gray-500
 
                       leading-relaxed
-                    "
+                    '
                   >
-                    Try another search or explore the full NBLX collection
-                    to discover something different.
+                    Try another search or explore the full NBLX collection to discover something
+                    different.
                   </p>
 
                   {/* VIEW COLLECTION */}
 
                   <Link
-                    to="/collections"
+                    to='/collections'
                     onClick={handleProductClick}
-                    className="
+                    className='
                       group
 
                       inline-flex
@@ -2278,12 +2246,11 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
 
                       shadow-sm
                       hover:shadow-lg
-                    "
+                    '
                   >
                     VIEW COLLECTION
-
                     <span
-                      className="
+                      className='
                         w-6
                         h-6
 
@@ -2300,9 +2267,9 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
                         duration-300
 
                         group-hover:translate-x-1
-                      "
+                      '
                     >
-                      <FaArrowRight className="text-[8px]" />
+                      <FaArrowRight className='text-[8px]' />
                     </span>
                   </Link>
                 </div>
@@ -2311,37 +2278,37 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
 
                 {recommendedProducts.length > 0 && (
                   <section
-                    className="
+                    className='
                       border-t
                       border-gray-100
 
                       pt-7
-                    "
+                    '
                   >
                     <div
-                      className="
+                      className='
                         flex
                         items-center
                         justify-between
 
                         mb-4
-                      "
+                      '
                     >
                       <h3
-                        className="
+                        className='
                           text-xs
                           font-bold
                           uppercase
                           tracking-[0.18em]
-                        "
+                        '
                       >
                         You May Like
                       </h3>
 
                       <Link
-                        to="/collections"
+                        to='/collections'
                         onClick={handleProductClick}
-                        className="
+                        className='
                           group
 
                           flex
@@ -2350,40 +2317,39 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
 
                           text-xs
                           font-semibold
-                        "
+                        '
                       >
                         Explore
-
                         <FaArrowRight
-                          className="
+                          className='
                             text-[8px]
 
                             transition-transform
                             duration-300
 
                             group-hover:translate-x-1
-                          "
+                          '
                         />
                       </Link>
                     </div>
 
                     <div
-                      className="
+                      className='
                         grid
                         grid-cols-2
 
                         gap-4
-                      "
+                      '
                     >
                       {recommendedProducts.slice(0, 4).map((product) => (
                         <Link
                           key={product.id}
                           to={getProductRoute(product)}
                           onClick={handleProductClick}
-                          className="group"
+                          className='group'
                         >
                           <div
-                            className="
+                            className='
                               relative
 
                               aspect-[4/5]
@@ -2393,12 +2359,12 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
                               rounded-xl
 
                               bg-gray-100
-                            "
+                            '
                           >
                             <img
                               src={product.image}
                               alt={product.name}
-                              className="
+                              className='
                                 w-full
                                 h-full
 
@@ -2408,13 +2374,13 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
                                 duration-700
 
                                 group-hover:scale-105
-                              "
+                              '
                             />
 
                             {/* HOVER CTA */}
 
                             <div
-                              className="
+                              className='
                                 absolute
 
                                 left-3
@@ -2430,10 +2396,10 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
 
                                 transition-all
                                 duration-300
-                              "
+                              '
                             >
                               <div
-                                className="
+                                className='
                                   bg-white
 
                                   rounded-lg
@@ -2446,21 +2412,21 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
                                   justify-between
 
                                   shadow-lg
-                                "
+                                '
                               >
                                 <span
-                                  className="
+                                  className='
                                     text-[9px]
                                     font-bold
                                     uppercase
                                     tracking-wider
-                                  "
+                                  '
                                 >
                                   Shop
                                 </span>
 
                                 <span
-                                  className="
+                                  className='
                                     w-5
                                     h-5
 
@@ -2472,39 +2438,36 @@ const SearchDrawer = ({ open, onClose, searchQuery, setSearchQuery }) => {
                                     flex
                                     items-center
                                     justify-center
-                                  "
+                                  '
                                 >
-                                  <FaArrowRight className="text-[7px]" />
+                                  <FaArrowRight className='text-[7px]' />
                                 </span>
                               </div>
                             </div>
                           </div>
 
                           <p
-                            className="
+                            className='
                               mt-2
 
                               text-xs
                               font-semibold
 
                               truncate
-                            "
+                            '
                           >
                             {product.name}
                           </p>
 
                           <p
-                            className="
+                            className='
                               mt-1
 
                               text-xs
                               text-gray-500
-                            "
+                            '
                           >
-                            ₦
-                            {Number(product.price || 0).toLocaleString(
-                              'en-NG',
-                            )}
+                            ₦{Number(product.price || 0).toLocaleString('en-NG')}
                           </p>
                         </Link>
                       ))}

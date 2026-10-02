@@ -154,7 +154,7 @@ const Category = () => {
   };
 
   const categories = [
-    { name: 'NEW ARRIVALS', path: '/products' },
+    // { name: 'NEW ARRIVALS', path: '/products' },
 
     {
       name: 'SHOP MEN',
@@ -189,7 +189,7 @@ const Category = () => {
 
     // { name: 'FOOTWEAR', path: '/footwear' },
     // { name: 'LIFESTYLE', path: '/lifestyle' },
-    { name: 'BEST SELLERS', path: '/#bestseller' },
+    { name: 'BEST SELLERS', path: '/#best-sellers' },
   ];
 
   return (

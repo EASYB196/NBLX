@@ -1,4 +1,3 @@
-
 import { useEffect, useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useParams, Link } from 'react-router-dom';
@@ -20,7 +19,6 @@ import { CropTopDatas } from '../../data/CropTop.js';
 import { HoodiesSweatshirtsDatas } from '../../data/HoodiesSweatshirtsData.js';
 
 import ProductDescription from '../../components/Product/ProductDescription';
-
 
 import { useCart } from '../../Context/cartContext';
 import { useWishlist } from '../../Context/WishlistContext';
@@ -89,7 +87,7 @@ function OuterwearJacketsDetails() {
   const [quantity, setQuantity] = useState(1);
   const [showSizeChart, setShowSizeChart] = useState(false);
 
-  const { addToCart, setShowCart } = useCart();
+  const { addToCart, setShowCart, buyNow } = useCart();
   const { toggleWishlist, isWishlisted } = useWishlist();
 
   // DEFAULT COLOR
@@ -107,7 +105,10 @@ function OuterwearJacketsDetails() {
   const selectedColorVariant = useMemo(() => {
     if (!product?.colors?.length) return null;
 
-    return product.colors.find((color) => color.name === selectedColor) || product.colors[0];
+    return (
+      product.colors.find((color) => color.name === selectedColor) ||
+      product.colors[0]
+    );
   }, [product, selectedColor]);
 
   // COLOR-SPECIFIC IMAGES
@@ -116,9 +117,10 @@ function OuterwearJacketsDetails() {
       return selectedColorVariant.images;
     }
 
-    return [product?.image, ...(product?.hoverImage ? [product.hoverImage] : [])].filter(
-      Boolean,
-    );
+    return [
+      product?.image,
+      ...(product?.hoverImage ? [product.hoverImage] : []),
+    ].filter(Boolean);
   }, [product, selectedColorVariant]);
 
   // RESET GALLERY WHEN COLOR CHANGES
@@ -131,7 +133,9 @@ function OuterwearJacketsDetails() {
   }
 
   const handlePrev = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+    setCurrentImageIndex(
+      (prev) => (prev - 1 + images.length) % images.length,
+    );
   };
 
   const handleNext = () => {
@@ -167,11 +171,34 @@ function OuterwearJacketsDetails() {
       images,
     };
 
-    addToCart(cartProduct, selectedSize, quantity, selectedColor || 'Default');
+    addToCart(
+      cartProduct,
+      selectedSize,
+      quantity,
+      selectedColor || 'Default',
+    );
 
     setShowCart(true);
 
     toast.success('Item added to cart!');
+  };
+
+  // BUY NOW
+  const handleBuyNow = () => {
+    const cartProduct = {
+      ...product,
+      route: `/Outerwear-Jackets/${product.id}`,
+      selectedColor: selectedColor || 'Default',
+      image: images[currentImageIndex],
+      images,
+    };
+
+    buyNow(
+      cartProduct,
+      selectedSize || '',
+      quantity,
+      selectedColor || 'Default',
+    );
   };
 
   return (
@@ -205,7 +232,9 @@ function OuterwearJacketsDetails() {
                 alt='Product'
                 onClick={() => setCurrentImageIndex(idx)}
                 className={`w-20 h-24 object-cover rounded-lg cursor-pointer border ${
-                  currentImageIndex === idx ? 'border-black' : 'border-transparent'
+                  currentImageIndex === idx
+                    ? 'border-black'
+                    : 'border-transparent'
                 }`}
               />
             ))}
@@ -256,7 +285,9 @@ function OuterwearJacketsDetails() {
           <h1 className='text-2xl md:text-3xl font-bold'>{product.name}</h1>
 
           {/* PRICE */}
-          <div className='text-2xl font-bold'>₦{product.price.toLocaleString('en-NG')}</div>
+          <div className='text-2xl font-bold'>
+            ₦{product.price.toLocaleString('en-NG')}
+          </div>
 
           {/* COLOR */}
           {product.colors?.length > 0 && (
@@ -264,7 +295,9 @@ function OuterwearJacketsDetails() {
               <p className='font-semibold text-lg'>
                 Color
                 {selectedColor && (
-                  <span className='ml-2 text-gray-500 font-normal'>({selectedColor})</span>
+                  <span className='ml-2 text-gray-500 font-normal'>
+                    ({selectedColor})
+                  </span>
                 )}
               </p>
 
@@ -330,7 +363,9 @@ function OuterwearJacketsDetails() {
                   type='button'
                   onClick={() => setSelectedSize(size)}
                   className={`px-4 py-2 border rounded-lg transition ${
-                    selectedSize === size ? 'bg-black text-white' : 'hover:bg-gray-200'
+                    selectedSize === size
+                      ? 'bg-black text-white'
+                      : 'hover:bg-gray-200'
                   }`}
                 >
                   {size}
@@ -345,7 +380,11 @@ function OuterwearJacketsDetails() {
             onClick={() => setShowSizeChart(true)}
             className='flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-black transition mt-2'
           >
-            <img src={sizechart} alt='Size Guide' className='w-50 h-15 object-contain' />
+            <img
+              src={sizechart}
+              alt='Size Guide'
+              className='w-50 h-15 object-contain'
+            />
           </button>
 
           {/* ADD BUTTONS */}
@@ -360,6 +399,7 @@ function OuterwearJacketsDetails() {
 
             <button
               type='button'
+              onClick={handleBuyNow}
               className='w-full md:w-55 bg-black text-white py-3 rounded-xl hover:bg-gray-900 transition'
             >
               Buy it now
@@ -448,15 +488,15 @@ function OuterwearJacketsDetails() {
               </div>
 
               <p className='text-xs text-gray-500 mt-4'>
-                Measurements are approximate and may vary slightly depending on design and fit.
+                Measurements are approximate and may vary slightly depending on
+                design and fit.
               </p>
             </div>
           </div>
         )}
       </div>
 
-
-        {/* PRODUCT DESCRIPTION */}
+      {/* PRODUCT DESCRIPTION */}
       <ProductDescription
         description={product.description}
         features={product.features}
@@ -465,7 +505,10 @@ function OuterwearJacketsDetails() {
       />
 
       {/* YOU MAY ALSO LIKE */}
-      <YouMayAlsoLike products={allProducts} currentProductId={product.id} />
+      <YouMayAlsoLike
+        products={allProducts}
+        currentProductId={product.id}
+      />
     </div>
   );
 }

@@ -228,7 +228,7 @@ export const TshirtDatas = [
     oldPrice: 45000,
     inStock: 4,
 
-    sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XS'],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
 
     colors: [
       // Add color variants here when additional images are available.
@@ -564,6 +564,21 @@ export const sizeCharts = {
       ['3XL', '48-50', '22', '23', '29'],
     ],
   },
+
+  'Crystallized-Tanktop': {
+    title: 'Essential Crystallized Tanktop Size Guide',
+    fit: 'Contoured / Stretch Fit',
+    columns: ['Size', 'Chest (in)', 'Length (in)'],
+    rows: [
+      ['S', '34-36', '25'],
+      ['M', '36-38', '26'],
+      ['L', '38-40', '27'],
+      ['XL', '40-42', '28'],
+      ['XXL', '42-44', '29'],
+      ['3XL', '44-46', '30'],
+    ],
+  },
+
   metalspinefittedtee: {
     title: 'Metal Spine Fitted Tee Size Guide',
     fit: 'Fitted / Stretch Fit',
@@ -645,6 +660,19 @@ export const sizeCharts = {
       ['XL', '46-48', '21', '30'],
       ['XXL', '48-50', '22', '31'],
       ['3XL', '50-52', '23', '32'],
+    ],
+  },
+    'Hooded-Tank-Top': {
+    title: 'RawCut Sleeveless Hoodie Size Guide',
+    
+    columns: ['Size', 'Chest (in)', 'Shoulder (in)', 'Length (in)'],
+    rows: [
+      ['S', '40-42', '17', '26'],
+      ['M', '42-44', '18', '27'],
+      ['L', '44-46', '19', '28'],
+      ['XL', '46-48', '20', '29'],
+      ['XXL', '48-50', '21', '30'],
+      ['3XS', '50-52', '22', '31'],
     ],
   },
 };

@@ -457,17 +457,18 @@ import { HoodiesSweatshirtsDatas } from '../../data/HoodiesSweatshirtsData.js';
 
 import ProductDescription from '../../components/Product/ProductDescription';
 
-
-
 import { useCart } from '../../Context/cartContext';
 import { useWishlist } from '../../Context/WishlistContext';
 
 import sizechart from '../../assets/images/sizechart.png';
 
+import { sizeCharts } from '../../data/TshirtData.js';
+
 function TopDetails() {
   const { id } = useParams();
+  const decodedId = decodeURIComponent(id);
 
-  const product = TopDatas.find((item) => String(item.id) === String(id));
+  const product = TopDatas.find((item) => String(item.id) === String(decodedId));
 
   const allProducts = [
     ...AccessoriesDatas.map((item) => ({
@@ -526,8 +527,11 @@ function TopDetails() {
   const [quantity, setQuantity] = useState(1);
   const [showSizeChart, setShowSizeChart] = useState(false);
 
-  const { addToCart, setShowCart } = useCart();
+  const { addToCart, setShowCart,buyNow
+ } = useCart();
   const { toggleWishlist, isWishlisted } = useWishlist();
+
+
 
   /* ==================== DEFAULT COLOR ==================== */
 
@@ -570,6 +574,44 @@ function TopDetails() {
   if (!product) {
     return <div className='text-black p-10'>Product not found</div>;
   }
+   /*
+   * CREATE CART PRODUCT
+   *
+   * Shared by Add to Cart and Buy Now.
+   */
+  const createCartProduct = () => ({
+    ...product,
+    route: `/t-shirt/${encodeURIComponent(
+      product.id,
+    )}`,
+    selectedColor:
+      selectedColor || 'Default',
+    image: images[currentImageIndex],
+    images: images,
+  });
+
+
+
+   /*
+   * BUY NOW
+   *
+   * All processing/loading/navigation is
+   * handled by CartContext.
+   *
+   * No local spinner.
+   * No Processing text.
+   */
+  const handleBuyNow = () => {
+    const cartProduct =
+      createCartProduct();
+
+    buyNow(
+      cartProduct,
+      selectedSize || '',
+      quantity,
+      selectedColor || 'Default',
+    );
+  };
 
   /* ==================== PRODUCT WITH ROUTE ==================== */
 
@@ -844,6 +886,7 @@ function TopDetails() {
 
             <button
               type='button'
+              onClick={handleBuyNow}
               className='w-full md:w-55 bg-black text-white py-3 rounded-xl hover:bg-gray-900 transition'
             >
               Buy it now
@@ -926,94 +969,76 @@ function TopDetails() {
         </section>
       )}
 
-      {/* ================= SIZE CHART MODAL ================= */}
+      {/* SIZE CHART MODAL */}
       {showSizeChart && (
         <div
           className='fixed inset-0 bg-black/50 z-50 flex items-center justify-center px-4'
           onClick={() => setShowSizeChart(false)}
         >
           <div
-            className='bg-white rounded-xl p-6 max-w-xl w-full relative'
+            className='bg-white rounded-xl p-6 max-w-2xl w-full relative'
             onClick={(e) => e.stopPropagation()}
           >
-            {/* CLOSE */}
             <button
               type='button'
               onClick={() => setShowSizeChart(false)}
-              className='absolute top-3 right-4 text-2xl font-extrabold hover:text-gray-500'
-              aria-label='Close size chart'
+              className='absolute top-3 right-4 text-2xl font-extrabold text-black hover:text-gray-500 transition'
+              aria-label='Close size guide'
             >
               ×
             </button>
 
-            <h2 className='text-xl font-bold mb-4'>Tops Size Guide</h2>
+            {(() => {
+              const chart = sizeCharts[product.id];
 
-            <div className='overflow-x-auto'>
-              <table className='w-full border'>
-                <thead>
-                  <tr className='bg-gray-100'>
-                    <th className='border p-2'>Size</th>
-                    <th className='border p-2'>Chest (in)</th>
-                    <th className='border p-2'>Shoulder (in)</th>
-                    <th className='border p-2'>Length (in)</th>
-                  </tr>
-                </thead>
+              if (!chart) {
+                return <p className='text-gray-500'>Size guide currently unavailable.</p>;
+              }
 
-                <tbody>
-                  <tr>
-                    <td className='border p-2'>S</td>
-                    <td className='border p-2'>40-42</td>
-                    <td className='border p-2'>18</td>
-                    <td className='border p-2'>24</td>
-                  </tr>
+              return (
+                <>
+                  <h2 className='text-xl font-bold mb-2'>{chart.title}</h2>
 
-                  <tr>
-                    <td className='border p-2'>M</td>
-                    <td className='border p-2'>42-44</td>
-                    <td className='border p-2'>19</td>
-                    <td className='border p-2'>25</td>
-                  </tr>
+                  {chart.fit && <p className='text-sm text-gray-500 mb-4'>Fit: {chart.fit}</p>}
 
-                  <tr>
-                    <td className='border p-2'>L</td>
-                    <td className='border p-2'>44-46</td>
-                    <td className='border p-2'>20</td>
-                    <td className='border p-2'>26</td>
-                  </tr>
+                  <div className='overflow-x-auto'>
+                    <table className='w-full border-collapse border text-sm'>
+                      <thead>
+                        <tr className='bg-gray-100'>
+                          {chart.columns.map((column) => (
+                            <th key={column} className='border p-3 text-left'>
+                              {column}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
 
-                  <tr>
-                    <td className='border p-2'>XL</td>
-                    <td className='border p-2'>46-48</td>
-                    <td className='border p-2'>21</td>
-                    <td className='border p-2'>27</td>
-                  </tr>
+                      <tbody>
+                        {chart.rows.map((row, index) => (
+                          <tr key={index}>
+                            {row.map((value, valueIndex) => (
+                              <td key={valueIndex} className='border p-3'>
+                                {value}
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
 
-                  <tr>
-                    <td className='border p-2'>XXL</td>
-                    <td className='border p-2'>48-50</td>
-                    <td className='border p-2'>22</td>
-                    <td className='border p-2'>28</td>
-                  </tr>
-
-                  <tr>
-                    <td className='border p-2'>3XL</td>
-                    <td className='border p-2'>50-52</td>
-                    <td className='border p-2'>23</td>
-                    <td className='border p-2'>29</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <p className='text-xs text-gray-500 mt-4'>
-              Measurements are approximate and may vary slightly depending on design and fit.
-            </p>
+                  <p className='text-xs text-gray-500 mt-4'>
+                    Measurements are approximate and may vary slightly depending on design and
+                    fit.
+                  </p>
+                </>
+              );
+            })()}
           </div>
         </div>
       )}
 
-
-        {/* PRODUCT DESCRIPTION */}
+      {/* PRODUCT DESCRIPTION */}
       <ProductDescription
         description={product.description}
         features={product.features}

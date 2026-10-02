@@ -11,14 +11,11 @@ to{transform: translateX(0);}
 .hide-scrollbar{-ms-overflow-style: none;scrollbar-width: none;}
 .scrollbar-hide::-webkit-scrollbar{display: none;}
 .scrollbar-hide{-ms-overflow-style: none;scrollbar-width: none;}
-@keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
+@keyframes marquee{
+0%{transform: translateX(0);}
+100%{transform: translateX(-50%);}
 }
 
-.animate-marquee {
-  display: inline-block;
-  animation: marquee 15s linear infinite;
-}
-::-moz-selection{background: #8c8282;color: #000;}
-::selection{background: #8c8282;color: #000;}
+.animate-marquee{display: inline-block;animation: 15s linear infinite marquee;}
+::-moz-selection{background-color: var(--color-gray-500);color: #fff;}
+::selection{background-color: var(--color-gray-500);color: #fff;}

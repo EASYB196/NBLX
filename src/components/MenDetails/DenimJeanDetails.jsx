@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useParams, Link } from 'react-router-dom';
@@ -26,7 +24,6 @@ import { CropTopDatas } from '../../data/CropTop.js';
 import { HoodiesSweatshirtsDatas } from '../../data/HoodiesSweatshirtsData.js';
 
 import ProductDescription from '../../components/Product/ProductDescription';
-
 
 import { useCart } from '../../Context/cartContext';
 import { useWishlist } from '../../Context/WishlistContext';
@@ -97,7 +94,7 @@ function DenimJeanDetails() {
   const [quantity, setQuantity] = useState(1);
   const [showSizeChart, setShowSizeChart] = useState(false);
 
-  const { addToCart, setShowCart } = useCart();
+  const { addToCart, setShowCart, buyNow } = useCart();
   const { toggleWishlist, isWishlisted } = useWishlist();
 
   // SET DEFAULT COLOR
@@ -196,8 +193,29 @@ function DenimJeanDetails() {
     toast.success('Item added to cart!');
   };
 
+  /*
+   * BUY NOW
+   */
+  const handleBuyNow = () => {
+    const cartProduct = {
+      ...product,
+      route: `/Denim-Jeans/${product.id}`,
+      selectedColor: selectedColor || 'Default',
+      image: images[currentImageIndex],
+      images,
+    };
+
+    buyNow(
+      cartProduct,
+      selectedSize || '',
+      quantity,
+      selectedColor || 'Default',
+    );
+  };
+
   return (
     <div className='bg-white text-black min-h-screen py-10 px-4 md:px-10 font-[Raleway]'>
+
       {/* BREADCRUMB */}
       <div className='flex items-center justify-center gap-2 md:gap-4 mt-23 text-sm md:text-base'>
         <Link to='/' className='hover:underline'>
@@ -216,8 +234,10 @@ function DenimJeanDetails() {
       </div>
 
       <div className='max-w-7xl mx-auto flex flex-col md:flex-row gap-10 mt-10'>
+
         {/* LEFT - IMAGES */}
         <div className='flex gap-4 w-full md:w-1/2'>
+
           {/* THUMBNAILS (DESKTOP) */}
           <div className='hidden md:flex flex-col gap-3'>
             {images.map((img, idx) => (
@@ -237,6 +257,7 @@ function DenimJeanDetails() {
 
           {/* MAIN IMAGE */}
           <div className='relative w-full h-100 md:h-125'>
+
             {/* WISHLIST */}
             <button
               type='button'
@@ -280,6 +301,7 @@ function DenimJeanDetails() {
 
         {/* RIGHT - INFO */}
         <div className='flex-1 space-y-6'>
+
           <h1 className='text-2xl md:text-3xl font-bold'>
             {product.name}
           </h1>
@@ -294,6 +316,7 @@ function DenimJeanDetails() {
             <div className='space-y-3'>
               <p className='font-semibold text-lg'>
                 Color
+
                 {selectedColor && (
                   <span className='ml-2 text-gray-500 font-normal'>
                     ({selectedColor})
@@ -361,6 +384,7 @@ function DenimJeanDetails() {
             <div className='flex items-center justify'>
               <p className='font-semibold text-lg'>
                 Select Size
+
                 {selectedSize && (
                   <span className='ml-2 text-gray-500 font-normal'>
                     ({selectedSize})
@@ -412,6 +436,7 @@ function DenimJeanDetails() {
 
             <button
               type='button'
+              onClick={handleBuyNow}
               className='w-full md:w-55 bg-black text-white py-3 rounded-xl hover:bg-gray-900 transition'
             >
               Buy it now
@@ -424,6 +449,7 @@ function DenimJeanDetails() {
       {showSizeChart && (
         <div className='fixed inset-0 bg-black/50 z-50 flex items-center justify-center px-4'>
           <div className='bg-white rounded-xl p-6 max-w-xl w-full relative'>
+
             <button
               type='button'
               onClick={() => setShowSizeChart(false)}
@@ -444,6 +470,7 @@ function DenimJeanDetails() {
                     <th className='border p-3'>Waist (in)</th>
                     <th className='border p-3'>Hip (in)</th>
                     <th className='border p-3'>Inseam (in)</th>
+                    <th className='border p-3'>Length (in)</th>
                   </tr>
                 </thead>
 
@@ -453,6 +480,7 @@ function DenimJeanDetails() {
                     <td className='border p-3'>28-30</td>
                     <td className='border p-3'>36-38</td>
                     <td className='border p-3'>30</td>
+                    <td className='border p-3'>40</td>
                   </tr>
 
                   <tr>
@@ -460,6 +488,7 @@ function DenimJeanDetails() {
                     <td className='border p-3'>31-33</td>
                     <td className='border p-3'>39-41</td>
                     <td className='border p-3'>31</td>
+                    <td className='border p-3'>41</td>
                   </tr>
 
                   <tr>
@@ -467,6 +496,7 @@ function DenimJeanDetails() {
                     <td className='border p-3'>34-36</td>
                     <td className='border p-3'>42-44</td>
                     <td className='border p-3'>32</td>
+                    <td className='border p-3'>42</td>
                   </tr>
 
                   <tr>
@@ -474,6 +504,7 @@ function DenimJeanDetails() {
                     <td className='border p-3'>37-39</td>
                     <td className='border p-3'>45-47</td>
                     <td className='border p-3'>33</td>
+                    <td className='border p-3'>43</td>
                   </tr>
 
                   <tr>
@@ -481,6 +512,7 @@ function DenimJeanDetails() {
                     <td className='border p-3'>40-42</td>
                     <td className='border p-3'>48-50</td>
                     <td className='border p-3'>34</td>
+                    <td className='border p-3'>44</td>
                   </tr>
 
                   <tr>
@@ -488,6 +520,7 @@ function DenimJeanDetails() {
                     <td className='border p-3'>43-45</td>
                     <td className='border p-3'>51-53</td>
                     <td className='border p-3'>35</td>
+                    <td className='border p-3'>45</td>
                   </tr>
                 </tbody>
               </table>
@@ -501,7 +534,7 @@ function DenimJeanDetails() {
         </div>
       )}
 
-        {/* PRODUCT DESCRIPTION */}
+      {/* PRODUCT DESCRIPTION */}
       <ProductDescription
         description={product.description}
         features={product.features}

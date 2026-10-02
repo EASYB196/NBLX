@@ -11,7 +11,6 @@ import {
 } from 'react-icons/fi';
 
 import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import {faqCategories,categoryLabels} from "../data/FaqData"
 
 // ============================================================
@@ -951,7 +950,6 @@ const FAQ = () => {
         </section>
       </main>
 
-      <Footer />
     </div>
   );
 };

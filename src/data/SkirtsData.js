@@ -28,11 +28,7 @@ export const SkirtsDatas = [
     sizes: ["S", "M", "L", "XL", "XXL", "3XS"],
 
     colors: [
-      // {
-      //   name: "Black",
-      //   value: "#000000",
-      //   images: [image1, image2],
-      // },
+  
     ],
 
     image: image1,
