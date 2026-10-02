@@ -2,11 +2,11 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/auth/send-otp.js",
+      "src": "api/send-otp.js",
       "use": "@vercel/node"
     },
     {
-      "src": "api/auth/verify-otp.js",
+      "src": "api/verify-otp.js",
       "use": "@vercel/node"
     },
     {
@@ -19,12 +19,12 @@
   ],
   "rewrites": [
     {
-      "source": "/api/auth/send-otp",
-      "destination": "/api/auth/send-otp.js"
+      "source": "/api/send-otp",
+      "destination": "/api/send-otp.js"
     },
     {
-      "source": "/api/auth/verify-otp",
-      "destination": "/api/auth/verify-otp.js"
+      "source": "/api/verify-otp",
+      "destination": "/api/verify-otp.js"
     },
     {
       "source": "/((?!api/).*)",
