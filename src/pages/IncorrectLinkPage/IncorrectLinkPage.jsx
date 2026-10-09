@@ -1,17 +1,25 @@
 import React from 'react';
 import incorrectimg from '../../assets/images/incorrectpageimg.jpg';
+
 function IncorrectLinkPage() {
   return (
-    <div className='w-full h-screen grid justify-center items-center    '>
-      <div> 
-      <img src={incorrectimg} alt='' className='w-180 h-90 mt-32 ' />{' '}</div>{' '}
-      <div className='mt-'>
-        <h2 className='text-black text-center mb-3 text-2xl font-bold'>
+    <div className="w-full min-h-screen flex flex-col justify-center items-center px-4 py-8">
+      <div className="w-full max-w-3xl flex justify-center">
+        <img
+          src={incorrectimg}
+          alt="Page not found"
+          className="w-full max-w-2xl h-auto object-contain"
+        />
+      </div>
+
+      <div className="mt-6 text-center max-w-2xl">
+        <h2 className="text-black mb-3 text-2xl font-bold">
           This Page Does Not Exist
         </h2>
-        <p className='text-black '>
-          Sorry,the page you are looking for could not be found it's just an accident that was
-          not intentional
+
+        <p className="text-black text-sm sm:text-base leading-relaxed">
+          Sorry, the page you are looking for could not be found.
+          It may have been moved or the link may be incorrect.
         </p>
       </div>
     </div>

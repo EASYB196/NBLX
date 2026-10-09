@@ -80,27 +80,35 @@
 // function AppContent() {
 //   const location = useLocation();
 
-//   const isAuthPage = location.pathname.startsWith('/auth');
+//   const isIncorrectPage = ![
+//     '/',
+//     '/category',
+//     '/auth/login',
+//     // Add your other valid paths here
+//   ].includes(location.pathname);
+
+//   // Hide navbar and footer on admin and authentication pages
+//   const hideLayout =
+//     location.pathname.startsWith('/auth') ||
+//     location.pathname === '/admin' ||
+//     location.pathname === '/incorrect';
 
 //   return (
 //     <>
 //       <ScrollToTop />
 //       <Toaster position='top-center' reverseOrder={false} />
 //       <CartDrawer />
-//       {!isAuthPage && <NavBar />}
+//       {!hideLayout && location.pathname !== '/checkout' && <Footer />}{' '}
 //       <Routes>
-//         {/* =========================
-//             MAIN PAGES
-//         ========================= */}
-
 //         <Route path='/' element={<Home />} />
 
 //         <Route path='/order-success' element={<OrderSuccess />} />
+
 //         <Route path='/checkout' element={<CheckOut />} />
 
 //         <Route path='/track-order' element={<TrackOrder />} />
+
 //         <Route path='/admin' element={<AdminLogIn />} />
-//         <Route path='/incorrect' element={<IncorrectLinkPage />} />
 
 //         <Route path='/wishlist' element={<Wishlist />} />
 
@@ -112,12 +120,7 @@
 
 //         <Route path='/faqs' element={<Faqs />} />
 
-//         {/* Generic product route */}
 //         <Route path='/products/:id' element={<ProductDetails />} />
-
-//         {/* =========================
-//             MEN CATEGORY PAGES
-//         ========================= */}
 
 //         <Route path='/casuals' element={<Casual />} />
 
@@ -137,10 +140,6 @@
 
 //         <Route path='/jalabiya' element={<Jalabiya />} />
 
-//         {/* =========================
-//             WOMEN CATEGORY PAGES
-//         ========================= */}
-
 //         <Route path='/crop-top' element={<CropTop />} />
 
 //         <Route path='/skirts' element={<Skirts />} />
@@ -153,31 +152,22 @@
 
 //         <Route path='/Dresses' element={<Dresses />} />
 
-//         {/* =========================
-//             ACCESSORIES
-//         ========================= */}
-
 //         <Route path='/watches' element={<Watches />} />
-
-//         {/* =========================
-//             MEN PRODUCT DETAILS
-//         ========================= */}
 
 //         <Route path='/pants/:id' element={<PantsDetails />} />
 
 //         <Route path='/t-shirt/:id' element={<TshirtDetails />} />
 
-//         {/* <Route path='/shirts/:id' element={<ShirtDetails />} /> */}
+//         {/* <Route
+//           path='/shirts/:id'
+//           element={<ShirtDetails />}
+//         /> */}
 
 //         <Route path='/Denim-Jeans/:id' element={<DenimJeanDetails />} />
 
 //         <Route path='/Outerwear-Jackets/:id' element={<OuterwearJacketsDetails />} />
 
 //         <Route path='/Hoodies-Sweatshirts/:id' element={<HoodiesSweatshirtsDetails />} />
-
-//         {/* =========================
-//             WOMEN PRODUCT DETAILS
-//         ========================= */}
 
 //         <Route path='/crop-top/:id' element={<CropTopDetails />} />
 
@@ -191,25 +181,15 @@
 
 //         <Route path='/dresses/:id' element={<DressesDetails />} />
 
-//         {/* =========================
-//             BEST SELLERS
-//         ========================= */}
-
 //         <Route path='/bestseller' element={<BestSeller />} />
 
 //         <Route path='/bestseller/products/:id' element={<BestSellerDetail />} />
 
-//         {/* =========================
-//             AUTHENTICATION
-//         ========================= */}
+//         <Route path='/auth/login' element={<AuthForm />} />
 
-//         <Route path='/auth/:type' element={<AuthForm />} />
+//         <Route path='/auth/signup' element={<AuthForm />} />
 
-//         <Route path='/sms' element={<Sms />} />
-
-//         {/* =========================
-//             INFORMATION / POLICIES
-//         ========================= */}
+//         <Route path='/auth/sms' element={<Sms />} />
 
 //         <Route path='/terms-of-service' element={<TermsOfService />} />
 
@@ -223,13 +203,11 @@
 
 //         <Route path='/contact' element={<Contact />} />
 
-//         {/* =========================
-//             GENERIC PRODUCT ROUTE
-//         ========================= */}
-
 //         <Route path='/product/:type/:id' element={<ProductDetails />} />
+
+//         <Route path='*' element={<IncorrectLinkPage />} />
 //       </Routes>
-//       {!isAuthPage && location.pathname !== '/checkout' && <Footer />}{' '}
+//       {!hideLayout && <Footer />} {!isIncorrectPage && <Footer />}
 //     </>
 //   );
 // }
@@ -263,7 +241,6 @@ import CartNavigation from './components/CartNavigation';
 
 import NavBar from './components/Navbar';
 import Wishlist from './pages/WishList';
-
 import Category from './pages/Category';
 
 import Footer from './components/Footer';
@@ -334,8 +311,61 @@ import IncorrectLinkPage from './pages/IncorrectLinkPage/IncorrectLinkPage';
 function AppContent() {
   const location = useLocation();
 
-  // Hide navbar/footer on every authentication page
-  const isAuthPage = location.pathname.startsWith('/auth');
+  // ofr ormalize the URL to handle trailing slashes.
+  const pathname = location.pathname.replace(/\/+$/, '').toLowerCase() || '/';
+
+  // All valid static routes.
+  const validPaths = [
+    '/',
+    '/order-success',
+    '/checkout',
+    '/track-order',
+    '/admin',
+    '/wishlist',
+    '/collections',
+    '/category',
+    '/kids',
+    '/faqs',
+    '/casuals',
+    '/pants',
+    '/t-shirt',
+    '/agbada',
+    '/denim-jeans',
+    '/outerwear-jackets',
+    '/hoodies-sweatshirts',
+    '/jalabiya',
+    '/crop-top',
+    '/skirts',
+    '/female-pant',
+    '/tops',
+    '/accessories',
+    '/dresses',
+    '/watches',
+    '/bestseller',
+    '/auth/login',
+    '/auth/signup',
+    '/auth/sms',
+    '/terms-of-service',
+    '/privacy-policy',
+    '/returns',
+    '/shipping-policy',
+    '/story',
+    '/contact',
+  ];
+
+  // Match valid dynamic routes, including product-detail URLs.
+  const isDynamicRoute =
+    /^\/(products\/[^/]+|product\/[^/]+\/[^/]+|pants\/[^/]+|t-shirt\/[^/]+|denim-jeans\/[^/]+|outerwear-jackets\/[^/]+|hoodies-sweatshirts\/[^/]+|crop-top\/[^/]+|skirts\/[^/]+|female-pant\/[^/]+|tops\/[^/]+|accessories\/[^/]+|dresses\/[^/]+|bestseller\/products\/[^/]+)$/.test(
+      pathname,
+    );
+
+  const isIncorrectPage = !validPaths.includes(pathname) && !isDynamicRoute;
+
+  const isAuthPage = pathname.startsWith('/auth');
+  const isAdminPage = pathname === '/admin';
+
+  // Hide the navbar and footer on these pages.
+  const hideLayout = isAuthPage || isAdminPage || isIncorrectPage;
 
   return (
     <>
@@ -345,13 +375,10 @@ function AppContent() {
 
       <CartDrawer />
 
-      {!isAuthPage && <NavBar />}
+      {/* Show navbar only on normal website pages. */}
+      {!hideLayout && <NavBar />}
 
       <Routes>
-        {/* =========================
-            MAIN PAGES
-        ========================= */}
-
         <Route path='/' element={<Home />} />
 
         <Route path='/order-success' element={<OrderSuccess />} />
@@ -361,8 +388,6 @@ function AppContent() {
         <Route path='/track-order' element={<TrackOrder />} />
 
         <Route path='/admin' element={<AdminLogIn />} />
-
-        <Route path='/incorrect' element={<IncorrectLinkPage />} />
 
         <Route path='/wishlist' element={<Wishlist />} />
 
@@ -374,15 +399,7 @@ function AppContent() {
 
         <Route path='/faqs' element={<Faqs />} />
 
-        {/* =========================
-            GENERIC PRODUCT ROUTE
-        ========================= */}
-
         <Route path='/products/:id' element={<ProductDetails />} />
-
-        {/* =========================
-            MEN CATEGORY PAGES
-        ========================= */}
 
         <Route path='/casuals' element={<Casual />} />
 
@@ -390,7 +407,7 @@ function AppContent() {
 
         <Route path='/t-shirt' element={<Tshirt />} />
 
-        {/* <Route path='/shirts' element={<Shirt />} /> */}
+        {/* <Route path="/shirts" element={<Shirt />} /> */}
 
         <Route path='/agbada' element={<Agbada />} />
 
@@ -401,10 +418,6 @@ function AppContent() {
         <Route path='/Hoodies-Sweatshirts' element={<HoodiesSweatshirts />} />
 
         <Route path='/jalabiya' element={<Jalabiya />} />
-
-        {/* =========================
-            WOMEN CATEGORY PAGES
-        ========================= */}
 
         <Route path='/crop-top' element={<CropTop />} />
 
@@ -418,34 +431,19 @@ function AppContent() {
 
         <Route path='/Dresses' element={<Dresses />} />
 
-        {/* =========================
-            ACCESSORIES
-        ========================= */}
-
         <Route path='/watches' element={<Watches />} />
-
-        {/* =========================
-            MEN PRODUCT DETAILS
-        ========================= */}
 
         <Route path='/pants/:id' element={<PantsDetails />} />
 
         <Route path='/t-shirt/:id' element={<TshirtDetails />} />
 
-        {/* <Route
-          path='/shirts/:id'
-          element={<ShirtDetails />}
-        /> */}
+        {/* <Route path="/shirts/:id" element={<ShirtDetails />} /> */}
 
         <Route path='/Denim-Jeans/:id' element={<DenimJeanDetails />} />
 
         <Route path='/Outerwear-Jackets/:id' element={<OuterwearJacketsDetails />} />
 
         <Route path='/Hoodies-Sweatshirts/:id' element={<HoodiesSweatshirtsDetails />} />
-
-        {/* =========================
-            WOMEN PRODUCT DETAILS
-        ========================= */}
 
         <Route path='/crop-top/:id' element={<CropTopDetails />} />
 
@@ -459,27 +457,15 @@ function AppContent() {
 
         <Route path='/dresses/:id' element={<DressesDetails />} />
 
-        {/* =========================
-            BEST SELLERS
-        ========================= */}
-
         <Route path='/bestseller' element={<BestSeller />} />
 
         <Route path='/bestseller/products/:id' element={<BestSellerDetail />} />
-
-        {/* =========================
-            AUTHENTICATION
-        ========================= */}
 
         <Route path='/auth/login' element={<AuthForm />} />
 
         <Route path='/auth/signup' element={<AuthForm />} />
 
         <Route path='/auth/sms' element={<Sms />} />
-
-        {/* =========================
-            INFORMATION / POLICIES
-        ========================= */}
 
         <Route path='/terms-of-service' element={<TermsOfService />} />
 
@@ -493,14 +479,14 @@ function AppContent() {
 
         <Route path='/contact' element={<Contact />} />
 
-        {/* =========================
-            GENERIC PRODUCT ROUTE
-        ========================= */}
-
         <Route path='/product/:type/:id' element={<ProductDetails />} />
+
+        {/* Keep the catch-all route last. */}
+        <Route path='*' element={<IncorrectLinkPage />} />
       </Routes>
 
-      {!isAuthPage && location.pathname !== '/checkout' && <Footer />}
+      {/* Render the footer only once. */}
+      {!hideLayout && pathname !== '/checkout' && <Footer />}
     </>
   );
 }
