@@ -1,3 +1,4 @@
+
 {
   "version": 2,
   "builds": [
@@ -7,6 +8,10 @@
     },
     {
       "src": "api/verify-otp.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "api/verify-payment.js",
       "use": "@vercel/node"
     },
     {
@@ -25,6 +30,10 @@
     {
       "source": "/api/verify-otp",
       "destination": "/api/verify-otp.js"
+    },
+    {
+      "source": "/api/verify-payment",
+      "destination": "/api/verify-payment.js"
     },
     {
       "source": "/((?!api/).*)",
