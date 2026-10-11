@@ -306,6 +306,15 @@ import CheckOut from './pages/Checkout';
 import OrderSuccess from './pages/OrderSuccess';
 
 import AdminLogIn from './pages/Admin/AdminLogIn';
+
+import Profile from './pages/User/Profile';
+import OrderHistory from './pages/User/OrderHistory';
+import ProfileWishlist from './pages/User/ProfileWishlist';
+import ProfileDetails from './pages/User/ProfileDetails';
+import Addresses from './pages/User/Addresses';
+import AccountSettings from './pages/User/AccountSettings';
+import ProtectedRoute from './components/Account/ProtectedRoute';
+
 import IncorrectLinkPage from './pages/IncorrectLinkPage/IncorrectLinkPage';
 
 function AppContent() {
@@ -344,6 +353,7 @@ function AppContent() {
     '/bestseller',
     '/auth/login',
     '/auth/signup',
+    '/profile',
     '/auth/sms',
     '/terms-of-service',
     '/privacy-policy',
@@ -388,6 +398,15 @@ function AppContent() {
         <Route path='/track-order' element={<TrackOrder />} />
 
         <Route path='/admin' element={<AdminLogIn />} />
+
+        <Route element={<ProtectedRoute />}>
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/profile/orders' element={<OrderHistory />} />
+          <Route path='/profile/wishlist' element={<ProfileWishlist />} />
+          <Route path='/profile/details' element={<ProfileDetails />} />
+          <Route path='/profile/addresses' element={<Addresses />} />
+          <Route path='/profile/settings' element={<AccountSettings />} />
+        </Route>
 
         <Route path='/wishlist' element={<Wishlist />} />
 
@@ -494,6 +513,15 @@ function AppContent() {
 function App() {
   return (
     <WishlistProvider>
+      <Toaster
+        position='top-center'
+        toastOptions={{
+          duration: 3000,
+        }}
+        containerStyle={{
+          zIndex: 99999,
+        }}
+      />
       <CartProvider>
         <Router>
           <CartNavigation />
