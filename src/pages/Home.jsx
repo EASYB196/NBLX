@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import Header from '../pages/Header';
+import Cookies from './Cookies';
 import Category from '../pages/Category';
 import Arrival from '../pages/Arrival';
 import Button from '../components/Button';
@@ -33,9 +34,9 @@ function Home() {
       <div id='best-sellers'>
         <BestSeller />
       </div>{' '}
+      <Cookies/>
       {/* <Arrival /> */}
       <Section />
-
       <section className='overflow-hidden border-t border-b py-6 whitespace-nowrap'>
         <Servicefeatures />
 

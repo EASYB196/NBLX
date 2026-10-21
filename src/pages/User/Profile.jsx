@@ -409,7 +409,7 @@ const Profile = () => {
 
               <Link
                 to="/category"
-                className="inline-flex items-center justify-center mt-5 bg-black text-white rounded-xl px-6 py-3 text-sm font-semibold hover:bg-gray-800 transition"
+                className="inline-flex items-center justify-center mt-5 bg-black text-white! rounded-xl px-6 py-3 text-sm font-semibold hover:bg-gray-800 transition"
               >
                 Explore collections
               </Link>

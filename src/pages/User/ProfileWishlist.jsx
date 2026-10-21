@@ -26,7 +26,7 @@ export default function ProfileWishlist() {
             <p className="mt-4 font-semibold">Your wishlist is empty</p>
             <Link
               to="/category"
-              className="mt-5 inline-block rounded-xl bg-black px-6 py-3 text-sm font-semibold text-white"
+              className="mt-5 inline-block rounded-xl bg-black px-6 py-3 text-sm font-semibold text-white!"
             >
               Explore collections
             </Link>

@@ -143,7 +143,7 @@ const Contact = () => {
                   href='mailto:NBLX06@gmail.com'
                   className='mt-1 text-black font-medium hover:underline break-all'
                 >
-                  NBLXluxurywears1@gmail.com
+                  NBLXLUXURYWEARS1@gmail.com
                 </a>
               </div>
 
@@ -284,7 +284,7 @@ const Contact = () => {
 
               {/* Icon Side */}
               <a
-                href='https://wa.me/2347041554896'
+                href='https://wa.me/2349117098144'
                 target='_blank'
                 rel='noopener noreferrer'
                 className='
