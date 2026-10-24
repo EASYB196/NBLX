@@ -244,7 +244,7 @@ function App() {
         <Router>
           <CartNavigation />
 
-          <div className='bg-white overflow-hidden'>
+          <div className='bg-white '>
             <AppContent />
           </div>
         </Router>

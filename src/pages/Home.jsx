@@ -34,12 +34,10 @@ function Home() {
       <div id='best-sellers'>
         <BestSeller />
       </div>{' '}
-      <Cookies/>
+      <Cookies />
       {/* <Arrival /> */}
-      <Section />
+      {/* <Section /> */}
       <section className='overflow-hidden border-t border-b py-6 whitespace-nowrap'>
-        <Servicefeatures />
-
         <div className='animate-marquee text-sm md:text-base font-medium text-gray-600'>
           {Array(15).fill('crafted with purpose • NBLX • ').join('')}
         </div>
@@ -49,6 +47,7 @@ function Home() {
         <div className='animate-marquee text-sm md:text-base font-medium text-gray-600'>
           {Array(15).fill('Move Different Think Bigger • NBLX • ').join('')}
         </div>
+        <Servicefeatures />
       </section>
       {/* <StorySection /> */}
       {/* <CategoryCarousel /> */}
