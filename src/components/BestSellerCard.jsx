@@ -1,109 +1,4 @@
 
-
-// import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
-// // eslint-disable-next-line no-unused-vars
-// import { motion } from 'framer-motion';
-
-// import { FaHeart, FaRegHeart } from 'react-icons/fa';
-// import { useWishlist } from '../Context/WishlistContext';
-
-// const BestSellerCard = ({ product }) => {
-//   const [isHovered, setIsHovered] = useState(false);
-
-//   const { toggleWishlist, isWishlisted } = useWishlist();
-
-//   const productRoute = `/bestseller/products/${product.id}`;
-
-//   const handleWishlist = (e) => {
-//     e.preventDefault();
-//     e.stopPropagation();
-
-//     toggleWishlist({
-//       ...product,
-//       route: productRoute,
-//     });
-//   };
-
-//   return (
-//     <div className="shrink-0 w-40 sm:w-50 md:w-70 lg:w-[320px]">
-//       <div
-//         className="relative overflow-hidden rounded-2xl bg-white"
-//         onMouseEnter={() => setIsHovered(true)}
-//         onMouseLeave={() => setIsHovered(false)}
-//       >
-//         {/* PRODUCT LINK */}
-//         <Link to={productRoute}>
-//           {/* MAIN IMAGE */}
-//           <motion.img
-//             src={product.image}
-//             alt={product.id}
-//             className="w-full object-center h-62.5 sm:h-80 md:h-105 lg:h-120 rounded-2xl"
-//             animate={{
-//               opacity: isHovered ? 0 : 1,
-//             }}
-//             transition={{
-//               duration: 0.4,
-//             }}
-//           />
-
-//           {/* HOVER IMAGE */}
-//           <motion.img
-//             src={product.hoverImage}
-//             alt={`${product.id} alternate view`}
-//             className="absolute inset-0 w-full object-center h-62.5 sm:h-80 md:h-105 lg:h-120 rounded-2xl"
-//             animate={{
-//               opacity: isHovered ? 1 : 0,
-//             }}
-//             transition={{
-//               duration: 0.4,
-//             }}
-//           />
-
-//           {/* OVERLAY */}
-//           <div
-//             className={`absolute inset-0 bg-black/10 transition-opacity duration-300 ${
-//               isHovered ? 'opacity-100' : 'opacity-0'
-//             }`}
-//           />
-//         </Link>
-
-//         {/* ❤️ WISHLIST */}
-//         <button
-//           type="button"
-//           onClick={handleWishlist}
-//           aria-label={
-//             isWishlisted(product.id)
-//               ? 'Remove from wishlist'
-//               : 'Add to wishlist'
-//           }
-//           className="absolute top-3 right-3 z-20 bg-white p-2 rounded-full shadow-md hover:scale-105 transition-transform duration-200"
-//         >
-//           {isWishlisted(product.id) ? (
-//             <FaHeart className="text-red-500 text-lg" />
-//           ) : (
-//             <FaRegHeart className="text-gray-500 text-lg hover:text-red-500 transition-colors" />
-//           )}
-//         </button>
-//       </div>
-
-//       {/* PRODUCT INFO */}
-//       <div className="mt-4 flex flex-col gap-1 px-1">
-//         <h3 className="text-[13px] sm:text-sm md:text-lg font-semibold uppercase">
-//           {product.id}
-//         </h3>
-
-//         <p className="text-black font-bold text-sm sm:text-base md:text-lg">
-//           ₦{product.price.toLocaleString('en-NG')}
-//         </p>
-//       </div>
-      
-//     </div>
-//   );
-// };
-
-// export default BestSellerCard;
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 // eslint-disable-next-line no-unused-vars
@@ -118,6 +13,11 @@ const BestSellerCard = ({ product }) => {
   const { toggleWishlist, isWishlisted } = useWishlist();
 
   const productRoute = `/bestseller/products/${product.id}`;
+
+  const wishlisted = isWishlisted(
+    product.id,
+    product.selectedColor || 'Default',
+  );
 
   const handleWishlist = (e) => {
     e.preventDefault();
@@ -134,20 +34,27 @@ const BestSellerCard = ({ product }) => {
     });
   };
 
+  const imageClass =
+    'block w-full h-[250px] min-[480px]:h-[280px] sm:h-80 md:h-105 lg:h-120 object-cover object-center rounded-2xl';
+
   return (
-    <div className="shrink-0 w-40 sm:w-50 md:w-70 lg:w-[320px]">
+    <div className="w-full min-w-0">
+      {/* PRODUCT IMAGE */}
       <div
-        className="relative overflow-hidden rounded-2xl bg-white"
+        className="relative w-full overflow-hidden rounded-2xl bg-white"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {/* PRODUCT LINK */}
-        <Link to={productRoute}>
+        <Link
+          to={productRoute}
+          aria-label={`View ${product.id}`}
+          className="relative block w-full"
+        >
           {/* MAIN IMAGE */}
           <motion.img
             src={product.image}
             alt={product.id}
-            className="w-full object-center h-62.5 sm:h-80 md:h-105 lg:h-120 rounded-2xl"
+            className={imageClass}
             animate={{
               opacity: isHovered ? 0 : 1,
             }}
@@ -157,59 +64,63 @@ const BestSellerCard = ({ product }) => {
           />
 
           {/* HOVER IMAGE */}
-          <motion.img
-            src={product.hoverImage}
-            alt={`${product.id} alternate view`}
-            className="absolute inset-0 w-full object-center h-62.5 sm:h-80 md:h-105 lg:h-120 rounded-2xl"
-            animate={{
-              opacity: isHovered ? 1 : 0,
-            }}
-            transition={{
-              duration: 0.4,
-            }}
-          />
+          {product.hoverImage && (
+            <motion.img
+              src={product.hoverImage}
+              alt={`${product.id} alternate view`}
+              className={`absolute inset-0 ${imageClass}`}
+              animate={{
+                opacity: isHovered ? 1 : 0,
+              }}
+              transition={{
+                duration: 0.4,
+              }}
+            />
+          )}
 
-          {/* OVERLAY */}
+          {/* IMAGE OVERLAY */}
           <div
-            className={`absolute inset-0 bg-black/10 transition-opacity duration-300 ${
+            className={`pointer-events-none absolute inset-0 rounded-2xl bg-black/10 transition-opacity duration-300 ${
               isHovered ? 'opacity-100' : 'opacity-0'
             }`}
           />
         </Link>
 
-        {/* ❤️ WISHLIST */}
+        {/* WISHLIST BUTTON */}
         <button
           type="button"
           onClick={handleWishlist}
           aria-label={
-            isWishlisted(
-              product.id,
-              product.selectedColor || 'Default',
-            )
+            wishlisted
               ? 'Remove from wishlist'
               : 'Add to wishlist'
           }
-          className="absolute top-3 right-3 z-20 bg-white p-2 rounded-full shadow-md hover:scale-105 transition-transform duration-200"
+          aria-pressed={wishlisted}
+          className="
+            absolute right-2.5 top-2.5 z-20
+            flex items-center justify-center
+            rounded-full bg-white p-2
+            shadow-md transition-transform duration-200
+            hover:scale-105
+            sm:right-3 sm:top-3
+          "
         >
-          {isWishlisted(
-            product.id,
-            product.selectedColor || 'Default',
-          ) ? (
-            <FaHeart className="text-red-500 text-lg" />
+          {wishlisted ? (
+            <FaHeart className="text-base text-red-500 sm:text-lg" />
           ) : (
-            <FaRegHeart className="text-gray-500 text-lg hover:text-red-500 transition-colors" />
+            <FaRegHeart className="text-base text-gray-500 transition-colors hover:text-red-500 sm:text-lg" />
           )}
         </button>
       </div>
 
-      {/* PRODUCT INFO */}
-      <div className="mt-4 flex flex-col gap-1 px-1">
-        <h3 className="text-[13px] sm:text-sm md:text-lg font-semibold uppercase">
+      {/* PRODUCT INFORMATION */}
+      <div className="mt-3 flex min-w-0 flex-col gap-1 px-0.5 sm:mt-4 sm:px-1">
+        <h3 className="truncate text-[12px] font-semibold uppercase sm:text-sm md:text-lg">
           {product.id}
         </h3>
 
-        <p className="text-black font-bold text-sm sm:text-base md:text-lg">
-          ₦{product.price.toLocaleString('en-NG')}
+        <p className="text-sm font-bold text-black sm:text-base md:text-lg">
+          ₦{Number(product.price).toLocaleString('en-NG')}
         </p>
       </div>
     </div>

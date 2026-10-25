@@ -1,22 +1,27 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from 'react-router-dom';
 
 import './App.css';
 import { Toaster } from 'react-hot-toast';
 
-// import CookiePolicy from './pages/CookiePolicy';
 import { CartProvider } from './Context/cartContext';
 import { WishlistProvider } from './Context/WishlistContext';
+
 import CartNavigation from './components/CartNavigation';
-
 import NavBar from './components/Navbar';
-import Wishlist from './pages/WishList';
-import Category from './pages/Category';
-
 import Footer from './components/Footer';
 import Faqs from './components/Faqs';
 import CartDrawer from './components/CartDrawer';
 import ScrollToTop from './components/ScrollToTop';
+import FloatingButtons from './components/FloatingWhatsApp';
 
+import Wishlist from './pages/WishList';
+import Category from './pages/Category';
 import Home from './pages/Home';
 import Sms from './pages/sms';
 import Collections from './pages/Collections';
@@ -89,8 +94,9 @@ import IncorrectLinkPage from './pages/IncorrectLinkPage/IncorrectLinkPage';
 function AppContent() {
   const location = useLocation();
 
-  // ofr ormalize the URL to handle trailing slashes.
-  const pathname = location.pathname.replace(/\/+$/, '').toLowerCase() || '/';
+  // Normalize URLs to handle trailing slashes and capitalization.
+  const pathname =
+    location.pathname.replace(/\/+$/, '').toLowerCase() || '/';
 
   // All valid static routes.
   const validPaths = [
@@ -123,6 +129,11 @@ function AppContent() {
     '/auth/login',
     '/auth/signup',
     '/profile',
+    '/profile/orders',
+    '/profile/wishlist',
+    '/profile/details',
+    '/profile/addresses',
+    '/profile/settings',
     '/auth/sms',
     '/terms-of-service',
     '/privacy-policy',
@@ -143,14 +154,14 @@ function AppContent() {
   const isAuthPage = pathname.startsWith('/auth');
   const isAdminPage = pathname === '/admin';
 
-  // Hide the navbar and footer on these pages.
+  // Hide the navbar, footer, and floating buttons on these pages.
   const hideLayout = isAuthPage || isAdminPage || isIncorrectPage;
 
   return (
     <>
       <ScrollToTop />
 
-      <Toaster position='top-center' reverseOrder={false} />
+      <Toaster position="top-center" reverseOrder={false} />
 
       <CartDrawer />
 
@@ -158,69 +169,96 @@ function AppContent() {
       {!hideLayout && <NavBar />}
 
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/order-success' element={<OrderSuccess />} />
-        {/* <Route path='/cookies' element={<CookiePolicy />} /> */}
-        <Route path='/checkout' element={<CheckOut />} />
-        <Route path='/track-order' element={<TrackOrder />} />
-        <Route path='/admin' element={<AdminLogIn />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/order-success" element={<OrderSuccess />} />
+        <Route path="/checkout" element={<CheckOut />} />
+        <Route path="/track-order" element={<TrackOrder />} />
+        <Route path="/admin" element={<AdminLogIn />} />
+
+        {/* Protected account routes */}
         <Route element={<ProtectedRoute />}>
-          <Route path='/profile' element={<Profile />} />
-          <Route path='/profile/orders' element={<OrderHistory />} />
-          <Route path='/profile/wishlist' element={<ProfileWishlist />} />
-          <Route path='/profile/details' element={<ProfileDetails />} />
-          <Route path='/profile/addresses' element={<Addresses />} />
-          <Route path='/profile/settings' element={<AccountSettings />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/orders" element={<OrderHistory />} />
+          <Route path="/profile/wishlist" element={<ProfileWishlist />} />
+          <Route path="/profile/details" element={<ProfileDetails />} />
+          <Route path="/profile/addresses" element={<Addresses />} />
+          <Route path="/profile/settings" element={<AccountSettings />} />
         </Route>
-        <Route path='/wishlist' element={<Wishlist />} />
-        <Route path='/collections' element={<Collections />} />
-        <Route path='/category' element={<Category />} />
-        <Route path='/kids' element={<Kids />} />
-        <Route path='/faqs' element={<Faqs />} />
-        <Route path='/products/:id' element={<ProductDetails />} />
-        <Route path='/casuals' element={<Casual />} />
-        <Route path='/pants' element={<Pants />} />
-        <Route path='/t-shirt' element={<Tshirt />} />
+
+        <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/collections" element={<Collections />} />
+        <Route path="/category" element={<Category />} />
+        <Route path="/kids" element={<Kids />} />
+        <Route path="/faqs" element={<Faqs />} />
+
+        <Route path="/products/:id" element={<ProductDetails />} />
+
+        <Route path="/casuals" element={<Casual />} />
+        <Route path="/pants" element={<Pants />} />
+        <Route path="/t-shirt" element={<Tshirt />} />
         {/* <Route path="/shirts" element={<Shirt />} /> */}
-        <Route path='/agbada' element={<Agbada />} />
-        <Route path='/Denim-Jeans' element={<DenimJean />} />
-        <Route path='/Outerwear-Jackets' element={<OuterwearJacket />} />
-        <Route path='/Hoodies-Sweatshirts' element={<HoodiesSweatshirts />} />
-        <Route path='/jalabiya' element={<Jalabiya />} />
-        <Route path='/crop-top' element={<CropTop />} />
-        <Route path='/skirts' element={<Skirts />} />
-        <Route path='/female-pant' element={<FemalePant />} />
-        <Route path='/tops' element={<Top />} />
-        <Route path='/accessories' element={<Accessories />} />
-        <Route path='/Dresses' element={<Dresses />} />
-        <Route path='/watches' element={<Watches />} />
-        <Route path='/pants/:id' element={<PantsDetails />} />
-        <Route path='/t-shirt/:id' element={<TshirtDetails />} />
+
+        <Route path="/agbada" element={<Agbada />} />
+        <Route path="/denim-jeans" element={<DenimJean />} />
+        <Route path="/outerwear-jackets" element={<OuterwearJacket />} />
+        <Route path="/hoodies-sweatshirts" element={<HoodiesSweatshirts />} />
+        <Route path="/jalabiya" element={<Jalabiya />} />
+
+        <Route path="/crop-top" element={<CropTop />} />
+        <Route path="/skirts" element={<Skirts />} />
+        <Route path="/female-pant" element={<FemalePant />} />
+        <Route path="/tops" element={<Top />} />
+        <Route path="/accessories" element={<Accessories />} />
+        <Route path="/dresses" element={<Dresses />} />
+        <Route path="/watches" element={<Watches />} />
+
+        <Route path="/pants/:id" element={<PantsDetails />} />
+        <Route path="/t-shirt/:id" element={<TshirtDetails />} />
         {/* <Route path="/shirts/:id" element={<ShirtDetails />} /> */}
-        <Route path='/Denim-Jeans/:id' element={<DenimJeanDetails />} />
-        <Route path='/Outerwear-Jackets/:id' element={<OuterwearJacketsDetails />} />
-        <Route path='/Hoodies-Sweatshirts/:id' element={<HoodiesSweatshirtsDetails />} />
-        <Route path='/crop-top/:id' element={<CropTopDetails />} />
-        <Route path='/skirts/:id' element={<SkirtsDetails />} />
-        <Route path='/female-pant/:id' element={<FemalePantDetails />} />
-        <Route path='/tops/:id' element={<TopDetails />} />
-        <Route path='/Accessories/:id' element={<AccessoriesDetails />} />
-        <Route path='/dresses/:id' element={<DressesDetails />} />
-        <Route path='/bestseller' element={<BestSeller />} />
-        <Route path='/bestseller/products/:id' element={<BestSellerDetail />} />
-        <Route path='/auth/login' element={<AuthForm />} />
-        <Route path='/auth/signup' element={<AuthForm />} />
-        <Route path='/auth/sms' element={<Sms />} />
-        <Route path='/terms-of-service' element={<TermsOfService />} />
-        <Route path='/privacy-policy' element={<PrivacyPolicy />} />
-        <Route path='/returns' element={<ReturnPolicy />} />
-        <Route path='/shipping-policy' element={<ShippingPolicy />} />
-        <Route path='/story' element={<Story />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='/product/:type/:id' element={<ProductDetails />} />
+
+        <Route path="/denim-jeans/:id" element={<DenimJeanDetails />} />
+        <Route
+          path="/outerwear-jackets/:id"
+          element={<OuterwearJacketsDetails />}
+        />
+        <Route
+          path="/hoodies-sweatshirts/:id"
+          element={<HoodiesSweatshirtsDetails />}
+        />
+
+        <Route path="/crop-top/:id" element={<CropTopDetails />} />
+        <Route path="/skirts/:id" element={<SkirtsDetails />} />
+        <Route path="/female-pant/:id" element={<FemalePantDetails />} />
+        <Route path="/tops/:id" element={<TopDetails />} />
+        <Route path="/accessories/:id" element={<AccessoriesDetails />} />
+        <Route path="/dresses/:id" element={<DressesDetails />} />
+
+        <Route path="/bestseller" element={<BestSeller />} />
+        <Route
+          path="/bestseller/products/:id"
+          element={<BestSellerDetail />}
+        />
+
+        <Route path="/auth/login" element={<AuthForm />} />
+        <Route path="/auth/signup" element={<AuthForm />} />
+        <Route path="/auth/sms" element={<Sms />} />
+
+        <Route path="/terms-of-service" element={<TermsOfService />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/returns" element={<ReturnPolicy />} />
+        <Route path="/shipping-policy" element={<ShippingPolicy />} />
+
+        <Route path="/story" element={<Story />} />
+        <Route path="/contact" element={<Contact />} />
+
+        <Route path="/product/:type/:id" element={<ProductDetails />} />
+
         {/* Keep the catch-all route last. */}
-        <Route path='*' element={<IncorrectLinkPage />} />
+        <Route path="*" element={<IncorrectLinkPage />} />
       </Routes>
+
+      {/* Floating buttons stay above page content and sticky cards. */}
+      {!hideLayout && <FloatingButtons />}
 
       {/* Render the footer only once. */}
       {!hideLayout && pathname !== '/checkout' && <Footer />}
@@ -232,7 +270,7 @@ function App() {
   return (
     <WishlistProvider>
       <Toaster
-        position='top-center'
+        position="top-center"
         toastOptions={{
           duration: 3000,
         }}
@@ -240,11 +278,12 @@ function App() {
           zIndex: 99999,
         }}
       />
+
       <CartProvider>
         <Router>
           <CartNavigation />
 
-          <div className='bg-white '>
+          <div className="bg-white">
             <AppContent />
           </div>
         </Router>
@@ -253,4 +292,4 @@ function App() {
   );
 }
 
-export default App;
+export default App
