@@ -103,6 +103,56 @@ export const TshirtDatas = [
     ],
   },
 
+  // {
+  //   id: 'phantom-web-oversized-tee',
+  //   name: 'Phantom Web Oversized Tee',
+  //   price: 45000,
+  //   oldPrice: 55000,
+  //   inStock: 3,
+
+  //   sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
+
+  //   colors: [
+  //     {
+  //       name: 'Black',
+  //       value: '#000000',
+  //       images: [phantomweboversizedtee, phantomweboversizedteebv],
+  //     },
+  //     {
+  //       name: 'White',
+  //       value: '#FFFFFF',
+  //       images: [phantomweboversizedteeWhite, phantomweboversizedteeWhiteBV],
+  //     },
+  //     {
+  //       name: 'red',
+  //       value: '#FF0000',
+  //       images: [phantomweboversizedteeRed, phantomweboversizedteeRedBV],
+  //     },
+  //   ],
+
+  //   image: phantomweboversizedtee,
+  //   hoverImage: phantomweboversizedteebv,
+
+  //   description:
+  //     'Designed for an effortless modern look, this heavyweight cotton tee features a relaxed drop-shoulder cut with reinforced stitching for long-lasting durability.',
+
+  //   features: [
+  //     'Oversized boxy fit',
+  //     'Drop-shoulder seam construction',
+  //     'Thick ribbed collar',
+  //     'Pre-shrunk fabric finish',
+  //   ],
+
+  //   fabric: '100% Premium Heavyweight Cotton (240 GSM)',
+
+  //   care: [
+  //     'Machine wash cold inside out',
+  //     'Tumble dry low',
+  //     'Do not iron directly on print',
+  //     'Do not bleach',
+  //   ],
+  // },
+
   {
     id: 'hotline-heavyweight-tee',
     name: 'Hotline Heavyweight Tee',
