@@ -7,7 +7,7 @@ import { FemalePantDatas } from '../../../data/FemalePant';
 import { useWishlist } from '../../../Context/WishlistContext';
 import ProductFilterBar from '../../../components/ProductFilterBar';
 
-import backgroundImage from '../../../assets/images/trax_showroom.webp';
+import backgroundImage from '../../../assets/images/bottoms.png';
 
 /* -------------------------------------------------------------------------- */
 /*                          PRODUCT CARD COMPONENT                            */

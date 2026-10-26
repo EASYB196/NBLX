@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo } from 'react';
 import { FaChevronRight, FaHeart, FaRegHeart } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
@@ -9,7 +8,7 @@ import { PantsDatas } from '../../../data/PantsData';
 import { useWishlist } from '../../../Context/WishlistContext';
 import ProductFilterBar from '../../../components/ProductFilterBar';
 
-import backgroundImage from '../../../assets/images/trax_showroom.webp';
+import backgroundImage from '../../../assets/images/bottoms.png';
 
 /* -------------------------------------------------------------------------- */
 /*                          PRODUCT CARD COMPONENT                            */
@@ -249,13 +248,6 @@ const Pants = () => {
 };
 
 export default Pants;
-
-
-
-
-
-
-
 
 // import React, { useState, useMemo } from 'react';
 // import { FaChevronRight, FaHeart, FaRegHeart } from 'react-icons/fa6';

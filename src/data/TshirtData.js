@@ -1,6 +1,17 @@
 import greatmindcroptee from '../assets/images/MEN/T-Shirt/NXblackFcroptop.jpg';
 import greatmindcropteebv from '../assets/images/MEN/T-Shirt/NXblackbcroptop.jpg';
 
+import phantomweboversizedbluetee from '../assets/images/MEN/T-Shirt/phantomweboversizedteebluefv.jpg';
+import phantomweboversizedblueteebv from '../assets/images/MEN/T-Shirt/phantomweboversizedteebluebv.jpg';
+import phantomweboversizedblacktee from '../assets/images/MEN/T-Shirt/phantomweboversizedteeblackfv.jpg';
+import phantomweboversizedblackteebv from '../assets/images/MEN/T-Shirt/phantomweboversizedteeblackbv.jpg';
+
+import phantomweboversizedredtee from '../assets/images/MEN/T-Shirt/phantomweboversizedteeredfv.jpg';
+import phantomweboversizedredteebv from '../assets/images/MEN/T-Shirt/phantomweboversizedteeredbv.jpg';
+
+import phantomweboversizedwhitetee from '../assets/images/MEN/T-Shirt/phantomweboversizedteewhitefv.jpg';
+import phantomweboversizedwhiteteebv from '../assets/images/MEN/T-Shirt/phantomweboversizedteewhitebv.jpg';
+
 import greatmindcropteeWhite from '../assets/images/MEN/T-Shirt/greatmindcropteeWhite.jpg';
 import greatmindcropteeWhiteBV from '../assets/images/MEN/T-Shirt/greatmindcropteeWhiteBV.jpg';
 
@@ -103,55 +114,61 @@ export const TshirtDatas = [
     ],
   },
 
-  // {
-  //   id: 'phantom-web-oversized-tee',
-  //   name: 'Phantom Web Oversized Tee',
-  //   price: 45000,
-  //   oldPrice: 55000,
-  //   inStock: 3,
+  {
+    id: 'phantom-web-oversized-tee',
+    name: 'Phantom Web Oversized Tee',
+    price: 45000,
+    oldPrice: 55000,
+    inStock: 3,
 
-  //   sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
 
-  //   colors: [
-  //     {
-  //       name: 'Black',
-  //       value: '#000000',
-  //       images: [phantomweboversizedtee, phantomweboversizedteebv],
-  //     },
-  //     {
-  //       name: 'White',
-  //       value: '#FFFFFF',
-  //       images: [phantomweboversizedteeWhite, phantomweboversizedteeWhiteBV],
-  //     },
-  //     {
-  //       name: 'red',
-  //       value: '#FF0000',
-  //       images: [phantomweboversizedteeRed, phantomweboversizedteeRedBV],
-  //     },
-  //   ],
+    colors: [
+      {
+        name: 'White',
+        value: '#FFFFFF',
+        images: [phantomweboversizedwhitetee, phantomweboversizedwhiteteebv],
+      },
+      {
+        name: 'Black',
+        value: '#000000',
+        images: [phantomweboversizedblacktee, phantomweboversizedblackteebv],
+      },
+      {
+        name: 'light Blue',
+        value: '#ADD8E6',
+        images: [phantomweboversizedbluetee, phantomweboversizedblueteebv],
+      },
 
-  //   image: phantomweboversizedtee,
-  //   hoverImage: phantomweboversizedteebv,
+      {
+        name: 'red',
+        value: '#FF0000',
+        images: [phantomweboversizedredtee, phantomweboversizedredteebv],
+      },
+    ],
 
-  //   description:
-  //     'Designed for an effortless modern look, this heavyweight cotton tee features a relaxed drop-shoulder cut with reinforced stitching for long-lasting durability.',
+    image: phantomweboversizedwhitetee,
+    hoverImage: phantomweboversizedwhiteteebv,
 
-  //   features: [
-  //     'Oversized boxy fit',
-  //     'Drop-shoulder seam construction',
-  //     'Thick ribbed collar',
-  //     'Pre-shrunk fabric finish',
-  //   ],
+    description:
+      'Designed for an effortless modern look, this heavyweight cotton tee features a relaxed drop-shoulder cut with reinforced stitching for long-lasting durability.',
 
-  //   fabric: '100% Premium Heavyweight Cotton (240 GSM)',
+    features: [
+      'Oversized boxy fit',
+      'Drop-shoulder seam construction',
+      'Thick ribbed collar',
+      'Pre-shrunk fabric finish',
+    ],
 
-  //   care: [
-  //     'Machine wash cold inside out',
-  //     'Tumble dry low',
-  //     'Do not iron directly on print',
-  //     'Do not bleach',
-  //   ],
-  // },
+    fabric: '100% Premium Heavyweight Cotton (240 GSM)',
+
+    care: [
+      'Machine wash cold inside out',
+      'Tumble dry low',
+      'Do not iron directly on print',
+      'Do not bleach',
+    ],
+  },
 
   {
     id: 'hotline-heavyweight-tee',
@@ -573,6 +590,19 @@ export const sizeCharts = {
       ['3XL', '50-52', '23', '29'],
     ],
   },
+  'phantom-web-oversized-tee': {
+    title: 'phantomweb-Oversized-Tee Size Guide',
+    fit: 'Oversized / Boxy Fit',
+    columns: ['Size', 'Chest (in)', 'Shoulder (in)', 'Length (in)'],
+    rows: [
+      ['S', '40-42', '18', '24'],
+      ['M', '42-44', '19', '25'],
+      ['L', '44-46', '20', '26'],
+      ['XL', '46-48', '21', '27'],
+      ['XXL', '48-50', '22', '28'],
+      ['3XL', '50-52', '23', '29'],
+    ],
+  },
 
   'hotline-heavyweight-tee': {
     title: 'Hotline Heavyweight Crop Tee Size Guide',
@@ -712,9 +742,9 @@ export const sizeCharts = {
       ['3XL', '50-52', '23', '32'],
     ],
   },
-    'Hooded-Tank-Top': {
+  'Hooded-Tank-Top': {
     title: 'RawCut Sleeveless Hoodie Size Guide',
-    
+
     columns: ['Size', 'Chest (in)', 'Shoulder (in)', 'Length (in)'],
     rows: [
       ['S', '40-42', '17', '26'],

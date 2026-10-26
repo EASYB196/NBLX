@@ -22,55 +22,55 @@ import crystallizedtanktop from '../assets/images/MEN/T-Shirt/white-stud-tanktop
 import crystallizedtanktopbv from '../assets/images/MEN/T-Shirt/white-stud-tanktop-Bv.jpg';
 
 export const FullBestSellerData = [
-    {
-      id: 'greatminds-crop-tee',
-      name: 'Greatminds Crop Tee',
-      price: 45000,
-      oldPrice: 55000,
-      inStock: 3,
-  
-      sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
-  
-      colors: [
-        {
-          name: 'Black',
-          value: '#000000',
-          images: [greatmindcroptee, greatmindcropteebv],
-        },
-        {
-          name: 'White',
-          value: '#FFFFFF',
-          images: [greatmindcropteeWhite, greatmindcropteeWhiteBV],
-        },
-        {
-          name: 'red',
-          value: '#FF0000',
-          images: [greatmindcropteeRed, greatmindcropteeRedBV],
-        },
-      ],
-  
-      image: greatmindcroptee,
-      hoverImage: greatmindcropteebv,
-  
-      description:
-        'Designed for an effortless modern look, this heavyweight cotton tee features a relaxed drop-shoulder cut with reinforced stitching for long-lasting durability.',
-  
-      features: [
-        'Oversized boxy fit',
-        'Drop-shoulder seam construction',
-        'Thick ribbed collar',
-        'Pre-shrunk fabric finish',
-      ],
-  
-      fabric: '100% Premium Heavyweight Cotton (240 GSM)',
-  
-      care: [
-        'Machine wash cold inside out',
-        'Tumble dry low',
-        'Do not iron directly on print',
-        'Do not bleach',
-      ],
-    },
+  {
+    id: 'greatminds-crop-tee',
+    name: 'Greatminds Crop Tee',
+    price: 45000,
+    oldPrice: 55000,
+    inStock: 3,
+
+    sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
+
+    colors: [
+      {
+        name: 'Black',
+        value: '#000000',
+        images: [greatmindcroptee, greatmindcropteebv],
+      },
+      {
+        name: 'White',
+        value: '#FFFFFF',
+        images: [greatmindcropteeWhite, greatmindcropteeWhiteBV],
+      },
+      {
+        name: 'red',
+        value: '#FF0000',
+        images: [greatmindcropteeRed, greatmindcropteeRedBV],
+      },
+    ],
+
+    image: greatmindcroptee,
+    hoverImage: greatmindcropteebv,
+
+    description:
+      'Designed for an effortless modern look, this heavyweight cotton tee features a relaxed drop-shoulder cut with reinforced stitching for long-lasting durability.',
+
+    features: [
+      'Oversized boxy fit',
+      'Drop-shoulder seam construction',
+      'Thick ribbed collar',
+      'Pre-shrunk fabric finish',
+    ],
+
+    fabric: '100% Premium Heavyweight Cotton (240 GSM)',
+
+    care: [
+      'Machine wash cold inside out',
+      'Tumble dry low',
+      'Do not iron directly on print',
+      'Do not bleach',
+    ],
+  },
 
   {
     id: 'Crystallized-Tanktop',

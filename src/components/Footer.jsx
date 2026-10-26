@@ -244,6 +244,7 @@ import {
   FaTwitter,
   FaWhatsapp,
 } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 
 /* -------------------------------------------------------------------------- */
 /*                            ACCORDION SECTION                               */
@@ -337,7 +338,7 @@ const Footer = () => {
   const socialLinks = [
     {
       icon: <FaInstagram className='w-4 h-4' />,
-      url: 'https://instagram.com',
+      url: 'https://www.instagram.com/n_b_l_x06',
       label: 'Instagram',
     },
     {
@@ -345,13 +346,9 @@ const Footer = () => {
       url: 'https://facebook.com',
       label: 'Facebook',
     },
+
     {
-      icon: <FaPinterestP className='w-4 h-4' />,
-      url: 'https://pinterest.com',
-      label: 'Pinterest',
-    },
-    {
-      icon: <FaTwitter className='w-4 h-4' />,
+      icon: <FaXTwitter className='w-4 h-4' />,
       url: 'https://twitter.com',
       label: 'Twitter',
     },

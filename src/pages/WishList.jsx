@@ -1,223 +1,366 @@
-import React, { useEffect, useState } from 'react';
+
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { Link } from 'react-router-dom';
-import { FaHeart, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import {
+  FaHeart,
+  FaChevronLeft,
+  FaChevronRight,
+  FaArrowRight,
+  FaShoppingBag,
+  FaTrashAlt,
+} from 'react-icons/fa';
+
 import { useWishlist } from '../Context/WishlistContext';
 import BreadCrumb from '../components/BreadCrumb';
 
+const getItemImages = (item) => {
+  const images = Array.isArray(item.images) ? item.images : [];
+  const fallbackImages = [
+    item.image,
+    item.hoverImage,
+  ].filter(Boolean);
+
+  return [
+    ...new Set(
+      (images.length ? images : fallbackImages).filter(Boolean),
+    ),
+  ];
+};
+
+const getWishlistKey = (item) =>
+  `${item.id}-${item.selectedColor || 'Default'}`;
+
+const formatPrice = (price) => {
+  const numericPrice = Number(price);
+
+  return Number.isFinite(numericPrice)
+    ? `₦${numericPrice.toLocaleString('en-NG')}`
+    : 'Price unavailable';
+};
+
 function Wishlist() {
-  const { wishlistItems, toggleWishlist } = useWishlist();
+  const { wishlistItems = [], toggleWishlist } = useWishlist();
 
   const [imageIndexes, setImageIndexes] = useState({});
 
-  /*
-   * Get all images for each wishlist item
-   */
-  const getItemImages = (item) => {
-    if (item.images?.length > 0) {
-      return item.images;
-    }
+  const itemsWithImages = useMemo(
+    () =>
+      wishlistItems.map((item) => ({
+        ...item,
+        wishlistKey: getWishlistKey(item),
+        images: getItemImages(item),
+      })),
+    [wishlistItems],
+  );
 
-    return [item.image, ...(item.hoverImage ? [item.hoverImage] : [])].filter(Boolean);
-  };
-
-  /*
-   * Make each product + color unique
-   *
-   * Example:
-   * crop-1-Black
-   * crop-1-White
-   * crop-1-Red
-   */
-  const getWishlistKey = (item) => {
-    return `${item.id}-${item.selectedColor || 'Default'}`;
-  };
-
-  /*
-   * Keep indexes valid when wishlist changes
-   */
+  // Keep image indexes valid when wishlist items change.
   useEffect(() => {
-    setImageIndexes((prev) => {
-      const updated = {};
+    setImageIndexes((previousIndexes) => {
+      const nextIndexes = {};
 
-      wishlistItems.forEach((item) => {
-        const images = getItemImages(item);
-        const wishlistKey = getWishlistKey(item);
+      itemsWithImages.forEach(({ wishlistKey, images }) => {
+        const previousIndex = previousIndexes[wishlistKey] ?? 0;
 
-        const currentIndex = prev[wishlistKey] ?? 0;
-
-        updated[wishlistKey] = currentIndex < images.length ? currentIndex : 0;
+        nextIndexes[wishlistKey] =
+          images.length > 0 && previousIndex < images.length
+            ? previousIndex
+            : 0;
       });
 
-      return updated;
+      return nextIndexes;
     });
-  }, [wishlistItems]);
+  }, [itemsWithImages]);
 
-  /*
-   * PREVIOUS IMAGE
-   */
-  const handlePrev = (wishlistKey, imageCount) => {
-    setImageIndexes((prev) => ({
-      ...prev,
-      [wishlistKey]: ((prev[wishlistKey] ?? 0) - 1 + imageCount) % imageCount,
-    }));
-  };
+  const changeImage = useCallback(
+    (wishlistKey, imageCount, direction) => {
+      if (imageCount < 2) return;
 
-  /*
-   * NEXT IMAGE
-   */
-  const handleNext = (wishlistKey, imageCount) => {
-    setImageIndexes((prev) => ({
-      ...prev,
-      [wishlistKey]: ((prev[wishlistKey] ?? 0) + 1) % imageCount,
-    }));
-  };
+      setImageIndexes((previousIndexes) => ({
+        ...previousIndexes,
+        [wishlistKey]:
+          ((previousIndexes[wishlistKey] ?? 0) +
+            direction +
+            imageCount) %
+          imageCount,
+      }));
+    },
+    [],
+  );
 
-  /*
-   * SELECT THUMBNAIL
-   */
-  const handleImageSelect = (wishlistKey, index) => {
-    setImageIndexes((prev) => ({
-      ...prev,
+  const selectImage = useCallback((wishlistKey, index) => {
+    setImageIndexes((previousIndexes) => ({
+      ...previousIndexes,
       [wishlistKey]: index,
     }));
-  };
+  }, []);
+
+  const removeItem = useCallback(
+    (item) => {
+      toggleWishlist(item);
+    },
+    [toggleWishlist],
+  );
+
+    const memoizedWishlistItems = useMemo(() => wishlistItems, [wishlistItems]);
+
 
   return (
-    <div className='max-w-7xl mx-auto px-4 md:px-8 py-10 mt-2 min-h-screen'>
-      <BreadCrumb category='Wishlist' />
+    <main className="mx-auto mt-2 min-h-screen w-full max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
+      <BreadCrumb category="Wishlist" />
 
-      {/* HEADER */}
-      <div className='mb-10'>
-        <h1 className='text-3xl md:text-4xl font-bold'>My Wishlist</h1>
-
-        <p className='text-gray-500 mt-2'>{wishlistItems.length} item(s) saved</p>
+    {/* HEADER */}
+      <div className='mb-10 mt-4'>
+        <span className='mb-2 inline-block text-[11px] font-semibold uppercase tracking-[0.25em] text-neutral-400'>
+          Saved Artifacts
+        </span>
+        <h1 className='text-3xl font-serif font-light tracking-tight text-neutral-950 sm:text-4xl md:text-5xl'>
+          My Wishlist
+        </h1>
+        <p className='text-neutral-500 text-sm sm:text-base font-light mt-2'>
+          {memoizedWishlistItems.length} item{memoizedWishlistItems.length !== 1 ? 's' : ''} saved for later
+        </p>
       </div>
 
-      {/* EMPTY STATE */}
+      {/* Empty wishlist */}
       {wishlistItems.length === 0 ? (
-        <div className='flex flex-col items-center justify-center py-20'>
-          <FaHeart className='text-6xl text-gray-300 mb-4' />
+        <section className="flex min-h-[360px] flex-col items-center justify-center rounded-2xl border border-dashed border-neutral-300 bg-neutral-50 px-5 py-16 text-center sm:min-h-[420px]">
+          <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-sm ring-1 ring-neutral-200">
+            <FaHeart
+              aria-hidden="true"
+              className="text-2xl text-neutral-400"
+            />
+          </div>
 
-          <h2 className='text-2xl font-semibold mb-2'>Your wishlist is empty</h2>
+          <h2 className="text-xl font-semibold tracking-tight text-neutral-950 sm:text-2xl">
+            Your wishlist is empty
+          </h2>
 
-          <p className='text-gray-500 text-center'>
-            Add products to your wishlist and they'll appear here.
+          <p className="mt-2 max-w-sm text-sm leading-6 text-neutral-500">
+            Save your favourite pieces as you browse, and they’ll
+            be waiting for you here.
           </p>
 
-          <Link to='/category' className='block w-full sm:w-auto'>
-            <button
-              type='button'
-              className='mt-6 w-full rounded-xl border px-6 py-3 font-semibold text-black transition duration-500 hover:bg-black hover:font-bold hover:text-white sm:w-auto sm:px-10'
-            >
-              Continue Shopping
-            </button>
+          <Link
+            to="/category"
+            className="mt-6 inline-flex min-h-12 items-center justify-center gap-3 rounded-xl bg-black px-6 py-3 text-sm font-semibold text-white! transition-colors hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+          >
+            <FaShoppingBag aria-hidden="true" />
+            Continue shopping
+            <FaArrowRight
+              aria-hidden="true"
+              className="text-xs"
+            />
           </Link>
-        </div>
+        </section>
       ) : (
-        <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
-          {wishlistItems.map((item) => {
-            const images = getItemImages(item);
-
-            const wishlistKey = getWishlistKey(item);
+        /* Wishlist products */
+        <section
+          aria-label="Wishlist products"
+          className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4"
+        >
+          {itemsWithImages.map((item) => {
+            const { wishlistKey, images } = item;
 
             const currentIndex = imageIndexes[wishlistKey] ?? 0;
 
-            const currentImage = images[currentIndex] || images[0];
+            const currentImage =
+              images[currentIndex] || images[0] || '';
+
+            const productRoute = item.route || '/collections';
 
             return (
-              <div
+              <article
                 key={wishlistKey}
-                className='bg-white border rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300'
+                className="group flex min-w-0 flex-col overflow-hidden rounded-2xl border border-neutral-200 bg-white transition-shadow duration-300 hover:shadow-lg"
               >
-                {/* IMAGE AREA */}
-                <div className='relative'>
-                  {/* MAIN IMAGE */}
-                  <Link to={item.route}>
-                    <div className='overflow-hidden'>
-                      <img
-                        src={currentImage}
-                        alt={item.name}
-                        className='w-full h-72 md:h-80 object-cover hover:scale-105 transition duration-300'
-                      />
+                {/* Product image */}
+                <div className="relative overflow-hidden bg-neutral-100">
+                  <Link
+                    to={productRoute}
+                    aria-label={`View ${item.name || 'product'}`}
+                    className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-black"
+                  >
+                    <div className="aspect-[4/5] w-full overflow-hidden">
+                      {currentImage ? (
+                        <img
+                          src={currentImage}
+                          alt={item.name || 'Wishlist product'}
+                          loading="lazy"
+                          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03] motion-reduce:transition-none"
+                        />
+                      ) : (
+                        <div className="flex h-full items-center justify-center text-sm text-neutral-500">
+                          Image unavailable
+                        </div>
+                      )}
                     </div>
                   </Link>
 
-                  {/* ARROWS */}
+                  {/* Remove from wishlist */}
+                  <button
+                    type="button"
+                    onClick={() => removeItem(item)}
+                    aria-label={`Remove ${item.name || 'product'} from wishlist`}
+                    title="Remove from wishlist"
+                    className="absolute right-3 top-3 flex h-10 w-10 items-center justify-center rounded-full border border-neutral-200 bg-white/95 text-neutral-700 shadow-sm transition-colors hover:border-red-200 hover:bg-red-50 hover:text-red-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+                  >
+                    <FaTrashAlt
+                      aria-hidden="true"
+                      className="text-sm"
+                    />
+                  </button>
+
+                  {/* Image navigation */}
                   {images.length > 1 && (
                     <>
                       <button
-                        type='button'
-                        onClick={() => handlePrev(wishlistKey, images.length)}
-                        className='absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow hover:bg-white transition z-10'
-                        aria-label='Previous image'
+                        type="button"
+                        onClick={() =>
+                          changeImage(
+                            wishlistKey,
+                            images.length,
+                            -1,
+                          )
+                        }
+                        aria-label={`Previous image for ${item.name || 'product'}`}
+                        className="absolute left-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-neutral-800 shadow-sm transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
                       >
-                        <FaChevronLeft />
+                        <FaChevronLeft
+                          aria-hidden="true"
+                          className="text-xs"
+                        />
                       </button>
 
                       <button
-                        type='button'
-                        onClick={() => handleNext(wishlistKey, images.length)}
-                        className='absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 p-2 rounded-full shadow hover:bg-white transition z-10'
-                        aria-label='Next image'
+                        type="button"
+                        onClick={() =>
+                          changeImage(
+                            wishlistKey,
+                            images.length,
+                            1,
+                          )
+                        }
+                        aria-label={`Next image for ${item.name || 'product'}`}
+                        className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/95 text-neutral-800 shadow-sm transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
                       >
-                        <FaChevronRight />
+                        <FaChevronRight
+                          aria-hidden="true"
+                          className="text-xs"
+                        />
                       </button>
+
+                      {/* Image indicators */}
+                      <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-black/65 px-2.5 py-1.5">
+                        {images.map((image, index) => (
+                          <button
+                            key={`${image}-${index}`}
+                            type="button"
+                            onClick={() =>
+                              selectImage(wishlistKey, index)
+                            }
+                            aria-label={`Show image ${index + 1} of ${images.length}`}
+                            aria-current={
+                              currentIndex === index
+                                ? 'true'
+                                : undefined
+                            }
+                            className={`h-1.5 rounded-full transition-all ${
+                              currentIndex === index
+                                ? 'w-4 bg-white'
+                                : 'w-1.5 bg-white/60 hover:bg-white'
+                            }`}
+                          />
+                        ))}
+                      </div>
                     </>
                   )}
                 </div>
 
-                {/* THUMBNAILS */}
+                {/* Image thumbnails */}
                 {images.length > 1 && (
-                  <div className='flex gap-2 px-3 pt-3 overflow-x-auto'>
-                    {images.map((img, index) => (
+                  <div
+                    className="flex gap-2 overflow-x-auto border-b border-neutral-100 px-3 py-3"
+                    aria-label={`${item.name || 'Product'} image thumbnails`}
+                  >
+                    {images.map((image, index) => (
                       <button
-                        key={`${img}-${index}`}
-                        type='button'
-                        onClick={() => handleImageSelect(wishlistKey, index)}
-                        className={`shrink-0 rounded-md overflow-hidden border-2 transition ${
-                          currentIndex === index ? 'border-black' : 'border-transparent'
+                        key={`${image}-${index}`}
+                        type="button"
+                        onClick={() =>
+                          selectImage(wishlistKey, index)
+                        }
+                        aria-label={`Select image ${index + 1}`}
+                        aria-pressed={currentIndex === index}
+                        className={`h-14 w-12 shrink-0 overflow-hidden rounded-md border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-1 ${
+                          currentIndex === index
+                            ? 'border-black'
+                            : 'border-transparent hover:border-neutral-300'
                         }`}
                       >
                         <img
-                          src={img}
-                          alt={`${item.name} view ${index + 1}`}
-                          className='w-12 h-14 object-cover'
+                          src={image}
+                          alt=""
+                          loading="lazy"
+                          className="h-full w-full object-cover"
                         />
                       </button>
                     ))}
                   </div>
                 )}
 
-                {/* PRODUCT INFO */}
-                <Link to={item.route}>
-                  <div className='p-4'>
-                    <h3 className='font-semibold text-lg'>{item.name}</h3>
-
-                    <p className='mt-2 font-bold'>₦{item.price.toLocaleString('en-NG')}</p>
-
-                    {item.selectedColor && item.selectedColor !== 'Default' && (
-                      <p className='text-sm text-gray-500 mt-1'>Color: {item.selectedColor}</p>
-                    )}
-                  </div>
-                </Link>
-
-                {/* REMOVE */}
-                <div className='px-4 pb-4'>
-                  <button
-                    type='button'
-                    onClick={() => toggleWishlist(item)}
-                    className='w-full py-2 cursor-copy rounded-lg bg-[#ff0000] text-white hover:bg-[#ff0000] transition'
+                {/* Product details */}
+                <div className="flex flex-1 flex-col p-4 sm:p-5">
+                  <Link
+                    to={productRoute}
+                    className="rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black"
                   >
-                    Remove from Wishlist
-                  </button>
+                    <h2 className="break-words text-base font-semibold leading-6 text-neutral-950 transition-colors hover:text-neutral-600 sm:text-lg">
+                      {item.name || 'Untitled product'}
+                    </h2>
+                  </Link>
+
+                  <p className="mt-2 text-base font-bold text-neutral-950">
+                    {formatPrice(item.price)}
+                  </p>
+
+                  {item.selectedColor &&
+                    item.selectedColor !== 'Default' && (
+                      <p className="mt-2 text-sm text-neutral-500">
+                        Color:{' '}
+                        <span className="font-medium text-neutral-800">
+                          {item.selectedColor}
+                        </span>
+                      </p>
+                    )}
+
+                  <div className="mt-auto pt-5">
+                    <Link
+                      to={productRoute}
+                      className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-neutral-300 px-4 py-2.5 text-sm font-semibold text-neutral-900 transition-colors hover:border-black hover:bg-black hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2"
+                    >
+                      View product
+                      <FaArrowRight
+                        aria-hidden="true"
+                        className="text-xs"
+                      />
+                    </Link>
+                  </div>
                 </div>
-              </div>
+              </article>
             );
           })}
-        </div>
+        </section>
       )}
-    </div>
+    </main>
   );
 }
 
 export default Wishlist;
+
+
+

@@ -342,15 +342,15 @@ const CollectionsSection = () => {
           <article
             key={item.num}
             style={{ zIndex: index + 1 }}
-       className={[
-  'group isolate sticky top-0',
-  'flex w-full flex-col justify-between',
-  'h-[420px] sm:h-[460px] md:h-[500px] lg:h-[540px]',
-  'overflow-hidden !bg-neutral-950',
-  'px-5 py-6 sm:px-9 sm:py-8',
-  'md:px-12 md:py-9 lg:px-16 lg:py-10',
-  'xl:px-24',
-].join(' ')}
+            className={[
+              'group isolate sticky top-0',
+              'flex w-full flex-col justify-between',
+              'h-[420px] sm:h-[460px] md:h-[500px] lg:h-[540px]',
+              'overflow-hidden !bg-neutral-950',
+              'px-5 py-6 sm:px-9 sm:py-8',
+              'md:px-12 md:py-9 lg:px-16 lg:py-10',
+              'xl:px-24',
+            ].join(' ')}
           >
             {/* Background media */}
             <div className='absolute inset-0 z-0 overflow-hidden'>

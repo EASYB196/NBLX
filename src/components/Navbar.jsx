@@ -293,7 +293,7 @@ const NavBar = () => {
                               className={[
                                 'flex min-h-11 items-center justify-center',
                                 'rounded-lg bg-black px-4 py-3',
-                                'text-sm font-semibold text-white',
+                                'text-sm font-semibold text-white!',
                                 'transition-colors hover:bg-neutral-800',
                                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-offset-2',
                               ].join(' ')}
