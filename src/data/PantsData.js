@@ -7,48 +7,13 @@ import elegantcargojeanbv from '../assets/images/MEN/Jeans/white_cargopant_sidev
 import Rapidstarleathertrouserfv from '../assets/images/MEN/Pants/rapidstar-leather-trouser.jpg';
 import Rapidstarleathertrouserbv from '../assets/images/MEN/Pants/rapidstar-leather-trouser-backview.jpg';
 
+import HeritageDenimShortsFV from '../assets/images/MEN/Pants/HeritageDenimShortsFV.jpg';
+import HeritageDenimShortsBV from '../assets/images/MEN/Pants/HeritageDenimShortsBV.jpg';
+
+import HeritageDenimTrousersFV from '../assets/images/MEN/Pants/HeritageDenimTrousersFV.jpg';
+import HeritageDenimTrousersBV from '../assets/images/MEN/Pants/HeritageDenimTrousersBV.jpg';
+
 export const PantsDatas = [
-  {
-    id: 'joggers',
-    name: 'Jogger',
-    price: 35000,
-    oldPrice: 1543000,
-    inStock: 4,
-
-    sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
-
-    // colors: [
-    //   {
-    //     name: 'Black',
-    //     value: '#000000',
-    //     images: [jogger, jogger2],
-    //   },
-    // ],
-
-    image: jogger,
-    hoverImage: jogger2,
-
-    description:
-      'A clean and comfortable jogger designed for everyday wear with a relaxed, modern fit.',
-
-    features: [
-      'Relaxed fit',
-      'Comfortable everyday construction',
-      'Clean minimalist design',
-      'Suitable for casual styling',
-    ],
-
-    fabric: 'Premium cotton blend',
-
-    care: [
-      'Machine wash cold',
-      'Wash with similar colors',
-      'Do not bleach',
-      'Air dry recommended',
-      'Iron on low heat if necessary',
-    ],
-  },
-
   {
     id: 'elegant cargo jean',
     name: 'Elegant Cargo Jean',
@@ -57,14 +22,6 @@ export const PantsDatas = [
     inStock: 7,
 
     sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
-
-    // colors: [
-    //   {
-    //     name: 'White',
-    //     value: '#FFFFFF',
-    //     images: [elegantcargojean, elegantcargojeanbv],
-    //   },
-    // ],
 
     image: elegantcargojean,
     hoverImage: elegantcargojeanbv,
@@ -89,6 +46,39 @@ export const PantsDatas = [
       'Air dry recommended',
     ],
   },
+  {
+    id: 'heritage-paneled-denim-shorts',
+    name: ' Heritage Paneled Denim Shorts',
+    price: 65000,
+    oldPrice: 85000,
+    inStock: 4,
+
+    sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
+
+    image: HeritageDenimShortsFV,
+    hoverImage: HeritageDenimShortsBV,
+
+    description:
+      'Engineered from heavyweight deep indigo raw denim, the  Heritage Paneled Denim Shorts feature architectural vertical seam work, a wide knee-length silhouette, and minimalist NBLx cross embroidery. Tailored to match the Heritage Denim Jacket as a complete set.',
+
+    features: [
+      'Architectural front-to-back vertical paneling',
+      'Wide-leg, knee-length relaxed luxury fit',
+      'Precision white NBLx logo and cross embroidery under pocket',
+      'Classic 5-pocket construction with custom hardware',
+      'Heavyweight raw indigo finish with contrast topstitching',
+    ],
+
+    fabric: '100% Heavyweight Cotton Raw Denim (14 oz)',
+
+    care: [
+      'Dry clean recommended to preserve raw deep indigo tone',
+      'Machine wash cold inside out with like colors',
+      'Do not bleach',
+      'Hang dry to prevent shrinkage',
+      'Warm iron inside out if needed',
+    ],
+  },
 
   {
     id: 'rapidstar-leather-trouser',
@@ -97,18 +87,9 @@ export const PantsDatas = [
     oldPrice: 75000,
     inStock: 4,
 
-    sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XS'],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
 
-    colors: [
-      // {
-      //   name: 'Black',
-      //   value: '#000000',
-      //   images: [
-      //     Rapidstarleathertrouserfv,
-      //     Rapidstarleathertrouserbv,
-      //   ],
-      // },
-    ],
+    colors: [],
 
     image: Rapidstarleathertrouserfv,
     hoverImage: Rapidstarleathertrouserbv,
@@ -126,4 +107,141 @@ export const PantsDatas = [
       'Air dry recommended',
     ],
   },
+  {
+    id: 'joggers',
+    name: 'Jogger',
+    price: 35000,
+    oldPrice: 1543000,
+    inStock: 4,
+
+    sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
+
+    image: jogger,
+    hoverImage: jogger2,
+
+    description:
+      'A clean and comfortable jogger designed for everyday wear with a relaxed, modern fit.',
+
+    features: [
+      'Relaxed fit',
+      'Comfortable everyday construction',
+      'Clean minimalist design',
+      'Suitable for casual styling',
+    ],
+
+    fabric: 'Premium cotton blend',
+
+    care: [
+      'Machine wash cold',
+      'Wash with similar colors',
+      'Do not bleach',
+      'Air dry recommended',
+      'Iron on low heat if necessary',
+    ],
+  },
+  {
+    id: 'heritage-cuffed-denim-trousers',
+    name: ' Heritage Cuffed Denim Trousers',
+    price: 85000,
+    oldPrice: 110000,
+    inStock: 4,
+
+    sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
+
+    image: HeritageDenimTrousersFV,
+    hoverImage: HeritageDenimTrousersBV,
+
+    description:
+      'Engineered from 14 oz heavyweight raw indigo denim, the  Heritage Cuffed Denim Trousers feature architectural front-to-back vertical seam paneling, a full-cut wide-leg silhouette, and thick turned-up selvedge-style cuffed hems. Designed to pair with the Heritage Denim Jacket to form a unified luxury raw denim ensemble.',
+
+    features: [
+      'Architectural front-to-back vertical seam paneling',
+      'Wide-leg silhouette with structured cuffed hem finish',
+      'Classic 5-pocket layout with custom silver-tone hardware',
+      'Tonal topstitching with high-rise waist construction',
+      'Heavyweight 14 oz raw indigo cotton denim',
+    ],
+
+    fabric: '100% Heavyweight Cotton Raw Denim (14 oz)',
+
+    care: [
+      'Dry clean recommended to preserve raw deep indigo finish',
+      'Machine wash cold inside out with like colors',
+      'Do not bleach',
+      'Hang dry to prevent shrinkage',
+      'Warm iron inside out if needed',
+    ],
+  },
 ];
+
+export const pantsSizeCharts = {
+  joggers: {
+    title: 'Jogger Size Guide',
+    fit: 'Relaxed Fit',
+    columns: ['Size', 'Waist (in)', 'Inseam (in)', 'Length (in)'],
+    rows: [
+      ['S', '28-30', '29', '39'],
+      ['M', '30-32', '29.5', '40'],
+      ['L', '32-34', '30', '41'],
+      ['XL', '34-36', '30.5', '42'],
+      ['XXL', '36-38', '31', '43'],
+      ['3XL', '38-40', '31.5', '44'],
+    ],
+  },
+
+  'elegant cargo jean': {
+    title: 'Elegant Cargo Jean Size Guide',
+    fit: 'Cargo Fit',
+    columns: ['Size', 'Waist (in)', 'Hip (in)', 'Inseam (in)', 'Length (in)'],
+    rows: [
+      ['S', '28-30', '38', '30', '40'],
+      ['M', '30-32', '40', '30.5', '41'],
+      ['L', '32-34', '42', '31', '42'],
+      ['XL', '34-36', '44', '31.5', '43'],
+      ['XXL', '36-38', '46', '32', '44'],
+      ['3XL', '38-40', '48', '32.5', '45'],
+    ],
+  },
+
+  'rapidstar-leather-trouser': {
+    title: 'Rapidstar Leather Trouser Size Guide',
+    fit: 'Flared Fit',
+    columns: ['Size', 'Waist (in)', 'Hip (in)', 'Inseam (in)', 'Length (in)'],
+    rows: [
+      ['S', '28-30', '38', '31', '41'],
+      ['M', '30-32', '40', '31.5', '42'],
+      ['L', '32-34', '42', '32', '43'],
+      ['XL', '34-36', '44', '32.5', '44'],
+      ['XXL', '36-38', '46', '33', '45'],
+      ['3XL', '38-40', '48', '33.5', '46'],
+    ],
+  },
+
+  'heritage-paneled-denim-shorts': {
+    title: ' Heritage Paneled Denim Shorts Size Guide',
+    fit: 'Relaxed Short Fit',
+    columns: ['Size', 'Waist (in)', 'Hip (in)', 'Inseam (in)', 'Outseam (in)'],
+    rows: [
+      ['S', '28-30', '40-42', '12.0', '23.0'],
+      ['M', '30-32', '42-44', '12.5', '23.5'],
+      ['L', '32-34', '44-46', '13.0', '24.0'],
+      ['XL', '34-36', '46-48', '13.5', '24.5'],
+      ['XXL', '36-38', '48-50', '14.0', '25.0'],
+      ['3XL', '38-40', '50-52', '14.5', '25.5'],
+    ],
+  },
+
+  'heritage-cuffed-denim-trousers': {
+    title: ' Heritage Cuffed Denim Trousers Size Guide',
+    fit: 'Wide-Leg Fit',
+    columns: ['Size', 'Waist (in)', 'Hip (in)', 'Inseam (in)', 'Length (in)'],
+    rows: [
+      ['S', '28-30', '40-42', '30.0', '41.0'],
+      ['M', '30-32', '42-44', '30.5', '42.0'],
+      ['L', '32-34', '44-46', '31.0', '43.0'],
+      ['XL', '34-36', '46-48', '31.5', '44.0'],
+      ['XXL', '36-38', '48-50', '32.0', '45.0'],
+      ['3XL', '38-40', '50-52', '32.5', '46.0'],
+    ],
+  },
+};

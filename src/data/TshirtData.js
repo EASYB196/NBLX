@@ -1,6 +1,9 @@
 import crownofthornsornatetee from '../assets/images/MEN/T-Shirt/crown-of-thorns-ornate-tee.jpg';
 import crownofthornsornateteebackview from '../assets/images/MEN/T-Shirt/crown-of-thorns-ornate-tee-backview.jpg';
 
+import cityofdreamsluxurygraphictee from '../assets/images/MEN/T-Shirt/cityofdreamsluxurygraphictee.jpg';
+import cityofdreamsluxurygraphicteebackview from '../assets/images/MEN/T-Shirt/cityofdreamsluxurygraphicteebackview.jpg';
+
 import greatmindcroptee from '../assets/images/MEN/T-Shirt/NXblackFcroptop.jpg';
 import greatmindcropteebv from '../assets/images/MEN/T-Shirt/NXblackbcroptop.jpg';
 
@@ -94,6 +97,32 @@ export const TshirtDatas = [
       'Line dry in shade',
       'Warm iron if needed',
       'Do not dry clean',
+    ],
+  },
+  {
+    id: 'City-of-Dreams-Luxury-Tee',
+    name: 'City of Dreams Luxury Tee',
+    price: 45000,
+    oldPrice: 65000,
+    inStock: 10,
+    sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
+    // colors: ['Brown Acid'],
+    image: cityofdreamsluxurygraphictee,
+    hoverImage: cityofdreamsluxurygraphicteebackview,
+    description:
+      'Make a statement with the City of Dreams Luxury Graphic Tee, featuring a vintage acid wash finish, signature NBLX typography, and an intricate New York skyline graphic print across the back.',
+    features: [
+      'Relaxed regular-fit silhouette',
+      'Vintage acid wash treatment',
+      'High-density front and back graphic prints',
+      'Reinforced ribbed crew neck collar',
+    ],
+    fabric: '100% Heavyweight Combed Cotton (240 GSM)',
+    care: [
+      'Machine wash cold inside out with like colors',
+      'Gentle cycle',
+      'Tumble dry low or line dry in shade',
+      'Do not iron directly on print',
     ],
   },
 
@@ -553,7 +582,19 @@ export const sizeCharts = {
       ['3XL', '50-52', '23', '29'],
     ],
   },
-
+  'City-of-Dreams-Luxury-Tee': {
+    title: 'City of Dreams Luxury Graphic Tee Size Guide',
+    fit: 'Relaxed Fit',
+    columns: ['Size', 'Chest (in)', 'Shoulder (in)', 'Length (in)'],
+    rows: [
+      ['S', '38-40', '18', '27'],
+      ['M', '40-42', '19', '28'],
+      ['L', '42-44', '20', '29'],
+      ['XL', '44-46', '21', '30'],
+      ['XXL', '46-48', '22', '31'],
+      ['3XL', '48-50', '23', '32'],
+    ],
+  },
   'Crown-of-Thorns-Ornate-Tee': {
     title: 'Crown of Thorns Ornate Tee Size Guide',
     fit: 'Oversized / Boxy Fit',
@@ -724,7 +765,7 @@ export const sizeCharts = {
 
   'varsity-stripe': {
     title: 'Varsity Stripe Collared Shirt Size Guide',
-    fit: 'Relaxed / Regular Fit',
+    fit: 'Relaxed / Relaxed Fit',
     columns: ['Size', 'Chest (in)', 'Shoulder (in)', 'Length (in)'],
     rows: [
       ['S', '38-40', '17', '26'],
