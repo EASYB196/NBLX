@@ -4,8 +4,8 @@ import jogger2 from '../assets/images/MEN/Pants/joggerback.png';
 import elegantcargojean from '../assets/images/MEN/Jeans/white_cargopant_frontv.png';
 import elegantcargojeanbv from '../assets/images/MEN/Jeans/white_cargopant_sidev.png';
 
-import Flameblackjackettrouserfv from '../assets/images/WOMEN/Pant/Flameblackjackettrouserfv.jpg';
-import Flameblackjackettrouserbv from '../assets/images/WOMEN/Pant/FlameblackjacketTrouserbv.jpg';
+import Rapidstarleathertrouserfv from '../assets/images/MEN/Pants/rapidstar-leather-trouser.jpg';
+import Rapidstarleathertrouserbv from '../assets/images/MEN/Pants/rapidstar-leather-trouser-backview.jpg';
 
 export const PantsDatas = [
   {
@@ -90,45 +90,40 @@ export const PantsDatas = [
     ],
   },
 
-  // {
-  //   id: 'flare-flame-trouser',
-  //   name: 'Flare Flame Trouser',
-  //   price: 1273800,
-  //   oldPrice: 1543000,
-  //   inStock: 4,
+  {
+    id: 'rapidstar-leather-trouser',
+    name: 'Rapidstar Leather Trouser',
+    price: 60000,
+    oldPrice: 75000,
+    inStock: 4,
 
-  //   sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XS'],
+    sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XS'],
 
-  //   colors: [
-  //     // {
-  //     //   name: 'Black',
-  //     //   value: '#000000',
-  //     //   images: [
-  //     //     Flameblackjackettrouserfv,
-  //     //     Flameblackjackettrouserbv,
-  //     //   ],
-  //     // },
-  //   ],
+    colors: [
+      // {
+      //   name: 'Black',
+      //   value: '#000000',
+      //   images: [
+      //     Rapidstarleathertrouserfv,
+      //     Rapidstarleathertrouserbv,
+      //   ],
+      // },
+    ],
 
-  //   image: Flameblackjackettrouserfv,
-  //   hoverImage: Flameblackjackettrouserbv,
+    image: Rapidstarleathertrouserfv,
+    hoverImage: Rapidstarleathertrouserbv,
 
-  //   description:
-  //     'A statement trouser designed with a distinctive flare silhouette.',
+    description: 'A statement trouser designed with a distinctive flare silhouette.',
 
-  //   features: [
-  //     'Flared silhouette',
-  //     'Statement design',
-  //     'Modern fit',
-  //   ],
+    features: ['Flared silhouette', 'Statement design', 'Modern fit'],
 
-  //   fabric: 'Premium fabric',
+    fabric: 'Premium fabric',
 
-  //   care: [
-  //     'Machine wash cold',
-  //     'Wash with similar colors',
-  //     'Do not bleach',
-  //     'Air dry recommended',
-  //   ],
-  // },
+    care: [
+      'Machine wash cold',
+      'Wash with similar colors',
+      'Do not bleach',
+      'Air dry recommended',
+    ],
+  },
 ];

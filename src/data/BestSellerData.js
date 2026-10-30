@@ -1,5 +1,6 @@
 import { TshirtDatas, sizeCharts } from '../data/TshirtData';
 import { HoodiesSweatshirtsDatas } from './HoodiesSweatshirtsData';
+
 import pinkcap from '../assets/images/CAPS/pinkcap.png';
 import pinkcap2 from '../assets/images/CAPS/pinkcap2.png';
 
@@ -81,19 +82,7 @@ export const FullBestSellerData = [
 
     sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XS'],
 
-    colors: [
-      // Add color variants here when additional images are available.
-      // {
-      //   name: 'White',
-      //   value: '#FFFFFF',
-      //   images: [crystallizedtanktop, crystallizedtanktopbv],
-      // },
-      // {
-      //   name: 'Black',
-      //   value: '#000000',
-      //   images: [crystallizedtanktop, crystallizedtanktopbv],
-      // },
-    ],
+    colors: [],
 
     image: crystallizedtanktop,
     hoverImage: crystallizedtanktopbv,
@@ -122,29 +111,34 @@ export const FullBestSellerData = [
     ],
   },
 
+  // ONE PRODUCT PAGE FOR BOTH BLACK AND PINK MESH CAPS
   {
-    id: 'Pink-Mesh-Cap',
-    name: 'Crystallized Mesh Cap (Pink)',
+    id: 'Mesh-Cap',
+    name: 'Crystallized Mesh Cap',
     price: 25000,
-    oldPrice: 450000,
+    oldPrice: 30000,
     inStock: 8,
 
     sizes: [],
 
     colors: [
-      // Add color variant here when needed.
-      // {
-      //   name: 'Pink',
-      //   value: '#FFC0CB',
-      //   images: [pinkcap, pinkcap2],
-      // },
+      {
+        name: 'Black',
+        value: '#000000',
+        images: [blackcap, blackcap2],
+      },
+      {
+        name: 'Pink',
+        value: '#FFC0CB',
+        images: [pinkcap, pinkcap2],
+      },
     ],
 
-    image: pinkcap,
-    hoverImage: pinkcap2,
+    image: blackcap,
+    hoverImage: blackcap2,
 
     description:
-      'Designed with breathable mesh and subtle sparkle, this vibrant pink cap brings a lightweight, statement finish to everyday fits.',
+      'The Crystallized Mesh Cap combines a structured silhouette with breathable mesh construction and distinctive crystallized detailing. Available in black and pink, it adds a statement finish to everyday streetwear.',
 
     features: [
       'Structured cap silhouette',
@@ -152,6 +146,8 @@ export const FullBestSellerData = [
       'Crystallized embellishments',
       'Adjustable strap closure',
     ],
+
+    fabric: 'Premium Polyester & Breathable Mesh',
 
     care: [
       'Spot clean with a soft damp cloth',
@@ -174,14 +170,7 @@ export const FullBestSellerData = [
 
     sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XS'],
 
-    colors: [
-      // Add color variant here when needed.
-      // {
-      //   name: 'Black',
-      //   value: '#000000',
-      //   images: [Armlesshoodie, Armlesshoodiebackview],
-      // },
-    ],
+    colors: [],
 
     image: Armlesshoodie,
     hoverImage: Armlesshoodiebackview,
@@ -206,48 +195,6 @@ export const FullBestSellerData = [
       'Air dry naturally',
       'Avoid high-heat tumble drying',
       'Iron on low heat if necessary',
-    ],
-  },
-
-  {
-    id: 'Black-Mesh-Cap',
-    name: 'Crystallized Mesh Cap (Black)',
-    price: 25000,
-    oldPrice: 300000,
-    inStock: 3,
-
-    sizes: [],
-
-    colors: [
-      // {
-      //   name: 'Black',
-      //   value: '#000000',
-      //   images: [blackcap, blackcap2],
-      // },
-    ],
-
-    image: blackcap,
-    hoverImage: blackcap2,
-
-    description:
-      'The Crystallized Mesh Cap in Black combines a structured silhouette with breathable mesh construction and distinctive crystallized detailing. Its classic black finish makes it a versatile statement accessory that pairs easily with casual looks.',
-
-    features: [
-      'Structured cap silhouette',
-      'Breathable mesh panels',
-      'Crystallized embellishments',
-      'Adjustable strap closure',
-    ],
-
-    care: [
-      'Spot clean with a soft damp cloth',
-      'For deeper cleaning, gently hand wash in cool water',
-      'Use mild detergent',
-      'Do not bleach',
-      'Do not wring, twist, or scrub aggressively',
-      'Air dry naturally and reshape while damp',
-      'Do not tumble dry',
-      'Avoid ironing directly on the mesh or embellishments',
     ],
   },
 ];

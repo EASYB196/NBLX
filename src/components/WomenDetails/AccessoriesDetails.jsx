@@ -1,8 +1,12 @@
-// import React, { useState } from 'react';
-// import { useMemo } from 'react';
+// import React, { useMemo, useState } from 'react';
 // import toast from 'react-hot-toast';
 // import { useParams, Link } from 'react-router-dom';
-// import { FaChevronLeft, FaChevronRight, FaHeart, FaRegHeart } from 'react-icons/fa6';
+// import {
+//   FaChevronLeft,
+//   FaChevronRight,
+//   FaHeart,
+//   FaRegHeart,
+// } from 'react-icons/fa6';
 
 // import YouMayAlsoLike from '../YouMayAlsoLike.jsx';
 
@@ -19,14 +23,22 @@
 // import { CropTopDatas } from '../../data/CropTop.js';
 // import { HoodiesSweatshirtsDatas } from '../../data/HoodiesSweatshirtsData.js';
 
+// import ProductDescription from '../../components/Product/ProductDescription';
+
 // import { useCart } from '../../Context/cartContext.jsx';
 // import { useWishlist } from '../../Context/WishlistContext.jsx';
 
-// import sizechart from '../../assets/images/sizechart.png';
-
 // function AccessoriesDetails() {
 //   const { id } = useParams();
-//   const product = AccessoriesDatas.find((item) => String(item.id) === String(id));
+
+//   const decodedId = decodeURIComponent(id ?? '');
+
+//   // Find the requested accessory, allowing for legacy IDs with extra spaces.
+//   const product = AccessoriesDatas.find(
+//     (item) =>
+//       String(item.id) === decodedId ||
+//       String(item.id).trim() === decodedId.trim(),
+//   );
 
 //   const allProducts = useMemo(
 //     () => [
@@ -96,21 +108,29 @@
 //   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 //   const [selectedSize, setSelectedSize] = useState('');
 //   const [quantity, setQuantity] = useState(1);
-//   // const scrollRef = useRef(null);
-
-//   const [showSizeChart, setShowSizeChart] = useState(false);
 
 //   const { addToCart, setShowCart } = useCart();
 //   const { toggleWishlist, isWishlisted } = useWishlist();
 
 //   if (!product) {
-//     return <div className='text-black p-10'>Product not found</div>;
+//     return <div className="text-black p-10">Product not found</div>;
 //   }
 
-//   const images = [product.image, ...(product.hoverImage ? [product.hoverImage] : [])];
+// const images =
+//   ['Grove-Street', 'Graffiti-Halo'].includes(
+//     product.id,
+//   )
+//     ? [product.image].filter(Boolean)
+//     : [
+//         product.image,
+//         ...(product.hoverImage ? [product.hoverImage] : []),
+//       ].filter(Boolean);
+//   const hasSizes = Array.isArray(product.sizes) && product.sizes.length > 0;
 
 //   const handlePrev = () => {
-//     setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+//     setCurrentImageIndex(
+//       (prev) => (prev - 1 + images.length) % images.length,
+//     );
 //   };
 
 //   const handleNext = () => {
@@ -118,233 +138,246 @@
 //   };
 
 //   const handleAddToCart = () => {
-//     if (!selectedSize) {
+//     if (hasSizes && !selectedSize) {
 //       toast.error('Please select a size!');
 //       return;
 //     }
 
-//     addToCart(product, selectedSize, quantity);
-//     setShowCart(true);
+//     addToCart(
+//       {
+//         ...product,
+//         route: `/Accessories/${encodeURIComponent(product.id)}`,
+//         selectedSize: hasSizes ? selectedSize : 'Default',
+//         image: images[currentImageIndex],
+//       },
+//       hasSizes ? selectedSize : 'Default',
+//       quantity,
+//     );
 
+//     setShowCart(true);
 //     toast.success('Item added to cart!');
 //   };
 
+//   const wishlisted = isWishlisted(product.id);
+
+//   const handleWishlist = () => {
+//     toggleWishlist({
+//       ...product,
+//       route: `/Accessories/${encodeURIComponent(product.id)}`,
+//       image: product.image,
+//       images,
+//     });
+//   };
+
 //   return (
-//     <div className='bg-white text-black min-h-screen py-10 px-4 md:px-10 font-[Raleway]'>
+//     <div className="bg-white text-black min-h-screen py-10 px-4 md:px-10 font-[Raleway]">
 //       {/* BREADCRUMB */}
-//       <div className='flex items-center justify-center gap-2 md:gap-4 mt-23 text-sm md:text-base'>
-//         <Link to='/' className='hover:underline'>
+//       <div className="flex items-center justify-center gap-2 md:gap-4 mt-23 text-sm md:text-base">
+//         <Link to="/" className="hover:underline">
 //           Home
 //         </Link>
+
 //         <FaChevronRight />
-//         <Link to='/Accessories' className='hover:underline'>
+
+//         <Link to="/Accessories" className="hover:underline">
 //           Accessories
 //         </Link>
+
 //         <FaChevronRight />
-//         <span className='text-gray-500'>{product.name}</span>
+
+//         <span className="text-gray-500">{product.name}</span>
 //       </div>
 
-//       <div className='max-w-7xl mx-auto flex flex-col md:flex-row gap-10 mt-10'>
+//       <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-10 mt-10">
 //         {/* LEFT - IMAGES */}
-//         <div className='flex gap-4 w-full md:w-1/2'>
-//           {/* THUMBNAILS (DESKTOP) */}
-//           <div className='hidden md:flex flex-col gap-3'>
-//             {images.map((img, idx) => (
-//               <img
-//                 key={idx}
-//                 src={img}
-//                 alt=''
-//                 onClick={() => setCurrentImageIndex(idx)}
-//                 className={`w-20 h-24 object-cover rounded-lg cursor-pointer border ${
-//                   currentImageIndex === idx ? 'border-black' : 'border-transparent'
-//                 }`}
-//               />
-//             ))}
-//           </div>
+//         <div className="flex gap-4 w-full md:w-1/2">
+//           {/* THUMBNAILS */}
+//           {images.length > 1 && (
+//             <div className="hidden md:flex flex-col gap-3">
+//               {images.map((img, idx) => (
+//                 <img
+//                   key={`${img}-${idx}`}
+//                   src={img}
+//                   alt={`${product.name} view ${idx + 1}`}
+//                   onClick={() => setCurrentImageIndex(idx)}
+//                   className={`w-20 h-24 object-cover rounded-lg cursor-pointer border ${
+//                     currentImageIndex === idx
+//                       ? 'border-black'
+//                       : 'border-transparent'
+//                   }`}
+//                 />
+//               ))}
+//             </div>
+//           )}
 
 //           {/* MAIN IMAGE */}
-//           <div className='relative w-full h-100 md:h-125'>
+//           <div className="relative w-full h-100 md:h-125">
 //             {/* WISHLIST */}
 //             <button
-//               onClick={() =>
-//                 toggleWishlist({
-//                   ...product,
-//                   route: `/Accessories/${product.id}`,
-//                 })
+//               type="button"
+//               onClick={handleWishlist}
+//               aria-label={
+//                 wishlisted ? 'Remove from wishlist' : 'Add to wishlist'
 //               }
-//               className='absolute top-4 right-4 z-10 bg-white p-2 rounded-full shadow'
+//               className="absolute top-4 right-4 z-10 bg-white p-2 rounded-full shadow"
 //             >
-//               {isWishlisted(product.id) ? <FaHeart className='text-red-500' /> : <FaRegHeart />}
+//               {wishlisted ? (
+//                 <FaHeart className="text-red-500" />
+//               ) : (
+//                 <FaRegHeart />
+//               )}
 //             </button>
 
-//             <img
-//               src={images[currentImageIndex]}
-//               className='w-full h-full object-cover rounded-xl'
-//               alt='product'
-//             />
+//             {images.length > 0 ? (
+//               <img
+//                 src={images[currentImageIndex] || images[0]}
+//                 className="w-full h-full object-cover rounded-xl"
+//                 alt={product.name}
+//               />
+//             ) : (
+//               <div className="w-full h-full rounded-xl bg-gray-100 flex items-center justify-center text-gray-500">
+//                 Image unavailable
+//               </div>
+//             )}
 
-//             {/* ARROWS */}
-//             <button
-//               onClick={handlePrev}
-//               className='absolute left-2 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full'
-//             >
-//               <FaChevronLeft />
-//             </button>
+//             {/* IMAGE ARROWS: ONLY SHOWN FOR MULTIPLE IMAGES */}
+//             {images.length > 1 && (
+//               <>
+//                 <button
+//                   type="button"
+//                   onClick={handlePrev}
+//                   aria-label="Previous image"
+//                   className="absolute left-2 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full"
+//                 >
+//                   <FaChevronLeft />
+//                 </button>
 
-//             <button
-//               onClick={handleNext}
-//               className='absolute right-2 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full'
-//             >
-//               <FaChevronRight />
-//             </button>
+//                 <button
+//                   type="button"
+//                   onClick={handleNext}
+//                   aria-label="Next image"
+//                   className="absolute right-2 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full"
+//                 >
+//                   <FaChevronRight />
+//                 </button>
+//               </>
+//             )}
 //           </div>
 //         </div>
 
-//         {/* RIGHT - INFO */}
-//         <div className='flex-1 space-y-6'>
-//           <h1 className='text-2xl md:text-3xl font-bold'>{product.name}</h1>
+//         {/* RIGHT - PRODUCT INFORMATION */}
+//         <div className="flex-1 space-y-6">
+//           {/* PRODUCT NAME */}
+//           <h1 className="text-2xl md:text-3xl font-bold">
+//             {product.name}
+//           </h1>
 
 //           {/* PRICE */}
-//           <div className='text-2xl font-bold'>₦{product.price.toLocaleString('en-NG')}</div>
+//           <div className="text-2xl font-bold">
+//             ₦{Number(product.price).toLocaleString('en-NG')}
+//           </div>
 
 //           {/* QUANTITY */}
-//           <div className='flex items-center gap-4'>
-//             <p className='font-semibold text-xl'>Quantity:</p>
+//           <div className="flex items-center gap-4">
+//             <p className="font-semibold text-xl">Quantity:</p>
 
 //             <button
+//               type="button"
 //               onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-//               className='w-10 h-10 bg-gray-100 rounded'
+//               aria-label="Decrease quantity"
+//               className="w-10 h-10 bg-gray-100 rounded"
 //             >
 //               −
 //             </button>
 
-//             <span className='text-lg'>{quantity}</span>
+//             <span className="text-lg">{quantity}</span>
 
 //             <button
+//               type="button"
 //               onClick={() => setQuantity((q) => q + 1)}
-//               className='w-10 h-10 bg-gray-100 rounded'
+//               aria-label="Increase quantity"
+//               className="w-10 h-10 bg-gray-100 rounded"
 //             >
 //               +
 //             </button>
 //           </div>
 
-//           {/* SIZE */}
-//           <div className='space-y-4'>
-//             <div className='flex items-center justify'>
-//               <p className='font-semibold text-lg'>
-//                 Select Size
-//                 {selectedSize && (
-//                   <span className='ml-2 text-gray-500 font-normal'>({selectedSize})</span>
-//                 )}
-//               </p>
-//             </div>
+//           {/* SIZE - ONLY FOR PRODUCTS THAT HAVE SIZES */}
+//           {hasSizes && (
+//             <div className="space-y-4">
+//               <div className="flex items-center">
+//                 <p className="font-semibold text-lg">
+//                   Select Size
+//                   {selectedSize && (
+//                     <span className="ml-2 text-gray-500 font-normal">
+//                       ({selectedSize})
+//                     </span>
+//                   )}
+//                 </p>
+//               </div>
 
-//             <div className='flex flex-wrap gap-3'>
-//               {product.sizes.map((size) => (
-//                 <button
-//                   key={size}
-//                   onClick={() => setSelectedSize(size)}
-//                   className={`min-w-13.75 px-4 py-3 rounded-lg border text-sm font-medium transition-all duration-200 ${
-//                     selectedSize === size
-//                       ? 'bg-black text-white border-black'
-//                       : 'bg-white text-black border-gray-300 hover:border-black hover:bg-gray-50'
-//                   }`}
-//                 >
-//                   {size}
-//                 </button>
-//               ))}
+//               <div className="flex flex-wrap gap-3">
+//                 {product.sizes.map((size) => (
+//                   <button
+//                     key={size}
+//                     type="button"
+//                     onClick={() => setSelectedSize(size)}
+//                     className={`min-w-13.75 px-4 py-3 rounded-lg border text-sm font-medium transition-all duration-200 ${
+//                       selectedSize === size
+//                         ? 'bg-black text-white border-black'
+//                         : 'bg-white text-black border-gray-300 hover:border-black hover:bg-gray-50'
+//                     }`}
+//                   >
+//                     {size}
+//                   </button>
+//                 ))}
+//               </div>
 //             </div>
-//           </div>
-//           {/* Size Chart Button */}
-//           <button
-//             onClick={() => setShowSizeChart(true)}
-//             className='flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-black transition mt-2'
-//           >
-//             <img src={sizechart} alt='Size Guide' className='w-50 h-15 object-contain' />
-//           </button>
+//           )}
 
-//           {/* BUTTONS */}
-//           <div className='flex flex-col md:flex-row gap-4'>
+//           {/* ACTION BUTTONS */}
+//           <div className="flex flex-col md:flex-row gap-4">
 //             <button
+//               type="button"
 //               onClick={handleAddToCart}
-//               className='w-full md:w-55 border py-3 rounded-xl hover:bg-black hover:text-white transition'
+//               className="w-full md:w-55 border py-3 rounded-xl hover:bg-black hover:text-white transition"
 //             >
 //               Add to Cart
 //             </button>
 
-//             <button className='w-full md:w-55 bg-black text-white py-3 rounded-xl hover:bg-gray-900 transition'>
+//             <button
+//               type="button"
+//               className="w-full md:w-55 bg-black text-white py-3 rounded-xl hover:bg-gray-900 transition"
+//             >
 //               Buy it now
 //             </button>
 //           </div>
 //         </div>
 //       </div>
 
-//       {showSizeChart && (
-//         <div className='fixed inset-0 bg-black/50 z-50 flex items-center justify-center px-4'>
-//           <div className='bg-white rounded-xl p-6 max-w-lg w-full relative'>
-//             <button
-//               onClick={() => setShowSizeChart(false)}
-//               className='absolute top-3 right-4 text-2xl font-extrabold'
-//             >
-//               ×
-//             </button>
+//       {/* PRODUCT DESCRIPTION */}
+//       <ProductDescription
+//         description={product.description}
+//         features={product.features}
+//         fabric={product.fabric}
+//         care={product.care}
+//       />
 
-//             <h2 className='text-xl font-bold mb-4'>Accessories Size Guide</h2>
-
-//             <div className='overflow-x-auto'>
-//               <table className='w-full border'>
-//                 <thead>
-//                   <tr className='bg-gray-100'>
-//                     <th className='border p-2'>Size</th>
-//                     <th className='border p-2'>Waist</th>
-//                     <th className='border p-2'>Length</th>
-//                   </tr>
-//                 </thead>
-
-//                 <tbody>
-//                   <tr>
-//                     <td className='border p-2'>S</td>
-//                     <td className='border p-2'>30-32</td>
-//                     <td className='border p-2'>40</td>
-//                   </tr>
-
-//                   <tr>
-//                     <td className='border p-2'>M</td>
-//                     <td className='border p-2'>32-34</td>
-//                     <td className='border p-2'>41</td>
-//                   </tr>
-
-//                   <tr>
-//                     <td className='border p-2'>L</td>
-//                     <td className='border p-2'>34-36</td>
-//                     <td className='border p-2'>42</td>
-//                   </tr>
-
-//                   <tr>
-//                     <td className='border p-2'>XL</td>
-//                     <td className='border p-2'>36-38</td>
-//                     <td className='border p-2'>43</td>
-//                   </tr>
-//                 </tbody>
-//               </table>
-//             </div>
-//           </div>
-//         </div>
-//       )}
-//       <YouMayAlsoLike products={allProducts} currentProductId={product.id} />
+//       {/* YOU MAY ALSO LIKE */}
+//       <YouMayAlsoLike
+//         products={allProducts}
+//         currentProductId={product.id}
+//       />
 //     </div>
 //   );
 // }
 
 // export default AccessoriesDetails;
 
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { useParams, Link } from 'react-router-dom';
 import { FaChevronLeft, FaChevronRight, FaHeart, FaRegHeart } from 'react-icons/fa6';
-
-// eslint-disable-next-line no-unused-vars
-import { motion } from 'framer-motion';
 
 import YouMayAlsoLike from '../YouMayAlsoLike.jsx';
 
@@ -369,9 +402,14 @@ import { useWishlist } from '../../Context/WishlistContext.jsx';
 function AccessoriesDetails() {
   const { id } = useParams();
 
-  const decodedId = decodeURIComponent(id);
+  const decodedId = decodeURIComponent(id ?? '');
 
-  const product = AccessoriesDatas.find((item) => String(item.id) === String(decodedId));
+  // Find the requested accessory.
+  const product = AccessoriesDatas.find(
+    (item) => String(item.id) === decodedId || String(item.id).trim() === decodedId.trim(),
+  );
+
+  const isMeshCap = product?.id === 'Mesh-Cap';
 
   const allProducts = useMemo(
     () => [
@@ -442,24 +480,49 @@ function AccessoriesDetails() {
   const [selectedSize, setSelectedSize] = useState('');
   const [quantity, setQuantity] = useState(1);
 
+  // Color selection is specifically for the combined Mesh Cap.
+  const [selectedColor, setSelectedColor] = useState(
+    product?.id === 'Mesh-Cap' ? (product.colors?.[0]?.name ?? '') : '',
+  );
+
   const { addToCart, setShowCart } = useCart();
   const { toggleWishlist, isWishlisted } = useWishlist();
+
+  // Reset the gallery and selected color when the product changes.
+  useEffect(() => {
+    setSelectedColor(product?.id === 'Mesh-Cap' ? (product.colors?.[0]?.name ?? '') : '');
+    setCurrentImageIndex(0);
+  }, [product?.id]);
 
   if (!product) {
     return <div className='text-black p-10'>Product not found</div>;
   }
 
-  const images = [product.image, ...(product.hoverImage ? [product.hoverImage] : [])].filter(
-    Boolean,
-  );
+  // Resolve the selected color only for Mesh-Cap.
+  const selectedColorData = isMeshCap
+    ? (product.colors?.find((color) => color.name === selectedColor) ?? product.colors?.[0])
+    : undefined;
+
+  // Mesh-Cap uses the selected color's images.
+  // All other accessories retain their original image behavior.
+  const images =
+    isMeshCap && selectedColorData?.images?.length
+      ? selectedColorData.images.filter(Boolean)
+      : ['Grove-Street', 'Graffiti-Halo'].includes(product.id)
+        ? [product.image].filter(Boolean)
+        : [product.image, ...(product.hoverImage ? [product.hoverImage] : [])].filter(Boolean);
 
   const hasSizes = Array.isArray(product.sizes) && product.sizes.length > 0;
 
   const handlePrev = () => {
+    if (!images.length) return;
+
     setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
   const handleNext = () => {
+    if (!images.length) return;
+
     setCurrentImageIndex((prev) => (prev + 1) % images.length);
   };
 
@@ -469,20 +532,41 @@ function AccessoriesDetails() {
       return;
     }
 
-    addToCart(
-      {
-        ...product,
-        route: `/Accessories/${encodeURIComponent(product.id)}`,
-        selectedSize: hasSizes ? selectedSize : 'Default',
-        image: images[currentImageIndex],
-      },
-      hasSizes ? selectedSize : 'Default',
-      quantity,
-    );
+    const cartProduct = {
+      ...product,
+      route: `/Accessories/${encodeURIComponent(product.id)}`,
+      selectedSize: hasSizes ? selectedSize : 'Default',
+      image: images[currentImageIndex] ?? images[0] ?? product.image,
+    };
+
+    // Preserve color-specific details only for Mesh-Cap.
+    if (isMeshCap) {
+      cartProduct.selectedColor = selectedColorData?.name;
+      cartProduct.images = images;
+    }
+
+    addToCart(cartProduct, hasSizes ? selectedSize : 'Default', quantity);
 
     setShowCart(true);
-
     toast.success('Item added to cart!');
+  };
+
+  const wishlisted = isWishlisted(product.id);
+
+  const handleWishlist = () => {
+    const wishlistProduct = {
+      ...product,
+      route: `/Accessories/${encodeURIComponent(product.id)}`,
+      image: images[currentImageIndex] ?? images[0] ?? product.image,
+    };
+
+    // Preserve color-specific details only for Mesh-Cap.
+    if (isMeshCap) {
+      wishlistProduct.selectedColor = selectedColorData?.name;
+      wishlistProduct.images = images;
+    }
+
+    toggleWishlist(wishlistProduct);
   };
 
   return (
@@ -508,44 +592,51 @@ function AccessoriesDetails() {
         {/* LEFT - IMAGES */}
         <div className='flex gap-4 w-full md:w-1/2'>
           {/* THUMBNAILS */}
-          <div className='hidden md:flex flex-col gap-3'>
-            {images.map((img, idx) => (
-              <img
-                key={`${img}-${idx}`}
-                src={img}
-                alt={`${product.name} view ${idx + 1}`}
-                onClick={() => setCurrentImageIndex(idx)}
-                className={`w-20 h-24 object-cover rounded-lg cursor-pointer border ${
-                  currentImageIndex === idx ? 'border-black' : 'border-transparent'
-                }`}
-              />
-            ))}
-          </div>
+          {images.length > 1 && (
+            <div className='hidden md:flex flex-col gap-3'>
+              {images.map((img, idx) => (
+                <img
+                  key={`${img}-${idx}`}
+                  src={img}
+                  alt={`${product.name} ${
+                    isMeshCap && selectedColorData ? `${selectedColorData.name} ` : ''
+                  }view ${idx + 1}`}
+                  onClick={() => setCurrentImageIndex(idx)}
+                  className={`w-20 h-24 object-cover rounded-lg cursor-pointer border ${
+                    currentImageIndex === idx ? 'border-black' : 'border-transparent'
+                  }`}
+                />
+              ))}
+            </div>
+          )}
 
           {/* MAIN IMAGE */}
           <div className='relative w-full h-100 md:h-125'>
             {/* WISHLIST */}
             <button
               type='button'
-              onClick={() =>
-                toggleWishlist({
-                  ...product,
-                  route: `/Accessories/${encodeURIComponent(product.id)}`,
-                })
-              }
-              aria-label={isWishlisted(product.id) ? 'Remove from wishlist' : 'Add to wishlist'}
+              onClick={handleWishlist}
+              aria-label={wishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
               className='absolute top-4 right-4 z-10 bg-white p-2 rounded-full shadow'
             >
-              {isWishlisted(product.id) ? <FaHeart className='text-red-500' /> : <FaRegHeart />}
+              {wishlisted ? <FaHeart className='text-red-500' /> : <FaRegHeart />}
             </button>
 
-            <img
-              src={images[currentImageIndex]}
-              className='w-full h-full object-cover rounded-xl'
-              alt={product.name}
-            />
+            {images.length > 0 ? (
+              <img
+                src={images[currentImageIndex] || images[0]}
+                className='w-full h-full object-cover rounded-xl'
+                alt={`${product.name}${
+                  isMeshCap && selectedColorData ? ` - ${selectedColorData.name}` : ''
+                }`}
+              />
+            ) : (
+              <div className='w-full h-full rounded-xl bg-gray-100 flex items-center justify-center text-gray-500'>
+                Image unavailable
+              </div>
+            )}
 
-            {/* ARROWS */}
+            {/* IMAGE ARROWS */}
             {images.length > 1 && (
               <>
                 <button
@@ -570,13 +661,47 @@ function AccessoriesDetails() {
           </div>
         </div>
 
-        {/* RIGHT - INFO */}
+        {/* RIGHT - PRODUCT INFORMATION */}
         <div className='flex-1 space-y-6'>
           {/* PRODUCT NAME */}
           <h1 className='text-2xl md:text-3xl font-bold'>{product.name}</h1>
 
           {/* PRICE */}
-          <div className='text-2xl font-bold'>₦{product.price.toLocaleString('en-NG')}</div>
+          <div className='text-2xl font-bold'>
+            ₦{Number(product.price).toLocaleString('en-NG')}
+          </div>
+
+          {/* COLOR SELECTOR - ONLY FOR MESH CAP */}
+          {isMeshCap && product.colors?.length > 0 && (
+            <div className='space-y-3'>
+              <p className='font-semibold text-lg'>
+                Color:{' '}
+                <span className='font-normal text-gray-500'>{selectedColorData?.name}</span>
+              </p>
+
+              <div className='flex flex-wrap gap-3'>
+                {product.colors.map((color) => (
+                  <button
+                    key={color.name}
+                    type='button'
+                    onClick={() => {
+                      setSelectedColor(color.name);
+                      setCurrentImageIndex(0);
+                    }}
+                    aria-label={`Select ${color.name} color`}
+                    aria-pressed={selectedColorData?.name === color.name}
+                    title={color.name}
+                    className={`w-10 h-10 rounded-full border-2 transition-all ${
+                      selectedColorData?.name === color.name
+                        ? 'border-black ring-2 ring-gray-300 ring-offset-2'
+                        : 'border-gray-300 hover:border-black'
+                    }`}
+                    style={{ backgroundColor: color.value }}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* QUANTITY */}
           <div className='flex items-center gap-4'>
@@ -585,6 +710,7 @@ function AccessoriesDetails() {
             <button
               type='button'
               onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+              aria-label='Decrease quantity'
               className='w-10 h-10 bg-gray-100 rounded'
             >
               −
@@ -595,6 +721,7 @@ function AccessoriesDetails() {
             <button
               type='button'
               onClick={() => setQuantity((q) => q + 1)}
+              aria-label='Increase quantity'
               className='w-10 h-10 bg-gray-100 rounded'
             >
               +
@@ -632,7 +759,7 @@ function AccessoriesDetails() {
             </div>
           )}
 
-          {/* BUTTONS */}
+          {/* ACTION BUTTONS */}
           <div className='flex flex-col md:flex-row gap-4'>
             <button
               type='button'
@@ -651,8 +778,6 @@ function AccessoriesDetails() {
           </div>
         </div>
       </div>
-
-     
 
       {/* PRODUCT DESCRIPTION */}
       <ProductDescription

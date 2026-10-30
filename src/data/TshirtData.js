@@ -1,3 +1,6 @@
+import crownofthornsornatetee from '../assets/images/MEN/T-Shirt/crown-of-thorns-ornate-tee.jpg';
+import crownofthornsornateteebackview from '../assets/images/MEN/T-Shirt/crown-of-thorns-ornate-tee-backview.jpg';
+
 import greatmindcroptee from '../assets/images/MEN/T-Shirt/NXblackFcroptop.jpg';
 import greatmindcropteebv from '../assets/images/MEN/T-Shirt/NXblackbcroptop.jpg';
 
@@ -63,16 +66,44 @@ import oversizedcrewnecktshirtfvbv from '../assets/images/MEN/T-Shirt/white over
 import oversizedcrewnecktshirtblackfv from '../assets/images/MEN/T-Shirt/black oversized crew-neck t-shirt FV.jpg';
 import oversizedcrewnecktshirtblackfvbv from '../assets/images/MEN/T-Shirt/black oversized crew-neck t-shirt BV.jpg';
 
+import varsitystripefv from '../assets/images/MEN/T-Shirt/varsity-stripe-FV.jpg';
+import varsitystripebv from '../assets/images/MEN/T-Shirt/varsity-stripe-BV.jpg';
+
 export const TshirtDatas = [
+  {
+    id: 'Crown-of-Thorns-Ornate-Tee',
+    name: 'Crown of Thorns Ornate Tee',
+    price: 45000,
+    oldPrice: 320000,
+    inStock: 4,
+    sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
+    colors: [],
+    image: crownofthornsornatetee,
+    hoverImage: crownofthornsornateteebackview,
+    description:
+      'Elevate your casual style with the Same Faces Collared Button-Up Shirt. Crafted from combed cotton, it offers a refined silhouette featuring clean seam lines and maximum breathability.',
+    features: [
+      'Standard tailored fit',
+      'Reinforced crew neck collar',
+      'Breathable weave for all-day comfort',
+      'Anti-pilling finish',
+    ],
+    fabric: '100% Combed Organic Cotton (200 GSM)',
+    care: [
+      'Machine wash cold with like colors',
+      'Line dry in shade',
+      'Warm iron if needed',
+      'Do not dry clean',
+    ],
+  },
+
   {
     id: 'greatminds-crop-tee',
     name: 'Greatminds Crop Tee',
     price: 45000,
     oldPrice: 55000,
     inStock: 3,
-
     sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
-
     colors: [
       {
         name: 'Black',
@@ -90,22 +121,17 @@ export const TshirtDatas = [
         images: [greatmindcropteeRed, greatmindcropteeRedBV],
       },
     ],
-
     image: greatmindcroptee,
     hoverImage: greatmindcropteebv,
-
     description:
       'Designed for an effortless modern look, this heavyweight cotton tee features a relaxed drop-shoulder cut with reinforced stitching for long-lasting durability.',
-
     features: [
       'Oversized boxy fit',
       'Drop-shoulder seam construction',
       'Thick ribbed collar',
       'Pre-shrunk fabric finish',
     ],
-
     fabric: '100% Premium Heavyweight Cotton (240 GSM)',
-
     care: [
       'Machine wash cold inside out',
       'Tumble dry low',
@@ -120,9 +146,7 @@ export const TshirtDatas = [
     price: 45000,
     oldPrice: 55000,
     inStock: 3,
-
     sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
-
     colors: [
       {
         name: 'White',
@@ -139,29 +163,23 @@ export const TshirtDatas = [
         value: '#ADD8E6',
         images: [phantomweboversizedbluetee, phantomweboversizedblueteebv],
       },
-
       {
         name: 'red',
         value: '#FF0000',
         images: [phantomweboversizedredtee, phantomweboversizedredteebv],
       },
     ],
-
     image: phantomweboversizedwhitetee,
     hoverImage: phantomweboversizedwhiteteebv,
-
     description:
       'Designed for an effortless modern look, this heavyweight cotton tee features a relaxed drop-shoulder cut with reinforced stitching for long-lasting durability.',
-
     features: [
       'Oversized boxy fit',
       'Drop-shoulder seam construction',
       'Thick ribbed collar',
       'Pre-shrunk fabric finish',
     ],
-
     fabric: '100% Premium Heavyweight Cotton (240 GSM)',
-
     care: [
       'Machine wash cold inside out',
       'Tumble dry low',
@@ -176,9 +194,7 @@ export const TshirtDatas = [
     price: 50000,
     oldPrice: 65000,
     inStock: 7,
-
     sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
-
     colors: [
       {
         name: 'Yellow',
@@ -196,22 +212,17 @@ export const TshirtDatas = [
         images: [hotlineheavyweightteegreen, hotlineheavyweightteegreenbv],
       },
     ],
-
     image: hotlineheavyweighttee,
     hoverImage: hotlineheavyweightteebv,
-
     description:
       'Elevate your casual style with the Hotline Heavyweight Tee. Crafted from combed cotton, it offers a refined silhouette featuring clean seam lines and maximum breathability.',
-
     features: [
       'Standard brown fit',
       'Reinforced crew neck collar',
       'Breathable weave for all-day comfort',
       'Anti-pilling finish',
     ],
-
     fabric: '100% Combed Organic Cotton (200 GSM)',
-
     care: [
       'Machine wash cold with like colors',
       'Line dry in shade',
@@ -226,26 +237,19 @@ export const TshirtDatas = [
     price: 50000,
     oldPrice: 65000,
     inStock: 7,
-
     sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
-
     colors: [],
-
     image: samefacescollaredbuttonupshirt,
     hoverImage: samefacescollaredbuttonupshirtbv,
-
     description:
       'Elevate your casual style with the Same Faces Collared Button-Up Shirt. Crafted from combed cotton, it offers a refined silhouette featuring clean seam lines and maximum breathability.',
-
     features: [
       'Standard tailored fit',
       'Reinforced crew neck collar',
       'Breathable weave for all-day comfort',
       'Anti-pilling finish',
     ],
-
     fabric: '100% Combed Organic Cotton (200 GSM)',
-
     care: [
       'Machine wash cold with like colors',
       'Line dry in shade',
@@ -260,26 +264,19 @@ export const TshirtDatas = [
     price: 50000,
     oldPrice: 65000,
     inStock: 7,
-
     sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
-
     colors: [],
-
     image: crowntshirt,
     hoverImage: crowntshirtbv,
-
     description:
       'Elevate your casual style with the Crown T-Shirt. Crafted from combed cotton, it offers a refined silhouette featuring clean seam lines and maximum breathability.',
-
     features: [
       'Standard tailored fit',
       'Reinforced crew neck collar',
       'Breathable weave for all-day comfort',
       'Anti-pilling finish',
     ],
-
     fabric: '100% Combed Organic Cotton (200 GSM)',
-
     care: [
       'Machine wash cold with like colors',
       'Line dry in shade',
@@ -294,29 +291,12 @@ export const TshirtDatas = [
     price: 45000,
     oldPrice: 45000,
     inStock: 4,
-
     sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
-
-    colors: [
-      // Add color variants here when additional images are available.
-      // {
-      //   name: 'White',
-      //   value: '#FFFFFF',
-      //   images: [crystallizedtanktop, crystallizedtanktopbv],
-      // },
-      // {
-      //   name: 'Black',
-      //   value: '#000000',
-      //   images: [crystallizedtanktop, crystallizedtanktopbv],
-      // },
-    ],
-
+    colors: [],
     image: crystallizedtanktop,
     hoverImage: crystallizedtanktopbv,
-
     description:
       'The Crystallized Tanktop is a statement sleeveless piece featuring distinctive studded detailing across a clean white base. Its streamlined silhouette works effortlessly as a standalone piece or as part of a layered casual look.',
-
     features: [
       'Sleeveless tank-top silhouette',
       'Decorative crystallized and studded detailing',
@@ -324,7 +304,6 @@ export const TshirtDatas = [
       'Streamlined neckline',
       'Suitable for standalone or layered styling',
     ],
-
     care: [
       'Hand wash or use a gentle cold wash',
       'Turn inside out before washing',
@@ -344,9 +323,7 @@ export const TshirtDatas = [
     price: 30000,
     oldPrice: 38000,
     inStock: 5,
-
     sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
-
     colors: [
       {
         name: 'Black',
@@ -359,22 +336,17 @@ export const TshirtDatas = [
         images: [whitemetalspinefittedtee, whitemetalspinefittedteebv],
       },
     ],
-
     image: metalspinefittedtee,
     hoverImage: metalspinefittedteebv,
-
     description:
       'A timeless streetwear staple engineered for mobility and layered styling. Features a contoured cut with stretch ribbing for a flexible fit.',
-
     features: [
       'Deep armhole design for unrestricted movement',
       'Slightly elongated rounded hem',
       'Ribbed trim details',
       'Moisture-wicking jersey structure',
     ],
-
     fabric: '95% Ribbed Cotton, 5% Elastane',
-
     care: [
       'Machine wash gentle cold',
       'Do not tumble dry',
@@ -389,9 +361,7 @@ export const TshirtDatas = [
     price: 45000,
     oldPrice: 58000,
     inStock: 4,
-
     sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
-
     colors: [
       {
         name: 'White',
@@ -404,22 +374,17 @@ export const TshirtDatas = [
         images: [blackgoodtimesheavyweightgraphictee, blackgoodtimesheavyweightgraphicteebv],
       },
     ],
-
     image: goodtimesheavyweightgraphictee,
     hoverImage: goodtimesheavyweightgraphicteebv,
-
     description:
       'The ultimate everyday basic. Cut from high-density jersey fabric with a boxy silhouette and a structured collar that maintains its shape wash after wash.',
-
     features: [
       'Relaxed oversized silhouette',
       'Heavyweight 1x1 rib knit collar',
       'Pre-shrunk cotton jersey',
       'Clean minimalist stitching',
     ],
-
     fabric: '100% Ring-Spun Heavyweight Cotton (250 GSM)',
-
     care: [
       'Machine wash cold with light colors',
       'Hang dry recommended',
@@ -434,26 +399,19 @@ export const TshirtDatas = [
     price: 30000,
     oldPrice: 38000,
     inStock: 5,
-
     sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
-
     colors: [],
-
     image: obsidianthermalribbedtank,
     hoverImage: obsidianthermalribbedtankbv,
-
     description:
       'A timeless streetwear staple engineered for mobility and layered styling. Features a contoured cut with stretch ribbing for a flexible fit.',
-
     features: [
       'Deep armhole design for unrestricted movement',
       'Slightly elongated rounded hem',
       'Ribbed trim details',
       'Moisture-wicking jersey structure',
     ],
-
     fabric: '95% Ribbed Cotton, 5% Elastane',
-
     care: [
       'Machine wash gentle cold',
       'Do not tumble dry',
@@ -468,26 +426,19 @@ export const TshirtDatas = [
     price: 30000,
     oldPrice: 38000,
     inStock: 5,
-
     sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
-
     colors: [],
-
     image: blacktanktop,
     hoverImage: blacktanktopbv,
-
     description:
       'A timeless streetwear staple engineered for mobility and layered styling. Features a contoured cut with stretch ribbing for a flexible fit.',
-
     features: [
       'Deep armhole design for unrestricted movement',
       'Slightly elongated rounded hem',
       'Ribbed trim details',
       'Moisture-wicking jersey structure',
     ],
-
     fabric: '95% Ribbed Cotton, 5% Elastane',
-
     care: [
       'Machine wash gentle cold',
       'Do not tumble dry',
@@ -502,26 +453,19 @@ export const TshirtDatas = [
     price: 40000,
     oldPrice: 52000,
     inStock: 4,
-
     sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
-
     colors: [],
-
     image: reglanshirtfv,
     hoverImage: reglanshirtbv,
-
     description:
       'A modern classic featuring contrasting long raglan sleeves and a relaxed torso cut, delivering iconic sports-heritage aesthetics.',
-
     features: [
       'Contrast raglan sleeve paneling',
       'Curved bottom hem',
       'Double-needle sleeve and bottom hem stitching',
       'Ultra-soft handfeel',
     ],
-
     fabric: '100% Soft Cotton Interlock (220 GSM)',
-
     care: [
       'Machine wash cold inside out',
       'Tumble dry low',
@@ -536,9 +480,7 @@ export const TshirtDatas = [
     price: 45000,
     oldPrice: 58000,
     inStock: 4,
-
     sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
-
     colors: [
       {
         name: 'White',
@@ -551,27 +493,48 @@ export const TshirtDatas = [
         images: [oversizedcrewnecktshirtblackfv, oversizedcrewnecktshirtblackfvbv],
       },
     ],
-
     image: oversizedcrewnecktshirtfv,
     hoverImage: oversizedcrewnecktshirtfvbv,
-
     description:
       'The ultimate everyday basic. Cut from high-density jersey fabric with a boxy silhouette and a structured collar that maintains its shape wash after wash.',
-
     features: [
       'Relaxed oversized silhouette',
       'Heavyweight 1x1 rib knit collar',
       'Pre-shrunk cotton jersey',
       'Clean minimalist stitching',
     ],
-
     fabric: '100% Ring-Spun Heavyweight Cotton (250 GSM)',
-
     care: [
       'Machine wash cold with light colors',
       'Hang dry recommended',
       'Iron on low heat',
       'Do not bleach',
+    ],
+  },
+
+  {
+    id: 'varsity-stripe',
+    name: 'Varsity Stripe',
+    price: 45000,
+    oldPrice: 58000,
+    inStock: 4,
+    sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
+    image: varsitystripefv,
+    hoverImage: varsitystripebv,
+    description:
+      'A relaxed collared shirt with a clean varsity-inspired stripe design, offering an easy, comfortable fit for everyday styling.',
+    features: [
+      'Classic collared neckline',
+      'Relaxed, comfortable fit',
+      'Varsity-inspired stripe detailing',
+      'Easy to style with casual wardrobe essentials',
+    ],
+    care: [
+      'Machine wash cold with similar colours',
+      'Turn inside out before washing',
+      'Do not bleach',
+      'Air dry where possible',
+      'Iron on low heat if needed',
     ],
   },
 ];
@@ -590,8 +553,23 @@ export const sizeCharts = {
       ['3XL', '50-52', '23', '29'],
     ],
   },
+
+  'Crown-of-Thorns-Ornate-Tee': {
+    title: 'Crown of Thorns Ornate Tee Size Guide',
+    fit: 'Oversized / Boxy Fit',
+    columns: ['Size', 'Chest (in)', 'Shoulder (in)', 'Length (in)'],
+    rows: [
+      ['S', '40-42', '18', '24'],
+      ['M', '42-44', '19', '25'],
+      ['L', '44-46', '20', '26'],
+      ['XL', '46-48', '21', '27'],
+      ['XXL', '48-50', '22', '28'],
+      ['3XL', '50-52', '23', '29'],
+    ],
+  },
+
   'phantom-web-oversized-tee': {
-    title: 'phantomweb-Oversized-Tee Size Guide',
+    title: 'Phantom Web Oversized Tee Size Guide',
     fit: 'Oversized / Boxy Fit',
     columns: ['Size', 'Chest (in)', 'Shoulder (in)', 'Length (in)'],
     rows: [
@@ -605,7 +583,7 @@ export const sizeCharts = {
   },
 
   'hotline-heavyweight-tee': {
-    title: 'Hotline Heavyweight Crop Tee Size Guide',
+    title: 'Hotline Heavyweight Tee Size Guide',
     fit: 'Relaxed Cropped Fit',
     columns: ['Size', 'Chest (in)', 'Shoulder (in)', 'Length (in)'],
     rows: [
@@ -617,6 +595,7 @@ export const sizeCharts = {
       ['3XL', '48-50', '22', '29'],
     ],
   },
+
   'same faces collared button-up shirt': {
     title: 'Same Faces Button-Up Shirt Size Guide',
     fit: 'Standard Tailored Fit',
@@ -632,7 +611,7 @@ export const sizeCharts = {
   },
 
   'crown-tshirt': {
-    title: 'Crown Crop T-Shirt Size Guide',
+    title: 'Crown T-Shirt Size Guide',
     fit: 'Relaxed Cropped Fit',
     columns: ['Size', 'Chest (in)', 'Shoulder (in)', '3/4 Sleeve (in)', 'Length (in)'],
     rows: [
@@ -646,7 +625,7 @@ export const sizeCharts = {
   },
 
   'Crystallized-Tanktop': {
-    title: 'Essential Crystallized Tanktop Size Guide',
+    title: 'Crystallized Tanktop Size Guide',
     fit: 'Contoured / Stretch Fit',
     columns: ['Size', 'Chest (in)', 'Length (in)'],
     rows: [
@@ -742,9 +721,23 @@ export const sizeCharts = {
       ['3XL', '50-52', '23', '32'],
     ],
   },
+
+  'varsity-stripe': {
+    title: 'Varsity Stripe Collared Shirt Size Guide',
+    fit: 'Relaxed / Regular Fit',
+    columns: ['Size', 'Chest (in)', 'Shoulder (in)', 'Length (in)'],
+    rows: [
+      ['S', '38-40', '17', '26'],
+      ['M', '40-42', '18', '27'],
+      ['L', '42-44', '19', '28'],
+      ['XL', '44-46', '20', '29'],
+      ['XXL', '46-48', '21', '30'],
+      ['3XL', '48-50', '22', '31'],
+    ],
+  },
+
   'Hooded-Tank-Top': {
     title: 'RawCut Sleeveless Hoodie Size Guide',
-
     columns: ['Size', 'Chest (in)', 'Shoulder (in)', 'Length (in)'],
     rows: [
       ['S', '40-42', '17', '26'],

@@ -23,6 +23,12 @@
 import Armlesshoodie from '../assets/images/MEN/Hoodie/armlesshoodie.png';
 import Armlesshoodiebackview from '../assets/images/MEN/Hoodie/armlesshoodiebackview.png';
 
+import sanctumcross from '../assets/images/MEN/Sweatshirt/sanctrum.jpg';
+import sanctumcrossbackview from '../assets/images/MEN/Sweatshirt/sanctrum-backview.jpg';
+
+import Distressedsweatshirt from '../assets/images/MEN/Sweatshirt/distressed-sweatshirt.jpg';
+import Distressedsweatshirtbackview from '../assets/images/MEN/Sweatshirt/distressed-sweatshirtbackview.jpg';
+
 import Nylonhoodie from '../assets/images/MEN/Hoodie/nylon_hoodie_frontview.png';
 import Nylonhoodiebackview from '../assets/images/MEN/Hoodie/nylon_hoodie_backview.png';
 
@@ -30,6 +36,80 @@ import heritagekatanaheavyweighthoodie from '../assets/images/MEN/Hoodie/Dual-La
 import heritagekatanaheavyweighthoodiebv from '../assets/images/MEN/Hoodie/Dual-Layer Plaid Zip-Upbv.jpg';
 
 export const HoodiesSweatshirtsDatas = [
+  {
+    id: 'Sanctum Cross Sweatshirt',
+    name: 'Sanctum Cross Sweatshirt',
+    price: 45000,
+    oldPrice: 320000,
+    inStock: 4,
+    sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
+
+    colors: [
+      // {
+      //   name: 'Black',
+      //   value: '#000000',
+      //   images: [Armlesshoodie, Armlesshoodiebackview],
+      // },
+    ],
+
+    image: sanctumcross,
+    hoverImage: sanctumcrossbackview,
+    description:
+      'Elevate your casual style with the Same Faces Collared Button-Up Shirt. Crafted from combed cotton, it offers a refined silhouette featuring clean seam lines and maximum breathability.',
+
+    features: [
+      'Standard tailored fit',
+      'Reinforced crew neck collar',
+      'Breathable weave for all-day comfort',
+      'Anti-pilling finish',
+    ],
+
+    fabric: '100% Combed Organic Cotton (200 GSM)',
+
+    care: [
+      'Machine wash cold with like colors',
+      'Line dry in shade',
+      'Warm iron if needed',
+      'Do not dry clean',
+    ],
+  },
+  {
+    id: 'Distressed-Sweatshirt',
+    name: 'Distressed Sweatshirt',
+    price: 45000,
+    oldPrice: 320000,
+    inStock: 4,
+    sizes: ['S', 'M', 'L', 'XL', 'XXL', '3XL'],
+
+    colors: [
+      // {
+      //   name: 'Black',
+      //   value: '#000000',
+      //   images: [Armlesshoodie, Armlesshoodiebackview],
+      // },
+    ],
+
+    image: Distressedsweatshirt,
+    hoverImage: Distressedsweatshirtbackview,
+    description:
+      'Elevate your casual style with the Same Faces Collared Button-Up Shirt. Crafted from combed cotton, it offers a refined silhouette featuring clean seam lines and maximum breathability.',
+
+    features: [
+      'Standard tailored fit',
+      'Reinforced crew neck collar',
+      'Breathable weave for all-day comfort',
+      'Anti-pilling finish',
+    ],
+
+    fabric: '100% Combed Organic Cotton (200 GSM)',
+
+    care: [
+      'Machine wash cold with like colors',
+      'Line dry in shade',
+      'Warm iron if needed',
+      'Do not dry clean',
+    ],
+  },
   {
     id: 'Hooded-Tank-Top',
     name: 'RawCut Sleeveless Hoodie',
@@ -48,7 +128,7 @@ export const HoodiesSweatshirtsDatas = [
 
     image: Armlesshoodie,
     hoverImage: Armlesshoodiebackview,
-     description:
+    description:
       'Elevate your casual style with the Same Faces Collared Button-Up Shirt. Crafted from combed cotton, it offers a refined silhouette featuring clean seam lines and maximum breathability.',
 
     features: [
@@ -86,7 +166,7 @@ export const HoodiesSweatshirtsDatas = [
 
     image: heritagekatanaheavyweighthoodie,
     hoverImage: heritagekatanaheavyweighthoodiebv,
-     description:
+    description:
       'Elevate your casual style with the Same Faces Collared Button-Up Shirt. Crafted from combed cotton, it offers a refined silhouette featuring clean seam lines and maximum breathability.',
 
     features: [
@@ -123,7 +203,7 @@ export const HoodiesSweatshirtsDatas = [
 
     image: Nylonhoodie,
     hoverImage: Nylonhoodiebackview,
-     description:
+    description:
       'Elevate your casual style with the Same Faces Collared Button-Up Shirt. Crafted from combed cotton, it offers a refined silhouette featuring clean seam lines and maximum breathability.',
 
     features: [
@@ -143,5 +223,3 @@ export const HoodiesSweatshirtsDatas = [
     ],
   },
 ];
-
-
